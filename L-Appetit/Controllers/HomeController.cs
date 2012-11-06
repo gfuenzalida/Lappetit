@@ -11,7 +11,6 @@ namespace L_Appetit.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "L'Appétit";
-            int ocho = 8;
 
             return View();
         }
