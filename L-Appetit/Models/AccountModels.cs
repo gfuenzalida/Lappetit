@@ -30,38 +30,60 @@ namespace L_Appetit.Models
     public class LogOnModel
     {
         [Required]
-        [Display(Name = "User name")]
+        [Display(Name = "Nombre Cliente")]
         public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "Recordarme?")]
         public bool RememberMe { get; set; }
     }
 
     public class RegisterModel
     {
         [Required]
-        [Display(Name = "User name")]
-        public string UserName { get; set; }
+        [Display(Name = "Nombre Cliente")]
+        public string UserName { get; set; } 
 
         [Required]
-        [DataType(DataType.EmailAddress)]
-        [Display(Name = "Email address")]
-        public string Email { get; set; }
+        [Display(Name = "Apellido Paterno")]
+        public string ApellidoPaterno { get; set; }
+
+        [Required]
+        [Display(Name = "Apellido Materno")]
+        public string ApellidoMaterno { get; set; }
+
+        [Required]
+        [Display(Name = "Sexo")]
+        public string Sexo { get; set; }
+
+        [Required]
+        [Display(Name = "RUT")]
+        public string RUT { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "Contraseña")]
         public string Password { get; set; }
 
         [DataType(DataType.Password)]
-        [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [Display(Name = "Confirmar Contraseña")]
+        [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmacion no coincide.")]
         public string ConfirmPassword { get; set; }
+
+        [Required]
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "Correo")]
+        public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Telefono")]
+        public string Telefono { get; set; }
+
+
     }
 }
