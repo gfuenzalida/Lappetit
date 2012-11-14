@@ -5,12 +5,12 @@
 </asp:Content>
 
 <asp:Content ID="registerContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Create a New Account</h2>
+    <h2>Registro de nuevo Cliente</h2>
     <p>
-        Use the form below to create a new account. 
+        Ingrese la su informacion personal para crear su cuenta. 
     </p>
     <p>
-        Passwords are required to be a minimum of <%: Membership.MinRequiredPasswordLength %> characters in length.
+        La contraseña requiere un minimo de  <%: Membership.MinRequiredPasswordLength %> caracteres de largo.
     </p>
 
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
@@ -20,7 +20,7 @@
         <%: Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.") %>
         <div>
             <fieldset>
-                <legend>Account Information</legend>
+                <legend>Informacion del Cliente</legend>
                 
                 <div class="editor-label">
                     <%: Html.LabelFor(m => m.UserName) %>
@@ -29,15 +29,39 @@
                     <%: Html.TextBoxFor(m => m.UserName) %>
                     <%: Html.ValidationMessageFor(m => m.UserName) %>
                 </div>
-                
+
                 <div class="editor-label">
-                    <%: Html.LabelFor(m => m.Email) %>
+                    <%: Html.LabelFor(m => m.ApellidoPaterno) %>
                 </div>
                 <div class="editor-field">
-                    <%: Html.TextBoxFor(m => m.Email) %>
-                    <%: Html.ValidationMessageFor(m => m.Email) %>
+                    <%: Html.TextBoxFor(m => m.ApellidoPaterno) %>
+                    <%: Html.ValidationMessageFor(m => m.ApellidoPaterno) %>
                 </div>
-                
+
+                <div class="editor-label">
+                    <%: Html.LabelFor(m => m.ApellidoMaterno) %>
+                </div>
+                <div class="editor-field">
+                    <%: Html.TextBoxFor(m => m.ApellidoMaterno) %>
+                    <%: Html.ValidationMessageFor(m => m.ApellidoMaterno) %>
+                </div>
+
+                <div class="editor-label">
+                    <%: Html.LabelFor(m => m.Sexo) %>
+                </div>
+                <div class="editor-field">
+                    <%: Html.TextBoxFor(m => m.Sexo)%>
+                    <%: Html.ValidationMessageFor(m => m.Sexo) %>
+                </div>
+
+                <div class="editor-label">
+                    <%: Html.LabelFor(m => m.RUT) %>
+                </div>
+                <div class="editor-field">
+                    <%: Html.TextBoxFor(m => m.RUT) %>
+                    <%: Html.ValidationMessageFor(m => m.RUT) %>
+                </div>
+
                 <div class="editor-label">
                     <%: Html.LabelFor(m => m.Password) %>
                 </div>
@@ -54,8 +78,26 @@
                     <%: Html.ValidationMessageFor(m => m.ConfirmPassword) %>
                 </div>
                 
+                <div class="editor-label">
+                    <%: Html.LabelFor(m => m.Email) %>
+                </div>
+                <div class="editor-field">
+                    <%: Html.TextBoxFor(m => m.Email) %>
+                    <%: Html.ValidationMessageFor(m => m.Email) %>
+                </div>
+
+                <div class="editor-label">
+                    <%: Html.LabelFor(m => m.Telefono) %>
+                </div>
+                <div class="editor-field">
+                    <%: Html.TextBoxFor(m => m.Telefono) %>
+                    <%: Html.ValidationMessageFor(m => m.Telefono) %>
+                </div>
+                
+                
+                
                 <p>
-                    <input type="submit" value="Register" />
+                    <input type="submit" value="Registrar" />
                 </p>
             </fieldset>
         </div>
