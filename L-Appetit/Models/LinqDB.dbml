@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="lappetit" Class="LinqDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=GARY-PC;Initial Catalog=lappetit;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="lappetitConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AUDITORIA_TABLAS" Member="AUDITORIA_TABLAS">
+    <Type Name="AUDITORIA_TABLAS">
+      <Column Name="CODIGO_TABLA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_TABLA" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="TABLA_ACTIVADO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="AUDITORIA_TABLAS_DETALLE_AUDITORIA" Member="DETALLE_AUDITORIA" ThisKey="CODIGO_TABLA" OtherKey="CODIGO_TABLA" Type="DETALLE_AUDITORIA" />
+      <Association Name="AUDITORIA_TABLAS_LOG" Member="LOG" ThisKey="CODIGO_TABLA" OtherKey="CODIGO_TABLA" Type="LOG" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CALENDARIO" Member="CALENDARIO">
+    <Type Name="CALENDARIO">
+      <Column Name="FECHA" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HORARIO" Type="System.Boolean" DbType="Bit NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Association Name="CALENDARIO_MENU_FECHA" Member="MENU_FECHA" ThisKey="FECHA,HORARIO" OtherKey="FECHA,HORARIO" Type="MENU_FECHA" />
+      <Association Name="CALENDARIO_RESERVA" Member="RESERVA" ThisKey="FECHA,HORARIO" OtherKey="FECHA,HORARIO" Type="RESERVA" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CARRERA" Member="CARRERA">
+    <Type Name="CARRERA">
+      <Column Name="CODIGO_CARRERA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_CARRERA" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Association Name="CARRERA_CONTACTO" Member="CONTACTO" ThisKey="CODIGO_CARRERA" OtherKey="CODIGO_CARRERA" Type="CONTACTO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CLIENTE" Member="CLIENTE">
+    <Type Name="CLIENTE">
+      <Column Name="RUT_CLI" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="NOMBRE_CLI" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="TELEFONO_CLI" Type="System.Decimal" DbType="Decimal(20,0)" CanBeNull="true" />
+      <Column Name="CORREO_CLI" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="SEXO_CLIENTE" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TICKETS_RECIBIDOS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CLIENTE_HISTORIAL_RESERVAS" Member="HISTORIAL_RESERVAS" ThisKey="RUT_CLI" OtherKey="RUT_CLI" Type="HISTORIAL_RESERVAS" />
+      <Association Name="CLIENTE_INVITACION" Member="INVITACION" ThisKey="RUT_CLI" OtherKey="RUT_CLI" Type="INVITACION" />
+      <Association Name="CLIENTE_RESERVA" Member="RESERVA" ThisKey="RUT_CLI" OtherKey="RUT_CLI" Type="RESERVA" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONTACTO" Member="CONTACTO">
+    <Type Name="CONTACTO">
+      <Column Name="RUT_CONTACTO" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CODIGO_CARRERA" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="NOMBRE_CONTACTO" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="FONO_CONTACTO" Type="System.Decimal" DbType="Decimal(20,0)" CanBeNull="true" />
+      <Column Name="CORREO_CONTACTO" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="SEXO_CONTACTO" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CANT_TICKETS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CONTACTO_INVITACION" Member="INVITACION" ThisKey="RUT_CONTACTO" OtherKey="RUT_CONTACTO" Type="INVITACION" />
+      <Association Name="CONTACTO_PEDIDO" Member="PEDIDO" ThisKey="RUT_CONTACTO" OtherKey="RUT_COCINERO" Type="PEDIDO" />
+      <Association Name="CONTACTO_PEDIDO1" Member="PEDIDO1" ThisKey="RUT_CONTACTO" OtherKey="RUT_GARZON" Type="PEDIDO" />
+      <Association Name="CARRERA_CONTACTO" Member="CARRERA" ThisKey="CODIGO_CARRERA" OtherKey="CODIGO_CARRERA" Type="CARRERA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CUENTA_USUARIO" Member="CUENTA_USUARIO">
+    <Type Name="CUENTA_USUARIO">
+      <Column Name="ID_CUENTA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RUT_CONTACTO" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="RUT_CLI" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="USERNAME" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PASSWORD" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DETALLE_AUDITORIA" Member="DETALLE_AUDITORIA">
+    <Type Name="DETALLE_AUDITORIA">
+      <Column Name="CODIGO_TABLA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CODIGO_OPERACION" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AUDITORIA_OP_ACTIVADA" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="AUDITORIA_TABLAS_DETALLE_AUDITORIA" Member="AUDITORIA_TABLAS" ThisKey="CODIGO_TABLA" OtherKey="CODIGO_TABLA" Type="AUDITORIA_TABLAS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="OPERACIONES_DETALLE_AUDITORIA" Member="OPERACIONES" ThisKey="CODIGO_OPERACION" OtherKey="CODIGO_OPERACION" Type="OPERACIONES" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.DETALLE_PEDIDO" Member="DETALLE_PEDIDO">
+    <Type Name="DETALLE_PEDIDO">
+      <Column Name="CODIGO_PEDIDO" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CODIGO_ITEM" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="DETALLE_ITEM_CANTIDAD" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DETALLE_ITEM_OBSERVACION" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="DETALLE_PEDIDO_DETALLE_PEDIDO" Member="DETALLE_PEDIDO2" ThisKey="CODIGO_PEDIDO,CODIGO_ITEM" OtherKey="CODIGO_PEDIDO,CODIGO_ITEM" Type="DETALLE_PEDIDO" Cardinality="One" />
+      <Association Name="DETALLE_PEDIDO_DETALLE_PEDIDO" Member="DETALLE_PEDIDO1" ThisKey="CODIGO_PEDIDO,CODIGO_ITEM" OtherKey="CODIGO_PEDIDO,CODIGO_ITEM" Type="DETALLE_PEDIDO" IsForeignKey="true" />
+      <Association Name="ITEM_DETALLE_PEDIDO" Member="ITEM" ThisKey="CODIGO_ITEM" OtherKey="CODIGO_ITEM" Type="ITEM" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.HISTORIAL_RESERVAS" Member="HISTORIAL_RESERVAS">
+    <Type Name="HISTORIAL_RESERVAS">
+      <Column Name="CODIGO_HISTORIAL_RESERVA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RUT_CLI" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA_HISTORIAL_RESERVA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CANT_PERSONAS_RESERVA" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="CLIENTE_HISTORIAL_RESERVAS" Member="CLIENTE" ThisKey="RUT_CLI" OtherKey="RUT_CLI" Type="CLIENTE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INVITACION" Member="INVITACION">
+    <Type Name="INVITACION">
+      <Column Name="RUT_CONTACTO" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="RUT_CLI" Type="System.String" DbType="VarChar(10) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FECHA_EMISION" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="CLIENTE_INVITACION" Member="CLIENTE" ThisKey="RUT_CLI" OtherKey="RUT_CLI" Type="CLIENTE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="CONTACTO_INVITACION" Member="CONTACTO" ThisKey="RUT_CONTACTO" OtherKey="RUT_CONTACTO" Type="CONTACTO" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ITEM" Member="ITEM">
+    <Type Name="ITEM">
+      <Column Name="CODIGO_ITEM" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODIGO_TIPO_ITEM" Type="System.Decimal" DbType="Decimal(1,0) NOT NULL" CanBeNull="false" />
+      <Column Name="NOMBRE_ITEM" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DESCRIPCION_ITEM" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="CANT_HISTORIAL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="ITEM_DETALLE_PEDIDO" Member="DETALLE_PEDIDO" ThisKey="CODIGO_ITEM" OtherKey="CODIGO_ITEM" Type="DETALLE_PEDIDO" />
+      <Association Name="ITEM_MENU_FECHA" Member="MENU_FECHA" ThisKey="CODIGO_ITEM" OtherKey="CODIGO_ITEM" Type="MENU_FECHA" />
+      <Association Name="TIPO_ITEM_ITEM" Member="TIPO_ITEM" ThisKey="CODIGO_TIPO_ITEM" OtherKey="CODIGO_TIPO_ITEM" Type="TIPO_ITEM" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.[LOG]" Member="LOG">
+    <Type Name="LOG">
+      <Column Name="CODIGO_TABLA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CODIGO_OPERACION" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="FECHA_OPERACION_TABLA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="AUDITORIA_TABLAS_LOG" Member="AUDITORIA_TABLAS" ThisKey="CODIGO_TABLA" OtherKey="CODIGO_TABLA" Type="AUDITORIA_TABLAS" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="OPERACIONES_LOG" Member="OPERACIONES" ThisKey="CODIGO_OPERACION" OtherKey="CODIGO_OPERACION" Type="OPERACIONES" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MENU_FECHA" Member="MENU_FECHA">
+    <Type Name="MENU_FECHA">
+      <Column Name="FECHA" Type="System.DateTime" DbType="DateTime NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="HORARIO" Type="System.Boolean" DbType="Bit NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CODIGO_ITEM" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="MENU_ITEM_CANTIDAD" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="CALENDARIO_MENU_FECHA" Member="CALENDARIO" ThisKey="FECHA,HORARIO" OtherKey="FECHA,HORARIO" Type="CALENDARIO" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="ITEM_MENU_FECHA" Member="ITEM" ThisKey="CODIGO_ITEM" OtherKey="CODIGO_ITEM" Type="ITEM" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.MESA" Member="MESA">
+    <Type Name="MESA">
+      <Column Name="CODIGO_MESA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CANT_MAXIMA" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="POS_X" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="POS_Y" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="MESA_RESERVA" Member="RESERVA" ThisKey="CODIGO_MESA" OtherKey="CODIGO_MESA" Type="RESERVA" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OPERACIONES" Member="OPERACIONES">
+    <Type Name="OPERACIONES">
+      <Column Name="CODIGO_OPERACION" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_OPERACION" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Association Name="OPERACIONES_DETALLE_AUDITORIA" Member="DETALLE_AUDITORIA" ThisKey="CODIGO_OPERACION" OtherKey="CODIGO_OPERACION" Type="DETALLE_AUDITORIA" />
+      <Association Name="OPERACIONES_LOG" Member="LOG" ThisKey="CODIGO_OPERACION" OtherKey="CODIGO_OPERACION" Type="LOG" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PEDIDO" Member="PEDIDO">
+    <Type Name="PEDIDO">
+      <Column Name="CODIGO_PEDIDO" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RUT_GARZON" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="RUT_COCINERO" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CODIGO_RESERVA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="ESTADO_PEDIDO" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Association Name="PEDIDO_RESERVA" Member="RESERVA" ThisKey="CODIGO_PEDIDO" OtherKey="CODIGO_PEDIDO" Type="RESERVA" />
+      <Association Name="CONTACTO_PEDIDO" Member="CONTACTO" ThisKey="RUT_COCINERO" OtherKey="RUT_CONTACTO" Type="CONTACTO" IsForeignKey="true" />
+      <Association Name="CONTACTO_PEDIDO1" Member="CONTACTO1" ThisKey="RUT_GARZON" OtherKey="RUT_CONTACTO" Type="CONTACTO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.RESERVA" Member="RESERVA">
+    <Type Name="RESERVA">
+      <Column Name="CODIGO_RESERVA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CODIGO_MESA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="RUT_CLI" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="FECHA" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="HORARIO" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CODIGO_PEDIDO" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="NUMERO_COMENSALES" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="OBSERVACIONES" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="CALENDARIO_RESERVA" Member="CALENDARIO" ThisKey="FECHA,HORARIO" OtherKey="FECHA,HORARIO" Type="CALENDARIO" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="CLIENTE_RESERVA" Member="CLIENTE" ThisKey="RUT_CLI" OtherKey="RUT_CLI" Type="CLIENTE" IsForeignKey="true" DeleteRule="CASCADE" DeleteOnNull="true" />
+      <Association Name="MESA_RESERVA" Member="MESA" ThisKey="CODIGO_MESA" OtherKey="CODIGO_MESA" Type="MESA" IsForeignKey="true" />
+      <Association Name="PEDIDO_RESERVA" Member="PEDIDO" ThisKey="CODIGO_PEDIDO" OtherKey="CODIGO_PEDIDO" Type="PEDIDO" IsForeignKey="true" DeleteRule="CASCADE" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TIPO_ITEM" Member="TIPO_ITEM">
+    <Type Name="TIPO_ITEM">
+      <Column Name="CODIGO_TIPO_ITEM" Type="System.Decimal" DbType="Decimal(1,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NOMBRE_TIPO_ITEM" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="TIPO_ITEM_ITEM" Member="ITEM" ThisKey="CODIGO_TIPO_ITEM" OtherKey="CODIGO_TIPO_ITEM" Type="ITEM" />
+    </Type>
+  </Table>
+</Database>

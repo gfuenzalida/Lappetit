@@ -75,14 +75,27 @@ namespace L_Appetit.Controllers
         [HttpPost]
         public ActionResult Register(RegisterModel model)
         {
+
+            
             if (ModelState.IsValid)
             {
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
                 Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+                
+                LinqDBDataContext db = new LinqDBDataContext();
+                CLIENTE c1 = new CLIENTE { RUT_CLI = "8888888-8", NOMBRE_CLI = "Adolf Hitler", SEXO_CLIENTE = false, CORREO_CLI = "gary.fuenzalida@usach.cl", TELEFONO_CLI = 84056907, TICKETS_RECIBIDOS = 8 };
+                db.CLIENTE.InsertOnSubmit(c1);
+                db.SubmitChanges();
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
+                    /*
+                    LinqDBDataContext db = new LinqDBDataContext();
+                    CLIENTE c1 = new CLIENTE { RUT_CLI = "17490314-K", NOMBRE_CLI = "Gary Fuenzalida", SEXO_CLIENTE = "Masculino", CORREO_CLI = "gary.fuenzalida@usach.cl", TELEFONO_CLI = "84056907", TICKETS_RECIBIDOS = 8 };
+                    db.CLIENTE.InsertOnSubmit(c1);
+                    db.SubmitChanges();*/
+
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
                 }
