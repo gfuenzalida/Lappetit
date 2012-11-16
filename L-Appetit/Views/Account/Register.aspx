@@ -6,12 +6,10 @@
 
 <asp:Content ID="registerContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2>Registro de nuevo Cliente</h2>
-    <p>
-        Ingrese la su informacion personal para crear su cuenta. 
-    </p>
-    <p>
+        Ingrese la su informacion personal para crear su cuenta.</br> 
+
         La contraseña requiere un minimo de  <%: Membership.MinRequiredPasswordLength %> caracteres de largo.
-    </p>
+
 
     <script src="<%: Url.Content("~/Scripts/jquery.validate.min.js") %>" type="text/javascript"></script>
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>

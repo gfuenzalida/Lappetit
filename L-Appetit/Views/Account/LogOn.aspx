@@ -12,17 +12,17 @@
 </asp:Content>
 
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
-    <form id="form1" runat="server" style="margin-left: 5px">
+    <div>
+    <form id="form1" runat="server" 
+    style="margin-left: 5px; height: 430px; width: 861px;">
     
     <h2>Iniciar Sesion</h2>
-    <div style="height: 323px; width: 556px; vertical-align: top; display:inline-block">
-    <div style="width: 259px; height: 313px; vertical-align: top; display:inline-block">
-    <p>
-        L'Appétit es un sistema de gestión de restaurantes que permite manejar las distintas operaciones que se realizan en la cotidianidad del servicio al cliente en un restaurant.</br>
+    <div style="height: 323px; width: 555px; vertical-align: top; display:inline-block; margin-right: 8px;">
+    <div style="width: 247px; height: 313px; vertical-align: top; display:inline-block">
+        L'Appétit es un sistema de gestión de restaurantes que permite manejar las distintas operaciones que se realizan en la cotidianidad del servicio al cliente en un restaurant.<br>
         Si usted conoce a alguien que trabaje en el área de docencia o administración, o que sea un alumno cursando las carreras de Hoteles y Restaurant o Gastronomía Internacional, puede ser cliente del restaurant e ir a comer en él de forma gratuita con invitaciones enviadas por esa persona que conozca. ¡Regístrese <%: Html.ActionLink("Aqui", "Register") %> y disfrute los beneficios de ser cliente!
-    </p>
     </div>
-    <div style="vertical-align: top; display:inline-block; width: 293px; height: 310px;">
+    <div style="vertical-align: top; display:inline-block; width: 299px; height: 310px;">
         <img alt="" src="../../img/logo.png" style="height: 243px; width: 284px" /></div>
     </div>
 
@@ -31,7 +31,7 @@
 
     <% using (Html.BeginForm()) { %>
         <%: Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") %>
-        <div style="margin-left: 3px; width: 268px; vertical-align: top; display:inline-block; height: 424px;">
+        <div style="margin-left: 3px; width: 268px; vertical-align: top; display:inline-block; height: 336px;">
             <fieldset>
                 <legend>Informacion de la Cuenta</legend>
                 
@@ -59,7 +59,7 @@
                     
                 </div>
                 <div>
-                </br>
+                <br>
                 <asp:Label ID="Label1" runat="server" Text="Tipo de Usuario"></asp:Label>
                 <select id="Select2">
                     
@@ -78,4 +78,7 @@
         </div>
     <% } %>
     </form>
+    </div>
 </asp:Content>
+
+
