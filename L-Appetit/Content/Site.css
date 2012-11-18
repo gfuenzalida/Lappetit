@@ -33,7 +33,7 @@ a:active {
 p, ul {
     margin-bottom: 20px;
     line-height: 1.6em;
-    width: 156px;
+    /*width: 156px;*/
     height: 35px;
 }
 

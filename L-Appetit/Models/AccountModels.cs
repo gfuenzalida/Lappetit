@@ -47,8 +47,8 @@ namespace L_Appetit.Models
     public class RegisterModel
     {
         [Required]
-        [Display(Name = "Nombre Cliente 8")]
-        public string UserName { get; set; } 
+        [Display(Name = "Nombre Cliente")]
+        public string Nombre { get; set; }
 
         [Required]
         [Display(Name = "Apellido Paterno")]
@@ -65,7 +65,7 @@ namespace L_Appetit.Models
         [Required]
         [VerificadorRUT]
         [Display(Name = "RUT")]
-        public string RUT { get; set; }
+        public string UserName { get; set; }
         
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

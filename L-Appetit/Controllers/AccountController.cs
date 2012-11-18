@@ -37,7 +37,7 @@ namespace L_Appetit.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("ConsultarReserva", "Cliente");
                     }
                 }
                 else
@@ -81,8 +81,7 @@ namespace L_Appetit.Controllers
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
                 Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
-                
-                string nombre = model.UserName +  " " + model.ApellidoPaterno + " " + model.ApellidoMaterno;
+                string nombre = model.Nombre +  " " + model.ApellidoPaterno + " " + model.ApellidoMaterno;
                 bool sexo;
                 if (model.Sexo == "Masculino")
                 {
@@ -93,7 +92,7 @@ namespace L_Appetit.Controllers
                     sexo = false;
                 }
                 LinqDBDataContext db = new LinqDBDataContext();
-                CLIENTE c1 = new CLIENTE { RUT_CLI = model.RUT, NOMBRE_CLI = nombre, SEXO_CLIENTE = sexo, CORREO_CLI = model.Email, TELEFONO_CLI = Convert.ToInt32(model.Telefono), TICKETS_RECIBIDOS = 0 };
+                CLIENTE c1 = new CLIENTE { RUT_CLI = model.UserName, NOMBRE_CLI = nombre, SEXO_CLIENTE = sexo, CORREO_CLI = model.Email, TELEFONO_CLI = Convert.ToInt32(model.Telefono), TICKETS_RECIBIDOS = 0 };
                 //CUENTA_USUARIO u1 = new CUENTA_USUARIO {RUT_CLI = model.RUT, USERNAME = nombre, PASSWORD = model.Password };
 
                 //CLIENTE c1 = new CLIENTE { RUT_CLI = "17490314-k", NOMBRE_CLI = "sdsd", SEXO_CLIENTE = true, CORREO_CLI = "edede", TELEFONO_CLI = 3234343, TICKETS_RECIBIDOS = 0 };
