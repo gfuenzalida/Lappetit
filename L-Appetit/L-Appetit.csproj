@@ -34,9 +34,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Enlasys.WebControls, Version=1.0.0.2, Culture=neutral, PublicKeyToken=3e3ecedd1179a3cc, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
@@ -78,6 +75,8 @@
       <DependentUpon>LinqDB.dbml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validations\DeterminarSexo.cs" />
+    <Compile Include="Validations\VerificadorRUT.cs" />
     <Compile Include="Views\Datos.cs" />
   </ItemGroup>
   <ItemGroup>
