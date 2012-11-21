@@ -20,10 +20,10 @@
                 <% Html.RenderPartial("LogOnUserControl"); %>
             </div> 
             <div id="menucontainer">
-                <ul id="menu">
-                    <li><%: Html.ActionLink("Home", "Index", "Home")%></li>
-                    <li><%: Html.ActionLink("About", "About", "Home")%></li>
-
+                <ul id="menu" style="top: auto; right: auto">
+<<<<<<< HEAD
+                    <!--<li><%: Html.ActionLink("Home", "Index", "Home")%></li>-->
+                    <!--<li><%: Html.ActionLink("About", "About", "Home")%></li>-->
                 </ul>
             </div>
         </div>

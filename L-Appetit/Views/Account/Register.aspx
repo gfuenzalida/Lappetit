@@ -21,11 +21,11 @@
                 <legend>Informacion del Cliente</legend>
                 
                 <div class="editor-label">
-                    <%: Html.LabelFor(m => m.UserName) %>
+                    <%: Html.LabelFor(m => m.Nombre) %>
                 </div>
                 <div class="editor-field">
-                    <%: Html.TextBoxFor(m => m.UserName) %>
-                    <%: Html.ValidationMessageFor(m => m.UserName) %>
+                    <%: Html.TextBoxFor(m => m.Nombre) %>
+                    <%: Html.ValidationMessageFor(m => m.Nombre) %>
                 </div>
 
                 <div class="editor-label">
@@ -53,11 +53,11 @@
                 </div>
 
                 <div class="editor-label">
-                    <%: Html.LabelFor(m => m.RUT) %>
+                    <%: Html.LabelFor(m => m.UserName) %>
                 </div>
                 <div class="editor-field">
-                    <%: Html.TextBoxFor(m => m.RUT) %>
-                    <%: Html.ValidationMessageFor(m => m.RUT) %>
+                    <%: Html.TextBoxFor(m => m.UserName) %>
+                    <%: Html.ValidationMessageFor(m => m.UserName) %>
                 </div>
 
                 <div class="editor-label">

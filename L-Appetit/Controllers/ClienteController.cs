@@ -30,5 +30,11 @@ namespace L_Appetit.Controllers
             return View();
         }
 
+        public ActionResult EditarPerfil()
+        {
+            return View();
+        }
+
+
     }
 }

@@ -14,7 +14,6 @@ namespace L_Appetit.Controllers
 
         //
         // GET: /Account/LogOn
-
         public ActionResult LogOn()
         {
             return View();
@@ -38,7 +37,7 @@ namespace L_Appetit.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("ConsultarReserva", "Cliente");
                     }
                 }
                 else
@@ -82,19 +81,28 @@ namespace L_Appetit.Controllers
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
                 Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
-                
+                string nombre = model.Nombre +  " " + model.ApellidoPaterno + " " + model.ApellidoMaterno;
+                bool sexo;
+                if (model.Sexo == "Masculino")
+                {
+                    sexo = true;
+                }
+                else
+                {
+                    sexo = false;
+                }
                 LinqDBDataContext db = new LinqDBDataContext();
-                CLIENTE c1 = new CLIENTE { RUT_CLI = "8888888-8", NOMBRE_CLI = "Adolf Hitler", SEXO_CLIENTE = false, CORREO_CLI = "gary.fuenzalida@usach.cl", TELEFONO_CLI = 84056907, TICKETS_RECIBIDOS = 8 };
+                CLIENTE c1 = new CLIENTE { RUT_CLI = model.UserName, NOMBRE_CLI = nombre, SEXO_CLIENTE = sexo, CORREO_CLI = model.Email, TELEFONO_CLI = Convert.ToInt32(model.Telefono), TICKETS_RECIBIDOS = 0 };
+                //CUENTA_USUARIO u1 = new CUENTA_USUARIO {RUT_CLI = model.RUT, USERNAME = nombre, PASSWORD = model.Password };
+
+                //CLIENTE c1 = new CLIENTE { RUT_CLI = "17490314-k", NOMBRE_CLI = "sdsd", SEXO_CLIENTE = true, CORREO_CLI = "edede", TELEFONO_CLI = 3234343, TICKETS_RECIBIDOS = 0 };
+                
                 db.CLIENTE.InsertOnSubmit(c1);
+                //db.CUENTA_USUARIO.InsertOnSubmit(u1);
                 db.SubmitChanges();
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    /*
-                    LinqDBDataContext db = new LinqDBDataContext();
-                    CLIENTE c1 = new CLIENTE { RUT_CLI = "17490314-K", NOMBRE_CLI = "Gary Fuenzalida", SEXO_CLIENTE = "Masculino", CORREO_CLI = "gary.fuenzalida@usach.cl", TELEFONO_CLI = "84056907", TICKETS_RECIBIDOS = 8 };
-                    db.CLIENTE.InsertOnSubmit(c1);
-                    db.SubmitChanges();*/
 
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");

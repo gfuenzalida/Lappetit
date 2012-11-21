@@ -4,9 +4,11 @@ using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Web.Mvc;
 using System.Web.Security;
+using L_Appetit.Validations;
 
 namespace L_Appetit.Models
 {
+
 
     public class ChangePasswordModel
     {
@@ -46,7 +48,7 @@ namespace L_Appetit.Models
     {
         [Required]
         [Display(Name = "Nombre Cliente")]
-        public string UserName { get; set; } 
+        public string Nombre { get; set; }
 
         [Required]
         [Display(Name = "Apellido Paterno")]
@@ -61,11 +63,13 @@ namespace L_Appetit.Models
         public string Sexo { get; set; }
 
         [Required]
+        [VerificadorRUT]
         [Display(Name = "RUT")]
-        public string RUT { get; set; }
-
+        public string UserName { get; set; }
+        
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
@@ -73,6 +77,7 @@ namespace L_Appetit.Models
         [DataType(DataType.Password)]
         [Display(Name = "Confirmar Contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmacion no coincide.")]
+        
         public string ConfirmPassword { get; set; }
 
         [Required]
