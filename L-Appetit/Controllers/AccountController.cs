@@ -18,7 +18,6 @@ namespace L_Appetit.Controllers
         {
             return View();
         }
-
         //
         // POST: /Account/LogOn
 
