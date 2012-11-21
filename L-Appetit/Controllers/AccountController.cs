@@ -64,7 +64,8 @@ namespace L_Appetit.Controllers
 
         public ActionResult Register()
         {
-            return View();
+            var model = new L_Appetit.Models.RegisterModel();
+            return View(model);
         }
 
         //
@@ -82,13 +83,13 @@ namespace L_Appetit.Controllers
                 Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
                 string nombre = model.Nombre +  " " + model.ApellidoPaterno + " " + model.ApellidoMaterno;
                 bool sexo;
-                if (model.Sexo == "Masculino")
+                if (model.Sexo)
                 {
-                    sexo = true;
+                    ModelState.AddModelError("", "FEMENINO");
                 }
                 else
                 {
-                    sexo = false;
+                    ModelState.AddModelError("", "MASCULINO");
                 }
                 LinqDBDataContext db = new LinqDBDataContext();
                 CLIENTE c1 = new CLIENTE { RUT_CLI = model.UserName, NOMBRE_CLI = nombre, SEXO_CLIENTE = sexo, CORREO_CLI = model.Email, TELEFONO_CLI = Convert.ToInt32(model.Telefono), TICKETS_RECIBIDOS = 0 };
