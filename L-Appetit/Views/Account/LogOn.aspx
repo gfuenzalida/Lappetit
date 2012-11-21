@@ -17,12 +17,12 @@
     style="margin-left: 5px; height: 430px; width: 861px;">
     
     <h2>Iniciar Sesion</h2>
-    <div style="height: 323px; width: 555px; vertical-align: top; display:inline-block; margin-right: 8px;">
+    <div style="height: 323px; width: 549px; vertical-align: top; display:inline-block; margin-right: 8px;">
     <div style="width: 247px; height: 313px; vertical-align: top; display:inline-block">
         L'Appétit es un sistema de gestión de restaurantes que permite manejar las distintas operaciones que se realizan en la cotidianidad del servicio al cliente en un restaurant.<br>
         Si usted conoce a alguien que trabaje en el área de docencia o administración, o que sea un alumno cursando las carreras de Hoteles y Restaurant o Gastronomía Internacional, puede ser cliente del restaurant e ir a comer en él de forma gratuita con invitaciones enviadas por esa persona que conozca. ¡Regístrese <%: Html.ActionLink("Aqui", "Register") %> y disfrute los beneficios de ser cliente!
     </div>
-    <div style="vertical-align: top; display:inline-block; width: 299px; height: 310px;">
+    <div style="vertical-align: top; display:inline-block; width: 291px; height: 310px;">
         <img alt="" src="../../img/logo.png" style="height: 243px; width: 284px" /></div>
     </div>
 
@@ -58,7 +58,7 @@
                     
                     
                 </div>
-                <div>
+                <div style="width: 179px">
                 <br>
                 <asp:Label ID="Label1" runat="server" Text="Tipo de Usuario"></asp:Label>
                 <select id="Select2">
@@ -71,9 +71,9 @@
                 </select>
                 </div>
                 
-                <p>
+                
                     <input type="submit" value="Iniciar Sesion" />
-                </p>
+                
             </fieldset>
         </div>
     <% } %>
