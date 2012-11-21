@@ -16,14 +16,20 @@
             </div>
                 <!--<h1>L' Appetit</h1>-->
             </div>
-            <div id="logindisplay" >
+            <div id="logindisplay">
+                
                 <% Html.RenderPartial("LogOnUserControl"); %>
+
             </div> 
+            
             <div id="menucontainer">
-                <ul id="menu" style="top: auto; right: auto">
-<<<<<<< HEAD
-                    <!--<li><%: Html.ActionLink("Home", "Index", "Home")%></li>-->
-                    <!--<li><%: Html.ActionLink("About", "About", "Home")%></li>-->
+                <ul id="menu">
+       
+                    <li><%: Html.ActionLink("Tomar Pedido", "HomeGarzon", "Garzon")%></li>
+                    <li><%: Html.ActionLink("Consultar Reserva", "ConsultarReserva", "Garzon")%></li>
+                    <li><%: Html.ActionLink("Enviar Invitaciones", "EnviarInvitacionesGarzon", "Garzon")%></li>
+                    <li><%:Html.ActionLink("Editar Perfil", "EditarPerfil", "Garzon")%></li>
+
                 </ul>
             </div>
         </div>
@@ -33,6 +39,5 @@
             </div>
         </div>
     </div>
-    
 </body>
 </html>

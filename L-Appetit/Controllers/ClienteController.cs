@@ -12,22 +12,21 @@ namespace L_Appetit.Controllers
         //
         // GET: /Cliente/
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-        
-        public ActionResult ConsultarReserva()
-        {
-            return View();
-        }
-
-        public ActionResult HacerReserva()
-        {
-            return View();
-        }
-
         public ActionResult ConsultarMenu()
+        {
+            return View();
+        }
+
+        public ActionResult ConsultarReservasCliente()
+        {
+            return View();
+        }
+
+        public ActionResult EditarPerfilCliente()
+        {
+            return View();
+        }
+        public ActionResult HacerReserva()
         {/*
             var fecha = "2010-01-01 00:00:00.000";
             bool horario = true;
