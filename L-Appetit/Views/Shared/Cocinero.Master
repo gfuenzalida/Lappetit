@@ -22,10 +22,10 @@
             </div> 
             <div id="menucontainer" align="right">
                 <ul id="menu" style="display: inline-block">
-                    <li><%: Html.ActionLink("Consultar Reserva", "ConsultarReserva", "Cliente")%></li>
-                    <li><%: Html.ActionLink("Hacer Reserva", "HacerReserva", "Cliente")%></li>
-                    <li><%: Html.ActionLink("Consultar Menú", "ConsultarMenu", "Cliente")%></li>
-                    <li><%: Html.ActionLink("Editar Perfil", "EditarPerfil", "Cliente")%></li>
+                    <li><%: Html.ActionLink("Menu", "VerMenu", "Cocinero")%></li>
+                    <li><%: Html.ActionLink("Pedidos", "VerPedidos", "Cocinero")%></li>
+                    <li><%: Html.ActionLink("Enviar Invitaciones", "EnviarInvitaciones", "Cocinero")%></li>
+                    <li><%: Html.ActionLink("Editar Perfil", "EditarPerfilCocinero", "Cocinero")%></li>
                 </ul>
             </div>
         </div>

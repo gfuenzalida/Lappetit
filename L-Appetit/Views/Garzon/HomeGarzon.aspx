@@ -32,7 +32,7 @@
         </div>
     </div>
 </div>
- <br>
+
 <div style="vertical-align: top; display:inline-block">
     <div class="tabs">
         <div class="tab">
