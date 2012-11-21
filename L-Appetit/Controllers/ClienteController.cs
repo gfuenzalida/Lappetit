@@ -66,13 +66,6 @@ namespace L_Appetit.Controllers
             return View();
         }
 
-        public ActionResult ConsultarReserva()
-        {
-
-            return View();
-        }
-        
-        [HttpPost]
         public ActionResult ConsultarReserva(string rut)
         {
             //var fecha = Convert.ToDateTime("2010-01-02 00:00:00.000");
@@ -80,8 +73,8 @@ namespace L_Appetit.Controllers
             LinqDBDataContext db = new LinqDBDataContext();
             var r = from reserva in db.RESERVA
                     where
-                      //reserva.FECHA == Convert.ToDateTime("2010-01-02 00:00:00.000") &&
-                      //reserva.HORARIO == Convert.ToBoolean("True") &&
+                        //reserva.FECHA == Convert.ToDateTime("2010-01-02 00:00:00.000") &&
+                        //reserva.HORARIO == Convert.ToBoolean("True") &&
                       reserva.RUT_CLI == rut
                     select new
                     {
@@ -90,6 +83,14 @@ namespace L_Appetit.Controllers
                         reserva.NUMERO_COMENSALES,
                         reserva.OBSERVACIONES
                     };
+
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult ConsultarReserva()
+        {
+
             return View();
         }
 
