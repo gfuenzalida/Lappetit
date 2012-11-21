@@ -20,14 +20,14 @@ namespace L_Appetit.Controllers
         }
 
         [HttpPost]
-        public ActionResult ConsultarMenu(string hola)
+        public ActionResult ConsultarMenu(DateTime fecha)
         {
             ArrayList ListaEntrada = new ArrayList();
             ArrayList ListaFondo = new ArrayList();
             ArrayList ListaPostre = new ArrayList();
             ArrayList ListaBebestible = new ArrayList();
 
-            var fecha = Convert.ToDateTime("2010-01-01 00:00:00.000");
+            //var fecha = Convert.ToDateTime("2010-01-01 00:00:00.000");
             bool horario = true;
             LinqDBDataContext db = new LinqDBDataContext();
             var menu = from item in db.ITEM
@@ -68,6 +68,28 @@ namespace L_Appetit.Controllers
 
         public ActionResult ConsultarReservasCliente()
         {
+
+            return View();
+        }
+        
+        [HttpPost]
+        public ActionResult ConsultarReservasCliente(string rut)
+        {
+            //var fecha = Convert.ToDateTime("2010-01-02 00:00:00.000");
+            //bool horario = true;
+            LinqDBDataContext db = new LinqDBDataContext();
+            var r = from reserva in db.RESERVA
+                    where
+                      //reserva.FECHA == Convert.ToDateTime("2010-01-02 00:00:00.000") &&
+                      //reserva.HORARIO == Convert.ToBoolean("True") &&
+                      reserva.RUT_CLI == rut
+                    select new
+                    {
+                        reserva.FECHA,
+                        reserva.HORARIO,
+                        reserva.NUMERO_COMENSALES,
+                        reserva.OBSERVACIONES
+                    };
             return View();
         }
 
@@ -80,6 +102,8 @@ namespace L_Appetit.Controllers
            
             return View();
         }
+
+
 
         public ActionResult EditarPerfil()
         {
