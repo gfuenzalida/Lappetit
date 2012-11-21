@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using L_Appetit.Models;
+using System.Collections;
 
 namespace L_Appetit.Controllers
 {
@@ -14,20 +15,18 @@ namespace L_Appetit.Controllers
 
         public ActionResult ConsultarMenu()
         {
+                        
             return View();
         }
 
-        public ActionResult ConsultarReservasCliente()
+        [HttpPost]
+        public ActionResult ConsultarMenu()
         {
-            return View();
-        }
+            ArrayList ListaEntrada = new ArrayList();
+            ArrayList ListaFondo = new ArrayList();
+            ArrayList ListaPostre = new ArrayList();
+            ArrayList ListaBebestible = new ArrayList();
 
-        public ActionResult EditarPerfilCliente()
-        {
-            return View();
-        }
-        public ActionResult HacerReserva()
-        {
             var fecha = Convert.ToDateTime("2010-01-01 00:00:00.000");
             bool horario = true;
             LinqDBDataContext db = new LinqDBDataContext();
@@ -44,35 +43,41 @@ namespace L_Appetit.Controllers
                            tipo_item.NOMBRE_TIPO_ITEM,
                            item.NOMBRE_ITEM
                        };
-            /*
-            var fecha = "2010-01-01 00:00:00.000";
-            bool horario = true;
-            LinqDBDataContext db = new LinqDBDataContext();
-            var menu = from menu_fecha in db.MENU_FECHA
-                       join item in db.ITEM
-                             on new { menu_fecha.FECHA, menu_fecha.CODIGO_ITEM }
-                         equals new { FECHA = fecha, item.CODIGO_ITEM }
-                       select new
-                       {
-                           item.NOMBRE_ITEM
-                       };*/
-            /*
-            var fecha = "2010-01-01 00:00:00.000";
-            bool horario = true;
-            LinqDBDataContext db = new LinqDBDataContext();
-            var menu = from m in db.MENU_FECHA
-                       join i in db.ITEM 
-                       on m.CODIGO_ITEM equals i.CODIGO_ITEM
-                       select new (i.TIPO_ITEM, i.NOMBRE_ITEM);*/
+            foreach (var item in menu)
+            {
+                if (item.NOMBRE_TIPO_ITEM.Equals("Entrada"))
+                {
+                    ListaEntrada.Add(item.NOMBRE_ITEM);
+                }
+                else if (item.NOMBRE_TIPO_ITEM.Equals("Plato de fondo"))
+                {
+                    ListaFondo.Add(item.NOMBRE_ITEM);
+                }
+                else if (item.NOMBRE_TIPO_ITEM.Equals("Postre"))
+                {
+                    ListaPostre.Add(item.NOMBRE_ITEM);
+                }
+                else if (item.NOMBRE_TIPO_ITEM.Equals("Bebestible"))
+                {
+                    ListaBebestible.Add(item.NOMBRE_ITEM);
+                }
+            }
+            
+            return View();
+        }
 
-            //CLIENTE c1 = new CLIENTE { RUT_CLI = model.UserName, NOMBRE_CLI = nombre, SEXO_CLIENTE = sexo, CORREO_CLI = model.Email, TELEFONO_CLI = Convert.ToInt32(model.Telefono), TICKETS_RECIBIDOS = 0 };
-            //CUENTA_USUARIO u1 = new CUENTA_USUARIO {RUT_CLI = model.RUT, USERNAME = nombre, PASSWORD = model.Password };
+        public ActionResult ConsultarReservasCliente()
+        {
+            return View();
+        }
 
-            //CLIENTE c1 = new CLIENTE { RUT_CLI = "17490314-k", NOMBRE_CLI = "sdsd", SEXO_CLIENTE = true, CORREO_CLI = "edede", TELEFONO_CLI = 3234343, TICKETS_RECIBIDOS = 0 };
-
-            //db.CLIENTE.InsertOnSubmit(c1);
-            //db.CUENTA_USUARIO.InsertOnSubmit(u1);
-            //db.SubmitChanges();
+        public ActionResult EditarPerfilCliente()
+        {
+            return View();
+        }
+        public ActionResult HacerReserva()
+        {
+           
             return View();
         }
 
