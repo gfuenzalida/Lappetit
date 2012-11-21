@@ -67,6 +67,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\CocineroController.cs" />
+    <Compile Include="Controllers\FuncionarioController.cs" />
+    <Compile Include="Controllers\GarzonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -109,6 +114,7 @@
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="img\logo-inacap.jpg" />
     <Content Include="img\logo.png" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
@@ -120,6 +126,27 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Views\Admin\ConsultarHistorial.aspx" />
+    <Content Include="Views\Admin\ConsultarReservas.aspx" />
+    <Content Include="Views\Admin\EditarPerfilAdmin.aspx" />
+    <Content Include="Views\Admin\GestionarMesas.aspx" />
+    <Content Include="Views\Admin\GestionarUsuarios.aspx" />
+    <Content Include="Views\Cliente\ConsultarMenu.aspx" />
+    <Content Include="Views\Cliente\ConsultarReservasCliente.aspx" />
+    <Content Include="Views\Cliente\EditarPerfilCliente.aspx" />
+    <Content Include="Views\Cliente\HacerReserva.aspx" />
+    <Content Include="Views\Cocinero\AgregarItem.aspx" />
+    <Content Include="Views\Cocinero\AgregarMenu.aspx" />
+    <Content Include="Views\Cocinero\EditarPerfilCocinero.aspx" />
+    <Content Include="Views\Cocinero\EnviarInvitaciones.aspx" />
+    <Content Include="Views\Cocinero\VerMenu.aspx" />
+    <Content Include="Views\Cocinero\VerPedidos.aspx" />
+    <Content Include="Views\Funcionario\EditarPerfilFuncionario.aspx" />
+    <Content Include="Views\Funcionario\EnviarInvitacionFuncionario.aspx" />
+    <Content Include="Views\Garzon\ConsultarReserva.aspx" />
+    <Content Include="Views\Garzon\EditarPerfil.aspx" />
+    <Content Include="Views\Garzon\EnviarInvitacionesGarzon.aspx" />
+    <Content Include="Views\Garzon\HomeGarzon.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -165,6 +192,11 @@
       <LastGenOutput>LinqDB.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Shared\CocineroSite.Master" />
+    <Content Include="Views\Shared\GarzonSite.Master" />
+    <Content Include="Views\Shared\AdminSite.Master" />
+    <Content Include="Views\Shared\ClienteSite.Master" />
+    <Content Include="Views\Shared\FuncionarioSite.Master" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\LinqDB.dbml.layout">
