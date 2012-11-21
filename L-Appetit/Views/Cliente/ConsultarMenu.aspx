@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/ClienteSite.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Consultar Menu
 </asp:Content>
@@ -16,7 +17,7 @@
             <asp:Calendar ID="Calendar1" runat="server" BackColor="White" 
                 BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" 
                 Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" 
-                onselectionchanged="Calendar1_SelectionChanged" Width="200px">
+                Width="200px">
                 <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
                 <NextPrevStyle VerticalAlign="Bottom" />
                 <OtherMonthDayStyle ForeColor="#808080" />
