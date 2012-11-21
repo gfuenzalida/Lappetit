@@ -27,7 +27,36 @@ namespace L_Appetit.Controllers
             return View();
         }
         public ActionResult HacerReserva()
-        {/*
+        {
+            var fecha = Convert.ToDateTime("2010-01-01 00:00:00.000");
+            bool horario = true;
+            LinqDBDataContext db = new LinqDBDataContext();
+            var menu = from item in db.ITEM
+                       from menu_fecha in db.MENU_FECHA
+                       from tipo_item in db.TIPO_ITEM
+                       where
+                         menu_fecha.FECHA == fecha &&
+                         menu_fecha.HORARIO == horario &&
+                         item.CODIGO_ITEM == menu_fecha.CODIGO_ITEM &&
+                         tipo_item.CODIGO_TIPO_ITEM == item.CODIGO_TIPO_ITEM
+                       select new
+                       {
+                           tipo_item.NOMBRE_TIPO_ITEM,
+                           item.NOMBRE_ITEM
+                       };
+            /*
+            var fecha = "2010-01-01 00:00:00.000";
+            bool horario = true;
+            LinqDBDataContext db = new LinqDBDataContext();
+            var menu = from menu_fecha in db.MENU_FECHA
+                       join item in db.ITEM
+                             on new { menu_fecha.FECHA, menu_fecha.CODIGO_ITEM }
+                         equals new { FECHA = fecha, item.CODIGO_ITEM }
+                       select new
+                       {
+                           item.NOMBRE_ITEM
+                       };*/
+            /*
             var fecha = "2010-01-01 00:00:00.000";
             bool horario = true;
             LinqDBDataContext db = new LinqDBDataContext();

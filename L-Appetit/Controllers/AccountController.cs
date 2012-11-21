@@ -36,7 +36,7 @@ namespace L_Appetit.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("ConsultarReserva", "Cliente");
+                        return RedirectToAction("ConsultarReservasCliente", "Cliente");
                     }
                 }
                 else
