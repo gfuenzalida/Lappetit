@@ -66,14 +66,14 @@ namespace L_Appetit.Controllers
             return View();
         }
 
-        public ActionResult ConsultarReservasCliente()
+        public ActionResult ConsultarReserva()
         {
 
             return View();
         }
         
         [HttpPost]
-        public ActionResult ConsultarReservasCliente(string rut)
+        public ActionResult ConsultarReserva(string rut)
         {
             //var fecha = Convert.ToDateTime("2010-01-02 00:00:00.000");
             //bool horario = true;
