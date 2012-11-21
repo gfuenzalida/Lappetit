@@ -108,6 +108,7 @@
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="Global.asax" />
+    <Content Include="img\logo-inacap.jpg" />
     <Content Include="img\logo.png" />
     <Content Include="Scripts\jquery-1.5.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.5.1.js" />
@@ -168,6 +169,10 @@
       <SubType>Designer</SubType>
     </None>
     <Content Include="Views\Shared\Cliente.Master" />
+    <Content Include="Views\Shared\Cocinero.Master" />
+    <Content Include="Views\Shared\Funcionario.Master" />
+    <Content Include="Views\Shared\Admin.Master" />
+    <Content Include="Views\Shared\Garzon.Master" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Models\LinqDB.dbml.layout">

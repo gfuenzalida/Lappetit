@@ -11,9 +11,9 @@
     <div class="page">
         <div id="header">
             <div id="title">
-            <div>
-            <img alt="" src="../../img/logo-inacap.jpg" style="height: 78px; width: 182px" />
-            </div>
+                <div>
+                    <img alt="" src="../../img/logo-inacap.jpg" style="height: 78px; width: 182px" />
+                </div>
                 <!--<h1>L' Appetit</h1>-->
             </div>
             <div id="logindisplay" >
