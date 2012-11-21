@@ -64,7 +64,8 @@ namespace L_Appetit.Controllers
 
         public ActionResult Register()
         {
-            return View();
+            var model = new L_Appetit.Models.RegisterModel();
+            return View(model);
         }
 
         //
@@ -81,17 +82,8 @@ namespace L_Appetit.Controllers
                 MembershipCreateStatus createStatus;
                 Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
                 string nombre = model.Nombre +  " " + model.ApellidoPaterno + " " + model.ApellidoMaterno;
-                bool sexo;
-                if (model.Sexo == "Masculino")
-                {
-                    sexo = true;
-                }
-                else
-                {
-                    sexo = false;
-                }
                 LinqDBDataContext db = new LinqDBDataContext();
-                CLIENTE c1 = new CLIENTE { RUT_CLI = model.UserName, NOMBRE_CLI = nombre, SEXO_CLIENTE = sexo, CORREO_CLI = model.Email, TELEFONO_CLI = Convert.ToInt32(model.Telefono), TICKETS_RECIBIDOS = 0 };
+                CLIENTE c1 = new CLIENTE { RUT_CLI = model.UserName, NOMBRE_CLI = nombre, SEXO_CLIENTE = model.Sexo, CORREO_CLI = model.Email, TELEFONO_CLI = Convert.ToInt32(model.Telefono), TICKETS_RECIBIDOS = 0 };
                 //CUENTA_USUARIO u1 = new CUENTA_USUARIO {RUT_CLI = model.RUT, USERNAME = nombre, PASSWORD = model.Password };
 
                 //CLIENTE c1 = new CLIENTE { RUT_CLI = "17490314-k", NOMBRE_CLI = "sdsd", SEXO_CLIENTE = true, CORREO_CLI = "edede", TELEFONO_CLI = 3234343, TICKETS_RECIBIDOS = 0 };

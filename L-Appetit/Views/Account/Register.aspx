@@ -45,11 +45,13 @@
                 </div>
 
                 <div class="editor-label">
-                    <%: Html.LabelFor(m => m.Sexo) %>
+                    <%: Html.LabelFor(m => m.Generos) %>
                 </div>
                 <div class="editor-field">
-                    <%: Html.TextBoxFor(m => m.Sexo)%>
-                    <%: Html.ValidationMessageFor(m => m.Sexo) %>
+                    <%= Html.DropDownListFor(
+                    x => x.Sexo,
+                    new SelectList(Model.Generos, "Value", "Text")
+                    ) %>
                 </div>
 
                 <div class="editor-label">
