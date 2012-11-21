@@ -74,6 +74,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\LinqDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -176,7 +177,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\Cliente\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
