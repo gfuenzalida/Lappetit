@@ -120,10 +120,27 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-1.7.js" />
     <Content Include="Scripts\modernizr-1.7.min.js" />
+    <Content Include="Views\Admin\ConsultarHistorial.aspx" />
+    <Content Include="Views\Admin\ConsultarReservas.aspx" />
+    <Content Include="Views\Admin\EditarPerfilAdmin.aspx" />
+    <Content Include="Views\Admin\GestionarMesas.aspx" />
+    <Content Include="Views\Admin\GestionarUsuarios.aspx" />
     <Content Include="Views\Cliente\ConsultarMenu.aspx" />
     <Content Include="Views\Cliente\EditarPerfil.aspx" />
     <Content Include="Views\Cliente\HacerReserva.aspx" />
     <Content Include="Views\Cliente\ConsultarReserva.aspx" />
+    <Content Include="Views\Cocinero\AgregarItem.aspx" />
+    <Content Include="Views\Cocinero\AgregarMenu.aspx" />
+    <Content Include="Views\Cocinero\EditarPerfilCocinero.aspx" />
+    <Content Include="Views\Cocinero\EnviarInvitaciones.aspx" />
+    <Content Include="Views\Cocinero\VerMenu.aspx" />
+    <Content Include="Views\Cocinero\VerPedidos.aspx" />
+    <Content Include="Views\Funcionario\EditarPerfilFuncionario.aspx" />
+    <Content Include="Views\Funcionario\EnviarInvitacionFuncionario.aspx" />
+    <Content Include="Views\Garzon\ConsultarReserva.aspx" />
+    <Content Include="Views\Garzon\EditarPerfil.aspx" />
+    <Content Include="Views\Garzon\EnviarInvitacionesGarzon.aspx" />
+    <Content Include="Views\Garzon\HomeGarzon.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
