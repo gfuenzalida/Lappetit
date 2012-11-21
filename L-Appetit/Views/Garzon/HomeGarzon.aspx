@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/GarzonSite.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Garzon.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Tomar Pedido
@@ -32,6 +32,7 @@
         </div>
     </div>
 </div>
+ <br>
 <div style="vertical-align: top; display:inline-block">
     <div class="tabs">
         <div class="tab">
