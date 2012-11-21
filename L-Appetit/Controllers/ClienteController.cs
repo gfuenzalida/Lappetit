@@ -20,7 +20,7 @@ namespace L_Appetit.Controllers
         }
 
         [HttpPost]
-        public ActionResult ConsultarMenu()
+        public ActionResult ConsultarMenu(string hola)
         {
             ArrayList ListaEntrada = new ArrayList();
             ArrayList ListaFondo = new ArrayList();
