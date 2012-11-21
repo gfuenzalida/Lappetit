@@ -15,17 +15,18 @@
         </div>
         <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; width: 210px; height: 310px;">
             <asp:Calendar ID="Calendar1" runat="server" BackColor="White" 
-                BorderColor="#999999" CellPadding="4" DayNameFormat="Shortest" 
-                Font-Names="Verdana" Font-Size="8pt" ForeColor="Black" Height="180px" 
-                Width="200px">
-                <DayHeaderStyle BackColor="#CCCCCC" Font-Bold="True" Font-Size="7pt" />
-                <NextPrevStyle VerticalAlign="Bottom" />
-                <OtherMonthDayStyle ForeColor="#808080" />
-                <SelectedDayStyle BackColor="#666666" Font-Bold="True" ForeColor="White" />
-                <SelectorStyle BackColor="#CCCCCC" />
-                <TitleStyle BackColor="#999999" BorderColor="Black" Font-Bold="True" />
-                <TodayDayStyle BackColor="#CCCCCC" ForeColor="Black" />
-                <WeekendDayStyle BackColor="#FFFFCC" />
+                BorderColor="#3366CC" CellPadding="1" DayNameFormat="Shortest" 
+                Font-Names="Verdana" Font-Size="8pt" ForeColor="#003399" Height="200px" 
+                Width="220px" BorderWidth="1px">
+                <DayHeaderStyle BackColor="#99CCCC" ForeColor="#336666" Height="1px" />
+                <NextPrevStyle Font-Size="8pt" ForeColor="#CCCCFF" />
+                <OtherMonthDayStyle ForeColor="#999999" />
+                <SelectedDayStyle BackColor="#009999" Font-Bold="True" ForeColor="#CCFF99" />
+                <SelectorStyle BackColor="#99CCCC" ForeColor="#336666" />
+                <TitleStyle BackColor="#003399" BorderColor="#3366CC" Font-Bold="True" 
+                    BorderWidth="1px" Font-Size="10pt" ForeColor="#CCCCFF" Height="25px" />
+                <TodayDayStyle BackColor="#99CCCC" ForeColor="White" />
+                <WeekendDayStyle BackColor="#CCCCFF" />
             </asp:Calendar>
         </div>
     </div>
