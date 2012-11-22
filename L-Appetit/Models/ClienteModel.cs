@@ -8,6 +8,7 @@ namespace L_Appetit.Models.Cliente
 {
     public class MenuModel
     {
+        public DateTime fecha;
         public List<string> ListaEntrada { get; set; }
         public List<string> ListaFondo { get; set; }
         public List<string> ListaBebestible { get; set; }

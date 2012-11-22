@@ -31,7 +31,7 @@ namespace L_Appetit.Controllers
         }
         /*
         [HttpPost]
-        public ActionResult ConsultarMenu(MenuModel modelo)
+        public ActionResult ConsultarMenu()
         {
             
             
