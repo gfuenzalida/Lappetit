@@ -22,8 +22,13 @@
 <h2>Consultar Menu</h2>
     <div style="height: 321px">
         <div style="display: inline-block; height: 296px; width: 447px;">
+        
         <% L_Appetit.Models.Cliente.MenuModel modelo = ViewData.Model; %>
-        <%: Html.Label(modelo.ListaEntrada.Count.ToString()) %>
+
+        <% foreach (string item in modelo.ListaEntrada)
+           {%>
+              <li><%: Html.Label(item) %></li>
+          <% }%>
         </div>
         <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; width: 210px; height: 310px;">
             <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
