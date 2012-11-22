@@ -13,44 +13,49 @@
        <input type="radio" id="tab-1" name="tab-group-1" checked>
        <label for="tab-1">Datos del Item</label>
        <div class="content"> 
-           <div style="vertical-align: top; display:inline-block; height: 39px;">
-                <div>
+            <div style="width:100%" >
+                <div style="vertical-align: top; display:inline-block; width: 50%;">
                     <div>
-                    <asp:Label ID="Label1" runat="server" Text="Tipo de Plato"></asp:Label>
+                        <asp:Label ID="Label1" runat="server" Text="Tipo de Plato"></asp:Label>
                     </div>
                     <div>
-                    <select id="Select1">
-                        <option>Entrada</option>
-                        <option>Fondo</option>
-                        <option>Postre</option>
-                        <option>Bebestible</option>
-                    </select>
+                        <select id="Select1">
+                            <option>Entrada</option>
+                            <option>Fondo</option>
+                            <option>Postre</option>
+                            <option>Bebestible</option>
+                        </select>
                     </div>
                 </div>
-                <div>
-                    <asp:Label ID="Label2" runat="server" Text="Descripcion"></asp:Label>
-                    <input id="Text1" type="text" />
+                <div style="vertical-align: top; display:inline-block; width: 40%">
+                    <div>
+                        <asp:Label ID="Label2" runat="server" Text="Nombre del Item"></asp:Label>
+                    </div>
+                    <div>
+                        <input id="Text1" type="text" />
+                    </div>
                 </div>
             </div>
-            <div style= "vertical-align: top; display:inline-block; height: 93px;">
-                <div>
-                    <asp:Label ID="Label3" runat="server" Text="Nombre del Item"></asp:Label>
-                    <input id="Text2" type="text" />
+            <br>
+            <div style="width:100%">
+                <div style="vertical-align: top; display:inline-block; width: 50%">
+                    <div>
+                        <asp:Label ID="Label3" runat="server" Text="Descripcion"></asp:Label>
+                    </div>
+                    <div>
+                        <input id="Text2" type="text" />
+                    </div>
                 </div>
-                <div style="height: 46px">
-                    <br>
-                    <input id="Button1" type="button" value="Confirmar" />
+                <div style=" width: 40%">
+                    <input id="Submit1" type="submit" value="Ingresar" />
                 </div>
             </div>
-       </div>
+        </div>
    </div>
    <div class="tab">
        <input type="radio" id="tab-2" name="tab-group-1">
        <label for="tab-2">Consultar Item</label>
-       <div class="content">
-            
        </div>
-   </div>
 </div>
 <!----------------------------------------------------------------------->
 
