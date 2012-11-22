@@ -20,7 +20,7 @@ namespace L_Appetit.Controllers
             NameValueCollection coll = HttpContext.Request.Form;
 
             MenuModel modelo = new MenuModel();
-            var fecha = "10/8/2012 12:00:00 AM";
+            var fecha = DateTime.Now.ToString("d");// "10/8/2012 12:00:00 AM";
             modelo.GetItems(fecha);
 
             ViewData.Model = modelo;
@@ -30,7 +30,7 @@ namespace L_Appetit.Controllers
         }
 
         [HttpPost]
-        public ActionResult ConsultarMenu(MenuModel modelo)
+        public ActionResult ConsultarMenu()
         {
             
             

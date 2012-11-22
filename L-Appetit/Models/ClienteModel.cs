@@ -8,6 +8,7 @@ namespace L_Appetit.Models.Cliente
 {
     public class MenuModel
     {
+        public DateTime fecha;
         public List<string> ListaEntrada { get; set; }
         public List<string> ListaFondo { get; set; }
         public List<string> ListaBebestible { get; set; }
@@ -20,7 +21,7 @@ namespace L_Appetit.Models.Cliente
             ListaPostre = new List<string>();
             ListaBebestible = new List<string>();
 
-            DateTime fecha = Convert.ToDateTime(date);
+            fecha = Convert.ToDateTime(date);
             bool horario = false;
             LinqDBDataContext db = new LinqDBDataContext();
             var menu = from item in db.ITEM
