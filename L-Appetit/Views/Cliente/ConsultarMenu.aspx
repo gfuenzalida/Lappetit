@@ -47,16 +47,16 @@
 
 
 <h1>Consultar Menu</h1>
-    <div style="height: 321px; width: 70%; display: inline-block;font-weight: bold;padding: 10px;border: 20 px;border: 2pt double goldenrod;">
-        <div style="display: inline-block; width: 218px;">
-            <div>
+    <div class= "supercontenedor">
+        <div class= "contenedormenu">
+            <div class= "subcontenedormenu">
             <h2>Entrada</h2>
             <% foreach (string item1 in modelo.ListaEntrada)
                 {%>
                     <li><%: Html.Label(item1) %></li>
             <% }%>
             </div>
-            <div>
+            <div class= "subcontenedormenu">
             <h2>Plato de Fondo</h2>
             <% foreach (string item2 in modelo.ListaFondo)
                 {%>
@@ -64,16 +64,18 @@
             <% }%>
             </div>
         </div>
-        <div style="display: inline-block; vertical-align: top; width: 218px;">
-            <div>
+        <div class= "contenedormenu">
+            
+            <div class= "subcontenedormenu">
             <h2>Postre</h2>
             <% foreach (string item3 in modelo.ListaPostre)
                 {%>
                     <li><%: Html.Label(item3) %></li>
             <% }%>
             </div>
+
          </div>
-         <div style="display: inline-block; vertical-align: top; width: 218px;">
+         <div class= "contenedormenu">
             <h2>Bebestible</h2>
             <% foreach (string item4 in modelo.ListaBebestible)
                 {%>
