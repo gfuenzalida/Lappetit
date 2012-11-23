@@ -21,9 +21,9 @@ namespace L_Appetit.Controllers
             DateTime fecha = DateTime.Now.Date;
             modelo.GetItems(fecha);
 
-            ViewData.Model = modelo;
+            //ViewData.Model = modelo;
 
-
+            ViewBag.Fecha = fecha.ToString("dd/MM/yy");
                         
             return View(modelo);
         }
@@ -33,10 +33,11 @@ namespace L_Appetit.Controllers
         {
             string date = Request.Form["__DATE"];
             MenuModel new_model = new MenuModel();
-            new_model._tag = Request.Form["__DATE"];
+            ViewBag.Fecha = DateTime.Now.ToString("dd/MM/yy");
             if (date != null)
             {
                 new_model.GetItems(DateTime.Parse(date));//DateTime.Parse(date)
+                ViewBag.Fecha = new_model.fecha.ToString("dd/MM/yy");
             }
                         
             return View(new_model);
