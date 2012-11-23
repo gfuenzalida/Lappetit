@@ -9,13 +9,23 @@ namespace L_Appetit.Models.Cliente
     public class MenuModel
     {
         public DateTime fecha;
+        public string _tag;
         public List<string> ListaEntrada { get; set; }
         public List<string> ListaFondo { get; set; }
         public List<string> ListaBebestible { get; set; }
         public List<string> ListaPostre { get; set; }
 
+        public MenuModel()
+        {
+            ListaBebestible = new List<string>();
+            ListaEntrada = new List<string>();
+            ListaFondo = new List<string>();
+            ListaPostre = new List<string>();
+            _tag = "hola";
+        }
         public void GetItems(DateTime fecha)
         {
+            this.fecha = fecha;
             ListaEntrada = new List<string>();
             ListaFondo = new List<string>();
             ListaPostre = new List<string>();

@@ -21,8 +21,13 @@
                     beforeShowDay: $.datepicker.noWeekends,
                     dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"],
                     dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+                    dateFormat: "dd/mm/yy",
                     onSelect: function (dateText, inst) {
-                        alert(dateText)
+                        var theForm = document.forms['form1'];
+                        if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                            document.getElementById("__DATE").value = dateText;
+                            theForm.submit();
+                        }
                     }
                 });
             });
@@ -32,7 +37,10 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+ 
  <form id="form1" method="post" runat="server">
+    <input type="hidden" name="__DATE" id="__DATE" value="" />
+
 
  <% L_Appetit.Models.Cliente.MenuModel modelo = ViewData.Model; %>
 
@@ -76,8 +84,6 @@
     <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; width: 210px; height: 310px;">
         <div id="datepicker"></div>
     </div>
-
-    
 
     </form>
 </asp:Content>
