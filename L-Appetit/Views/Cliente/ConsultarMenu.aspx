@@ -41,18 +41,47 @@
         });
     </script>
 </asp:Content>
-
-
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-<% L_Appetit.Models.Cliente.MenuModel modelo = ViewData.Model; %>
-
-<form id="form1" runat="server">
-<h2>Consultar Menu</h2>
-    <div style="height: 321px">
-        <div style="display: inline-block">
-            <div id="datepicker"></div>
+ <% L_Appetit.Models.Cliente.MenuModel modelo = ViewData.Model; %>
+<h1>Consultar Menu</h1>
+    <div style="height: 321px; width: 70%; display: inline-block;">
+        <div style="display: inline-block; width: 218px;">
+            <div>
+            <h2>Entrada</h2>
+            <% foreach (string item1 in modelo.ListaEntrada)
+                {%>
+                    <li><%: Html.Label(item1) %></li>
+            <% }%>
+            </div>
+            <div>
+            <h2>Plato de Fondo</h2>
+            <% foreach (string item2 in modelo.ListaFondo)
+                {%>
+                    <li><%: Html.Label(item2) %></li>
+            <% }%>
+            </div>
         </div>
+        <div style="display: inline-block; vertical-align: top; width: 218px;">
+            <div>
+            <h2>Postre</h2>
+            <% foreach (string item3 in modelo.ListaPostre)
+                {%>
+                    <li><%: Html.Label(item3) %></li>
+            <% }%>
+            </div>
+         </div>
+         <div style="display: inline-block; vertical-align: top; width: 218px;">
+            <h2>Bebestible</h2>
+            <% foreach (string item4 in modelo.ListaBebestible)
+                {%>
+                    <li><%: Html.Label(item4) %></li>
+            <% }%>
+         </div> 
+        
     </div>
-    </form>
+    <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; width: 210px; height: 310px;">
+        <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+    </div>
 
+    </form>
 </asp:Content>
