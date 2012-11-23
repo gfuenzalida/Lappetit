@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.Mvc;
 using L_Appetit.Models;
 using L_Appetit.Models.Cliente;
@@ -42,29 +43,17 @@ namespace L_Appetit.Controllers
             return View(new_model);
         }
 
-        public ActionResult ConsultarReserva(string rut)
+        public ActionResult ConsultarReserva()
         {
-            //var fecha = Convert.ToDateTime("2010-01-02 00:00:00.000");
-            //bool horario = true;
-            LinqDBDataContext db = new LinqDBDataContext();
-            var r = from reserva in db.RESERVA
-                    where
-                        //reserva.FECHA == Convert.ToDateTime("2010-01-02 00:00:00.000") &&
-                        //reserva.HORARIO == Convert.ToBoolean("True") &&
-                      reserva.RUT_CLI == rut
-                    select new
-                    {
-                        reserva.FECHA,
-                        reserva.HORARIO,
-                        reserva.NUMERO_COMENSALES,
-                        reserva.OBSERVACIONES
-                    };
+            ReservaModel modelo = new ReservaModel();
+            String rut = HttpContext.User.Identity.Name;
+            modelo.GetReservas(rut);
 
-            return View();
+            return View(modelo);
         }
         
         [HttpPost]
-        public ActionResult ConsultarReserva()
+        public ActionResult ConsultarReserva(ReservaModel modelo)
         {
 
             return View();
