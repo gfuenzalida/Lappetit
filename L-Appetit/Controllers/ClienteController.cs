@@ -17,8 +17,6 @@ namespace L_Appetit.Controllers
         [HttpGet]
         public ActionResult ConsultarMenu()
         {
-            NameValueCollection coll = HttpContext.Request.Form;
-
             MenuModel modelo = new MenuModel();
             DateTime fecha = DateTime.Now.Date;
             modelo.GetItems(fecha);
@@ -29,14 +27,20 @@ namespace L_Appetit.Controllers
                         
             return View(modelo);
         }
-        /*
+
         [HttpPost]
-        public ActionResult ConsultarMenu()
+        public ActionResult ConsultarMenu(MenuModel modelo)
         {
-            
-            
-            return View(modelo);
-        }*/
+            string date = Request.Form["__DATE"];
+            MenuModel new_model = new MenuModel();
+            new_model._tag = Request.Form["__DATE"];
+            if (date != null)
+            {
+                new_model.GetItems(DateTime.Parse(date));//DateTime.Parse(date)
+            }
+                        
+            return View(new_model);
+        }
 
         public ActionResult ConsultarReserva(string rut)
         {

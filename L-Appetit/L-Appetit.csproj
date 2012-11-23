@@ -85,6 +85,7 @@
     <Compile Include="Datos.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Cocinero\AgregarMenu.css" />
     <Content Include="Content\Cliente\ConsultarMenu.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -115,8 +116,6 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
-    <Content Include="img\e86fd6bf42796d4a8e50d11c13bc93eb.jpg" />
-    <Content Include="img\white_paperboard.jpg" />
     <Content Include="jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_glass_55_fbf9ee_1x400.png" />
