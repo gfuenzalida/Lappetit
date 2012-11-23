@@ -1,16 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Cliente.Master" Inherits="System.Web.Mvc.ViewPage<L_Appetit.Models.Cliente.MenuModel>" %>
 
-<script runat="server">
 
-    protected void Calendar1_SelectionChanged(object sender, DayRenderEventArgs e)
-    {
-        if (e.Day.Date.ToString("d") == DateTime.Now.ToString("d"))
-        {
-            e.Cell.BackColor = System.Drawing.Color.Red;
-        }
-            
-    }
-</script>
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Consultar Menu
 </asp:Content>
@@ -37,12 +27,16 @@
                 });
             });
 
-            $(document)
         });
     </script>
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+ <form id="form1" method="post" runat="server">
+
  <% L_Appetit.Models.Cliente.MenuModel modelo = ViewData.Model; %>
+
+
 <h1>Consultar Menu</h1>
     <div style="height: 321px; width: 70%; display: inline-block;">
         <div style="display: inline-block; width: 218px;">
@@ -80,10 +74,10 @@
         
     </div>
     <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; width: 210px; height: 310px;">
-        <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
+        <div id="datepicker"></div>
     </div>
 
-    <div id="datepicker"></div>
+    
 
     </form>
 </asp:Content>
