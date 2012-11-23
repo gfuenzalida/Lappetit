@@ -83,5 +83,7 @@
         <asp:Calendar ID="Calendar1" runat="server"></asp:Calendar>
     </div>
 
+    <div id="datepicker"></div>
+
     </form>
 </asp:Content>
