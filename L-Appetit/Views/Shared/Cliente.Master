@@ -25,7 +25,7 @@
                 <ul id="menu" style="display: inline-block">
                     <li><%: Html.ActionLink("Consultar Reserva", "ConsultarReserva", "Cliente")%></li>
                     <li><%: Html.ActionLink("Hacer Reserva", "HacerReserva", "Cliente")%></li>
-                    <li><%: Html.ActionLink("Consultar Menú", "ConsultarMenu", "Cliente","hola")%></li>
+                    <li><%: Html.ActionLink("Consultar Menú", "ConsultarMenu", "Cliente")%></li>
                     <li><%: Html.ActionLink("Editar Perfil", "EditarPerfil", "Cliente")%></li>
                 </ul>
             </div>

@@ -8,10 +8,11 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
     <link href="../../jquery-ui-1.9.1.custom/css/smoothness/jquery-ui-1.9.1.custom.css"
         rel="stylesheet" type="text/css" />
+    <link href="../../Content/Cliente/ConsultarMenu.css" rel="stylesheet" type="text/css" />
     <script src="../../jquery-ui-1.9.1.custom/js/jquery-1.8.2.js" type="text/javascript"></script>
     <script src="../../jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
     <script src="../../jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.min.js" type="text/javascript"></script>
-
+   
     <script type="text/javascript">
         jQuery(function ($) {
             //all jQuery code which uses $ needs to be inside here
@@ -38,7 +39,7 @@
 
 
 <h1>Consultar Menu</h1>
-    <div style="height: 321px; width: 70%; display: inline-block;">
+    <div style="height: 321px; width: 70%; display: inline-block;font-weight: bold;padding: 10px;border: 20 px;border: 2pt double goldenrod;">
         <div style="display: inline-block; width: 218px;">
             <div>
             <h2>Entrada</h2>
