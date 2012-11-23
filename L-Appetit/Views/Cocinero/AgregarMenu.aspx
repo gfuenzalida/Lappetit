@@ -13,7 +13,7 @@
 <h2>AgregarMenu</h2>
 
 <!------------------------------------------------------>
-<div style="width:50%">
+<div style="width:50%; vertical-align: top; display:inline-block;margin-left:10%">
     <fieldset style="100%">
     <legend>Tipo Platos</legend>
     <div class="tabs">
@@ -150,6 +150,11 @@
          </div>
      </div>
      </fieldset>
+</div>
+<div style="vertical-align: top; display:inline-block; margin-left:7%">
+    <fieldset style="width:100%">
+        <legend>Seleccionar Fecha</legend>
+    </fielset>
 </div>
 
 </asp:Content>
