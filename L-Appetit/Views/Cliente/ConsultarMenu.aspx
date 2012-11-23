@@ -50,14 +50,14 @@
     <div class= "supercontenedor">
         <div class= "contenedormenu">
             <div class= "subcontenedormenu">
-            <h2>Entrada</h2>
+            <h5>Entrada</h5>
             <% foreach (string item1 in modelo.ListaEntrada)
                 {%>
                     <li><%: Html.Label(item1) %></li>
             <% }%>
             </div>
             <div class= "subcontenedormenu">
-            <h2>Plato de Fondo</h2>
+            <h5>Plato de Fondo</h5>
             <% foreach (string item2 in modelo.ListaFondo)
                 {%>
                     <li><%: Html.Label(item2) %></li>
@@ -67,7 +67,7 @@
         <div class= "contenedormenu">
             
             <div class= "subcontenedormenu">
-            <h2>Postre</h2>
+            <h5>Postre</h5>
             <% foreach (string item3 in modelo.ListaPostre)
                 {%>
                     <li><%: Html.Label(item3) %></li>
@@ -76,7 +76,7 @@
 
          </div>
          <div class= "contenedormenu">
-            <h2>Bebestible</h2>
+            <h5>Bebestible</h5>
             <% foreach (string item4 in modelo.ListaBebestible)
                 {%>
                     <li><%: Html.Label(item4) %></li>

@@ -69,7 +69,20 @@ h4 {
     font-size: 1.1em;
 }
 
-h5, h6 {
+h5 
+{
+text-align: center;
+margin: 0 0 20px 0;
+font-size: 16px;
+padding-bottom: 10px;
+color: #323B4C;
+border-bottom: 4px double #323B4C;
+text-shadow: 1px 1px 0 white, 2px 2px 0 #E6B741;
+letter-spacing: 2px;
+}
+}
+
+h6 {
     font-size: 1em;
 }
 
