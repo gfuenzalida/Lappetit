@@ -21,7 +21,6 @@ namespace L_Appetit.Models.Cliente
             ListaEntrada = new List<string>();
             ListaFondo = new List<string>();
             ListaPostre = new List<string>();
-            _tag = "hola";
         }
 
         public void GetItems(DateTime fecha)

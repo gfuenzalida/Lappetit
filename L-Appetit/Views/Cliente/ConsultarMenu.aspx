@@ -12,15 +12,18 @@
     <script src="../../jquery-ui-1.9.1.custom/js/jquery-1.8.2.js" type="text/javascript"></script>
     <script src="../../jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
     <script src="../../jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.min.js" type="text/javascript"></script>
-   
+  
+  <% L_Appetit.Models.Cliente.MenuModel modelo = ViewData.Model; %> 
     <script type="text/javascript">
         jQuery(function ($) {
             //all jQuery code which uses $ needs to be inside here
             $(document).ready(function () {
-                $("#datepicker").datepicker({
+                $("#date-picker").datepicker({
                     showAnim: "fold",
                     beforeShowDay: $.datepicker.noWeekends,
                     dayNames: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"],
+                    monthNames: ["Enero","Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                    "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
                     dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                     dateFormat: "dd/mm/yy",
                     onSelect: function (dateText, inst) {
@@ -30,22 +33,20 @@
                             theForm.submit();
                         }
                     }
-                });
+                }).datepicker("setDate", <% Response.Write(ViewBag.Fecha); %>);
             });
-
         });
     </script>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
- 
+    
+   
  <form id="form1" method="post" runat="server">
     <input type="hidden" name="__DATE" id="__DATE" value="" />
 
-
- <% L_Appetit.Models.Cliente.MenuModel modelo = ViewData.Model; %>
-
-
+<% L_Appetit.Models.Cliente.MenuModel modelo = ViewData.Model; %> 
 <h1>Consultar Menu</h1>
     <div class= "supercontenedor">
         <div class= "contenedormenu">
@@ -85,7 +86,7 @@
         
     </div>
     <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; width: 210px; height: 310px;">
-        <div id="datepicker"></div>
+        <div id="date-picker"></div>
     </div>
 
     </form>
