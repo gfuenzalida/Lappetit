@@ -341,7 +341,7 @@ div#title {
 margin: 0 auto;
 min-height: 200px;
 position: relative;
-width: 550px;
+width: 400px ! important;
 margin-top:3%;
 }
 
