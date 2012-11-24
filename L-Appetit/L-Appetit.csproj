@@ -85,6 +85,8 @@
     <Compile Include="Datos.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Admin\ConsultarHistorial.css" />
+    <Content Include="Content\Admin\GestionarUsuarios.css" />
     <Content Include="Content\Cocinero\AgregarMenu.css" />
     <Content Include="Content\Cliente\ConsultarMenu.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />

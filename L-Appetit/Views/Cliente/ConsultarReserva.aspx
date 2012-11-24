@@ -34,7 +34,7 @@
             </div>
         </div>
     </div>
-    <div style="vertical-align: top; display:inline-block; width:40%;">
+    <div style="vertical-align: top; display:inline-block; width:49%;">
             <fieldset>
                 <legend>Consultar Reservas</legend>
                 <div>
