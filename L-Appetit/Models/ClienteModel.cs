@@ -21,8 +21,8 @@ namespace L_Appetit.Models.Cliente
             ListaEntrada = new List<string>();
             ListaFondo = new List<string>();
             ListaPostre = new List<string>();
-            _tag = "hola";
         }
+
         public void GetItems(DateTime fecha)
         {
             this.fecha = fecha;
@@ -31,7 +31,6 @@ namespace L_Appetit.Models.Cliente
             ListaPostre = new List<string>();
             ListaBebestible = new List<string>();
 
-            //DateTime fecha = Convert.ToDateTime(date);
             bool horario = true;
             LinqDBDataContext db = new LinqDBDataContext();
 
@@ -88,5 +87,51 @@ namespace L_Appetit.Models.Cliente
             //ListaPostre.Sort();
             //ListaBebestible.Sort();
         }
+    }
+
+    public class ReservaModel
+    {
+        public String rut;
+        public List<Reservalista> ListaReservas { get; set; }
+        
+        public ReservaModel()
+        {
+            ListaReservas = new List<Reservalista>();
+        }
+
+        public void GetReservas(String rut)
+        {
+            this.rut = rut;
+            
+            
+            LinqDBDataContext db = new LinqDBDataContext();
+            Reservalista rl = new Reservalista();
+            var reservas = from reserva in db.RESERVA
+                    where
+                      reserva.RUT_CLI == rut
+                    select new
+                    {
+                        reserva.FECHA,
+                        reserva.HORARIO,
+                        reserva.NUMERO_COMENSALES,
+                        reserva.OBSERVACIONES
+                    };
+            foreach (var r in reservas) 
+            {
+                rl.fecha = r.FECHA;
+                rl.horario = r.HORARIO;
+                rl.comensales = r.NUMERO_COMENSALES;
+                rl.observaciones = r.OBSERVACIONES;
+                ListaReservas.Add(rl);
+            }
+        }
+    }
+
+    public class Reservalista
+    {
+        public DateTime fecha {get;set;}
+        public bool horario { get; set; }
+        public System.Nullable<short> comensales { get; set; }
+        public String observaciones { get; set; } 
     }
 }

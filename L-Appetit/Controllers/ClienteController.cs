@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.Mvc;
 using L_Appetit.Models;
 using L_Appetit.Models.Cliente;
@@ -21,9 +22,9 @@ namespace L_Appetit.Controllers
             DateTime fecha = DateTime.Now.Date;
             modelo.GetItems(fecha);
 
-            ViewData.Model = modelo;
+            //ViewData.Model = modelo;
 
-
+            ViewBag.Fecha = fecha.ToString("dd/MM/yy");
                         
             return View(modelo);
         }
@@ -33,38 +34,27 @@ namespace L_Appetit.Controllers
         {
             string date = Request.Form["__DATE"];
             MenuModel new_model = new MenuModel();
-            new_model._tag = Request.Form["__DATE"];
+            ViewBag.Fecha = DateTime.Now.ToString("dd/MM/yy");
             if (date != null)
             {
                 new_model.GetItems(DateTime.Parse(date));//DateTime.Parse(date)
+                ViewBag.Fecha = new_model.fecha.ToString("dd/MM/yy");
             }
                         
             return View(new_model);
         }
 
-        public ActionResult ConsultarReserva(string rut)
+        public ActionResult ConsultarReserva()
         {
-            //var fecha = Convert.ToDateTime("2010-01-02 00:00:00.000");
-            //bool horario = true;
-            LinqDBDataContext db = new LinqDBDataContext();
-            var r = from reserva in db.RESERVA
-                    where
-                        //reserva.FECHA == Convert.ToDateTime("2010-01-02 00:00:00.000") &&
-                        //reserva.HORARIO == Convert.ToBoolean("True") &&
-                      reserva.RUT_CLI == rut
-                    select new
-                    {
-                        reserva.FECHA,
-                        reserva.HORARIO,
-                        reserva.NUMERO_COMENSALES,
-                        reserva.OBSERVACIONES
-                    };
+            ReservaModel modelo = new ReservaModel();
+            String rut = HttpContext.User.Identity.Name;
+            modelo.GetReservas(rut);
 
-            return View();
+            return View(modelo);
         }
         
         [HttpPost]
-        public ActionResult ConsultarReserva()
+        public ActionResult ConsultarReserva(ReservaModel modelo)
         {
 
             return View();

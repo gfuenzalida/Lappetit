@@ -69,7 +69,20 @@ h4 {
     font-size: 1.1em;
 }
 
-h5, h6 {
+h5 
+{
+text-align: center;
+margin: 0 0 20px 0;
+font-size: 16px;
+padding-bottom: 10px;
+color: #323B4C;
+border-bottom: 4px double #323B4C;
+text-shadow: 1px 1px 0 white, 2px 2px 0 #E6B741;
+letter-spacing: 2px;
+}
+}
+
+h6 {
     font-size: 1em;
 }
 
@@ -80,7 +93,7 @@ h5, h6 {
 page width. Or, you can specify an exact pixel width. */
 .page
 {
-    width: 90%;
+    width: 90% ! important;
     margin-left: auto;
     margin-right: auto;
 }
@@ -403,4 +416,32 @@ opacity: 1;
 -webkit-transform: translateX(0);
 -o-transform: translateX(0);
 -ms-transform: translateX(0);
+}
+
+.subcontenedormenu
+{
+height: 200px;
+width: 190px;
+display: inline-block;
+}
+.contenedormenu
+{
+height: 400px;
+width: 190px;
+display: inline-block;
+padding: 30px;
+vertical-align: top;
+box-shadow: inset 0 0 0 16px white, inset 0 0 0 17px #E6B741, inset 0 0 0 18px white, inset 0 0 0 19px #E6B741, inset 0 0 0 20px white, inset 0 0 0 21px #E6B741;
+}
+.supercontenedor
+{
+background: white url(../../img/white_paperboard.jpg);
+height: 500px;
+width: 70%;
+display: inline-block;
+font-weight: bold;
+padding: 10px;
+border: 20 px;
+border: 2pt double goldenrod;
+margin-right: 20px;
 }
