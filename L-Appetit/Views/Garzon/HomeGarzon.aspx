@@ -8,7 +8,7 @@
 
 <h2>Tomar Pedido</h2>
 <!------------------------------------------------------>
-<div style="vertical-align: top; display:inline-block">
+<div style="vertical-align: top; display:inline-block; margin-left:20%">
     <div class="tabs">
         <div class="tab">
             <input type="radio" id="tab-1" name="tab-group-1" checked>
@@ -181,7 +181,7 @@
     </div>
 </div>
 
-<div style="vertical-align: top; display:inline-block">
+<div style="vertical-align: top; display:inline-block; margin-left:20%">
     <div class="tabs">
         <div class="tab">
             <input type="radio" id="tab-5" name="tab-group-2" checked>
