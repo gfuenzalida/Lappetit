@@ -62,7 +62,7 @@
             <h5>Entrada</h5>
             <% foreach (string item1 in modelo.ListaEntrada)
                 {%>
-                    <li style="font-family: 'Palatino Linotype'"><%: Html.Label(item1) %></li>
+                    <li><%: Html.Label(item1) %></li>
             <% }%>
             </div>
             <div class= "subcontenedormenu">

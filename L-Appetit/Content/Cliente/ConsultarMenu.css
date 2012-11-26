@@ -441,6 +441,7 @@ height: 500px;
 width: 760px;
 display: inline-block;
 font-weight: bold;
+font-family: 'Palatino Linotype'! important;
 padding: 10px;
 border: 20 px;
 border: 2pt double goldenrod;

@@ -156,20 +156,20 @@ namespace L_Appetit.Models
     public class Reservalista
     {
         public DateTime fecha {get;set;}
-        public bool horario { get; set; }
+        public Boolean horario { get; set; }
         public System.Nullable<short> comensales { get; set; }
         public String observaciones { get; set; } 
     }
     // Modelo correspondiente a la vista HacerReserva
     public class HacerReservaModel
     {
-        public int mesa;
+        public Int32 mesa;
         public String rut;
         public DateTime fecha;
         public Boolean horario;
         public Int16 comensales;
         
-        public void SetReserva(int mesa, String rut, DateTime fecha, Boolean horario, Int16 comensales)
+        public void SetReserva(Int32 mesa, String rut, DateTime fecha, Boolean horario, Int16 comensales)
         {
             this.mesa = mesa;
             this.rut = rut;
@@ -189,6 +189,34 @@ namespace L_Appetit.Models
             };
             db.RESERVA.InsertOnSubmit(iRESERVA);
             db.SubmitChanges();
+        }
+        public void DeleteReserva(Int32 codigo_reserva)
+        {
+
+            LinqDBDataContext db = new LinqDBDataContext();
+            
+            var eliminaRESERVA =
+            from reserva in db.RESERVA
+            where
+              reserva.CODIGO_RESERVA == codigo_reserva
+            select reserva;
+                    foreach (var del in eliminaRESERVA)
+                    {
+                        db.RESERVA.DeleteOnSubmit(del);
+                    }
+                    db.SubmitChanges();
+
+        }
+
+    }
+
+    public class EnviarInvitacionModel
+    {
+        String rut;
+
+        public void invitar(String rut)
+        {
+            
         }
     }
 }
