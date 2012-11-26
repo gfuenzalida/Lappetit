@@ -25,7 +25,19 @@ namespace L_Appetit.Controllers
 
         public ActionResult AgregarItem()
         {
-            return View();
+            AgregarItemModel modelo = new AgregarItemModel();
+            modelo.nombre_item = "Pedro";
+            return View(modelo);
+        }
+
+        [HttpPost]
+        public ActionResult AgregarItem(AgregarItemModel modelo)
+        {
+            if (ModelState.IsValid)
+            {
+                ViewBag.Error = modelo.nombre_item+"_"+modelo.tipo_item+"_"+modelo.descripcion_item;
+            }
+            return View(modelo);
         }
 
         public ActionResult EnviarInvitaciones()

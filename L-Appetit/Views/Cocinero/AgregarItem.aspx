@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Cocinero.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Cocinero.Master" Inherits="System.Web.Mvc.ViewPage<L_Appetit.Models.AgregarItemModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     AgregarItem
@@ -6,33 +6,43 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
+<% L_Appetit.Models.AgregarItemModel modelo = ViewData.Model; %> 
+
 <h2>AgregarItem</h2>
 <!------------------------------------------------------>
+
 <div class="tabs">
    <div class="tab">
        <input type="radio" id="tab-1" name="tab-group-1" checked>
        <label for="tab-1">Datos del Item</label>
        <div class="content"> 
+       <% using (Html.BeginForm())
+            { %>
+            <%= Html.ValidationSummary(true, "El item no ha sido posible crearla, debido a los siguientes errores.") %>
+            <%
+                if (ViewBag.Error != null)
+                    Response.Write(ViewBag.Error);
+             %>
             <div style="width:100%" >
                 <div style="vertical-align: top; display:inline-block; width: 50%;">
                     <div>
-                        <asp:Label ID="Label1" runat="server" Text="Tipo de Plato"></asp:Label>
+                        <%= Html.LabelFor(m => m.tipo_item, "Tipo de ítem")%>
                     </div>
                     <div>
-                        <select id="Select1">
-                            <option>Entrada</option>
-                            <option>Fondo</option>
-                            <option>Postre</option>
-                            <option>Bebestible</option>
-                        </select>
+                        <%= Html.DropDownListFor(
+                        x => x.tipo_item,
+                        new SelectList(Model.Tipos, "Value", "Text")
+                    )%>
                     </div>
                 </div>
                 <div style="vertical-align: top; display:inline-block; width: 40%">
                     <div>
-                        <asp:Label ID="Label2" runat="server" Text="Nombre del Item"></asp:Label>
+                        <%= Html.LabelFor(m => m.nombre_item, "Nombre")%>
                     </div>
                     <div>
-                        <input id="Text1" type="text" />
+                        <%= Html.TextBoxFor(
+                        m => m.nombre_item
+                    )%>
                     </div>
                 </div>
             </div>
@@ -40,16 +50,19 @@
             <div style="width:100%">
                 <div style="vertical-align: top; display:inline-block; width: 50%">
                     <div>
-                        <asp:Label ID="Label3" runat="server" Text="Descripcion"></asp:Label>
+                        <%= Html.LabelFor(m => m.descripcion_item, "Descripcion")%>
                     </div>
                     <div>
-                        <input id="Text2" type="text" />
+                        <%= Html.TextBoxFor(
+                        m => m.descripcion_item
+                    )%>
                     </div>
                 </div>
                 <div style=" width: 40%">
                     <input id="Submit1" type="submit" value="Ingresar" />
                 </div>
             </div>
+        <% } %>
         </div>
    </div>
    <div class="tab">
