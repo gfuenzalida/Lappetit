@@ -55,7 +55,42 @@
    <div class="tab">
        <input type="radio" id="tab-2" name="tab-group-1">
        <label for="tab-2">Consultar Item</label>
+       <div class="content">
+             <div style="vertical-align: top; display:inline-block">
+                <div>
+                    <asp:Label ID="Label4" runat="server" Text="Tipo de Item"></asp:Label>
+                </div>
+                <div>
+                    <select id="Select2">
+                        <option>Fondo</option>
+                    </select>
+                </div>
+             </div>
+             <div style="vertical-align: top; display:inline-block">
+                <div>
+                    <asp:Label ID="Label5" runat="server" Text="Nombre del Item"></asp:Label>
+                </div>
+                <div>
+                    <select id="Select3">
+                        <option>Papas Duquesas</option> <!---solo como ejemplo para ver la vista--->
+                    </select>
+                </div>
+             </div>
+             <div>
+                <div style="margin-top:3%">
+                    <asp:Label ID="Label6" runat="server" Text="Descripcion del Item:"></asp:Label>
+                </div>
+                <div>
+                    <!--div para la salida de texto-->
+                </div>
+             </div>
+             <div style="width:100%">
+                <div style="margin-top:3%; width:100%" >
+                    <input id="Button1" type="button" value="Eliminar" />
+                </div>
+             </div>
        </div>
+   </div>
 </div>
 <!----------------------------------------------------------------------->
 

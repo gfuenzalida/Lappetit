@@ -86,6 +86,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin\ConsultarHistorial.css" />
+    <Content Include="Content\Admin\ConsultarReservas.css" />
     <Content Include="Content\Admin\GestionarUsuarios.css" />
     <Content Include="Content\Cocinero\AgregarMenu.css" />
     <Content Include="Content\Cliente\ConsultarMenu.css" />
