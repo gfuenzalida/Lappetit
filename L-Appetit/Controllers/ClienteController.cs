@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Security;
 using System.Web.Mvc;
 using L_Appetit.Models;
-using L_Appetit.Models.Cliente;
 using System.Collections;
 using System.Collections.Specialized;
 
@@ -20,7 +19,7 @@ namespace L_Appetit.Controllers
         {
             MenuModel modelo = new MenuModel();
             DateTime fecha = DateTime.Now.Date;
-            modelo.GetItems(fecha);
+            modelo.GetItems(fecha,false);
 
             //ViewData.Model = modelo;
 
@@ -37,7 +36,7 @@ namespace L_Appetit.Controllers
             ViewBag.Fecha = DateTime.Now.ToString("dd/MM/yy");
             if (date != null)
             {
-                new_model.GetItems(DateTime.Parse(date));//DateTime.Parse(date)
+                new_model.GetItems(DateTime.Parse(date), modelo.horario);//DateTime.Parse(date)
                 ViewBag.Fecha = new_model.fecha.ToString("dd/MM/yy");
             }
                         

@@ -3,13 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Collections;
+using System.ComponentModel.DataAnnotations;
+using System.Globalization;
+using System.Web.Mvc;
+using System.Web.Security;
+using L_Appetit.Validations;
 
-namespace L_Appetit.Models.Cliente
+namespace L_Appetit.Models
 {
     public class MenuModel
     {
-        public DateTime fecha;
-        public string _tag;
+        public DateTime fecha { get; set; }
+
+        [Display(Name="Horarios")] 
+        public bool horario {get; set;}
+
+        public IEnumerable<SelectListItem> Horarios
+        {
+            get
+            {
+                IList<SelectListItem> horario_select = new List<SelectListItem>();// = new IEnumerable<SelectListItem>();
+                SelectListItem sli = new SelectListItem();
+                sli.Text = "Almuerzo";
+                sli.Value = "False";
+                horario_select.Add(sli);
+                sli = new SelectListItem();
+                sli.Text = "Cena";
+                sli.Value = "True";
+                horario_select.Add(sli);
+                return horario_select;
+            }
+        }
+
         public List<string> ListaEntrada { get; set; }
         public List<string> ListaFondo { get; set; }
         public List<string> ListaBebestible { get; set; }
@@ -23,7 +48,7 @@ namespace L_Appetit.Models.Cliente
             ListaPostre = new List<string>();
         }
 
-        public void GetItems(DateTime fecha)
+        public void GetItems(DateTime fecha, bool horario)
         {
             this.fecha = fecha;
             ListaEntrada = new List<string>();
@@ -31,7 +56,7 @@ namespace L_Appetit.Models.Cliente
             ListaPostre = new List<string>();
             ListaBebestible = new List<string>();
 
-            bool horario = true;
+            //bool horario = false;
             LinqDBDataContext db = new LinqDBDataContext();
 
             var menu = (from item in db.ITEM

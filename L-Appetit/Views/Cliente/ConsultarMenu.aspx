@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Cliente.Master" Inherits="System.Web.Mvc.ViewPage<L_Appetit.Models.Cliente.MenuModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Cliente.Master" Inherits="System.Web.Mvc.ViewPage<L_Appetit.Models.MenuModel>" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -13,7 +13,7 @@
     <script src="../../jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
     <script src="../../jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.min.js" type="text/javascript"></script>
   
-  <% L_Appetit.Models.Cliente.MenuModel modelo = ViewData.Model; %> 
+  <% L_Appetit.Models.MenuModel modelo = ViewData.Model; %> 
     <script type="text/javascript">
         jQuery(function ($) {
             //all jQuery code which uses $ needs to be inside here
@@ -33,9 +33,17 @@
                             theForm.submit();
                         }
                     }
-                }).datepicker("setDate", <% Response.Write(ViewBag.Fecha); %>);
+                }).datepicker("setDate", <%: ViewBag.Fecha %>);
             });
         });
+
+        function horario_change(){
+            var theForm = document.forms['form1'];
+            if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                document.getElementById("__DATE").value = "<%: ViewBag.Fecha %>";
+                theForm.submit();
+            }
+        }
     </script>
 
 </asp:Content>
@@ -46,7 +54,7 @@
  <form id="form1" method="post" runat="server">
     <input type="hidden" name="__DATE" id="__DATE" value="" />
 
-<% L_Appetit.Models.Cliente.MenuModel modelo = ViewData.Model; %> 
+<% L_Appetit.Models.MenuModel modelo = ViewData.Model; %> 
 <h1>Consultar Menu</h1>
     <div class= "supercontenedor">
         <div class= "contenedormenu">
@@ -86,7 +94,17 @@
         
     </div>
     <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; width: 210px; height: 310px;">
-        <div id="date-picker"></div>
+        <fieldset style="width:100%">
+            <legend>Fecha</legend>
+            <div id="date-picker"></div>
+            <legend>Horario</legend>
+            <%: Html.DropDownListFor(
+            x => x.horario,
+            new SelectList(modelo.Horarios, "Value", "Text"),
+            new { @onchange = "horario_change()"}
+            )
+            %>
+        </fielset>
     </div>
 
     </form>

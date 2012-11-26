@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using L_Appetit.Models;
+using System.Collections;
+using System.Collections.Specialized;
 
 namespace L_Appetit.Controllers
 {
@@ -32,7 +35,21 @@ namespace L_Appetit.Controllers
 
         public ActionResult AgregarMenu()
         {
-            return View();
+            AgregarMenuModel modelo = new AgregarMenuModel();
+            DateTime fecha = DateTime.Now.Date;
+
+            modelo.getListas();
+            modelo.getMenu(fecha, false);
+
+            ViewBag.Fecha = fecha.ToString("dd/MM/yy");
+
+            return View(modelo);
+        }
+
+        [HttpPost]
+        public ActionResult AgregarMenu(AgregarMenuModel modelo)
+        {
+            return View(modelo);
         }
 
         public ActionResult EditarPerfilCocinero()
