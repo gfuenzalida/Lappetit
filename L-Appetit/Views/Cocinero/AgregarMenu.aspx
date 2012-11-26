@@ -36,7 +36,7 @@
         function horario_change(){
             var theForm = document.forms['form1'];
             if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
-                document.getElementById("__DATE").value = "<%: ViewBag.Fecha %>";
+                document.getElementById("__DATE").value = "<% Response.Write(ViewBag.Fecha); %>";
                 theForm.submit();
             }
         }
