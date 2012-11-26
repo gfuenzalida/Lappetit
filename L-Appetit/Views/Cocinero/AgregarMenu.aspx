@@ -56,12 +56,7 @@
 <% L_Appetit.Models.AgregarMenuModel modelo = ViewData.Model; %> 
 
 <h2>AgregarMenu</h2>
-<% if (ViewBag.TEST != null)
-   {
-       Response.Write(ViewBag.TEST);
-   }
-       
-%>
+
 <!------------------------------------------------------>
 <div style="vertical-align: top; display:inline-block;margin-left:10%">
     <fieldset style="100%">

@@ -154,5 +154,50 @@ namespace L_Appetit.Models
         }
     }
 
+    public class AgregarItemModel
+    {
+        [Required]
+        [Display(Name = "tipo_item")]
+        public string tipo_item;
+
+        public IEnumerable<SelectListItem> Tipos
+        {
+            get
+            {
+                IList<SelectListItem> tipos_select = new List<SelectListItem>();
+                LinqDBDataContext db = new LinqDBDataContext();
+
+                var tipos = (from tipo_item in db.TIPO_ITEM
+                            select new
+                            {
+                                tipo_item.NOMBRE_TIPO_ITEM,
+                                tipo_item.CODIGO_TIPO_ITEM
+                            }
+                            );
+                foreach (var tipo in tipos)
+                {
+                    SelectListItem sli = new SelectListItem();
+                    sli.Text = tipo.NOMBRE_TIPO_ITEM;
+                    sli.Value = tipo.CODIGO_TIPO_ITEM.ToString();
+                    tipos_select.Add(sli);
+                }
+                return tipos_select;
+            }
+        }
+
+        [Required (ErrorMessage= "No ha ingresado ningún nombre")]
+        [Display(Name = "nombre_item")]
+        public string nombre_item;
+
+        [Display(Name = "descripcion_item")]
+        public string descripcion_item;
+
+        public AgregarItemModel()
+        {
+            nombre_item = "";
+            descripcion_item = "";
+            tipo_item = "";
+        }
+    }
 
 }
