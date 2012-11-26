@@ -36,5 +36,10 @@ namespace L_Appetit.Controllers
             return View();
         }
 
+        public ActionResult Auditoria()
+        {
+            return View();
+        }
+
     }
 }

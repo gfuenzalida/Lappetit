@@ -75,11 +75,11 @@
                { %>
                <input type="hidden" name="__DATE" id="Hidden1" value="<%: ViewBag.Fecha %>" />
                <input type="hidden" name="__HORARIO" id="Hidden4" value="<%: ViewBag.Horario %>" />
-                <div style="width:100%">
-                    <div style="vertical-align: middle; display:inline-block">
+                <div style="width:100%;">
+                    <div style="vertical-align: middle; display:inline-block;">
                         <%= Html.LabelFor(m => m.selected_item, "Entrada")%>
                     </div>
-                    <div style="vertical-align: middle; display:inline-block">
+                    <div style="vertical-align: middle; display:inline-block; max-width:62%">
                         <%= Html.DropDownListFor(
                         x => x.selected_item,
                         new SelectList(Model.ListaEntrada, "Value", "Text")
@@ -87,7 +87,7 @@
                     </div>
                 </div>
                 <div style="width:100%; margin-top:5%">
-                    <div style="vertical-align: middle; display:inline-block">
+                    <div style="vertical-align: middle; display:inline-block;">
                         <%= Html.LabelFor(m => m.selected_cant, "Cant. Disponible")%>
                     </div>
                     <div style="vertical-align: middle; display:inline-block">
@@ -115,7 +115,7 @@
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.LabelFor(m => m.selected_item, "Plato de Fondo")%>
                     </div>
-                    <div style="vertical-align: middle; display:inline-block">
+                    <div style="vertical-align: middle; display:inline-block; max-width:44%">
                         <%= Html.DropDownListFor(
                         x => x.selected_item,
                         new SelectList(Model.ListaFondo, "Value", "Text")
@@ -126,7 +126,7 @@
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.LabelFor(m => m.selected_cant, "Cant. Disponible")%>
                     </div>
-                    <div style="vertical-align: middle; display:inline-block">
+                    <div style="vertical-align: middle; display:inline-block; ">
                         <%= Html.TextBoxFor(
                         x => x.selected_cant,
                         new { @class = "input_cant" }
@@ -151,7 +151,7 @@
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.LabelFor(m => m.selected_item, "Postre")%>
                     </div>
-                    <div style="vertical-align: middle; display:inline-block">
+                    <div style="vertical-align: middle; display:inline-block;max-width: 65%">
                         <%= Html.DropDownListFor(
                         x => x.selected_item,
                         new SelectList(Model.ListaPostre, "Value", "Text")

@@ -41,7 +41,7 @@ namespace L_Appetit.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The user name or password provided is incorrect.");
+                    ModelState.AddModelError("", "Contraseña o usuario incorrecto.");
                 }
             }
 
@@ -146,7 +146,7 @@ namespace L_Appetit.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "The current password is incorrect or the new password is invalid.");
+                    ModelState.AddModelError("", "El usuario y/o la contraseña son invalidos");
                 }
             }
 
@@ -188,7 +188,7 @@ namespace L_Appetit.Controllers
                     return "The password retrieval question provided is invalid. Please check the value and try again.";
 
                 case MembershipCreateStatus.InvalidUserName:
-                    return "The user name provided is invalid. Please check the value and try again.";
+                    return "Usuario invalido. Intente de nuevo";
 
                 case MembershipCreateStatus.ProviderError:
                     return "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";

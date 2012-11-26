@@ -21,12 +21,15 @@
             <div id="logindisplay">
                 <% Html.RenderPartial("LogOnUserControl"); %>
             </div> 
-            <div id="menucontainer" align="right">
+            <div id="menucontainer" align="right" style="margin-top: 8%">
                 <ul id="menu" style="display: inline-block">
-                    <li><%: Html.ActionLink("Consultar Reserva", "ConsultarReservas", "Admin")%></li>
-                    <li><%: Html.ActionLink("Consultar Historial", "ConsultarHistorial", "Admin")%></li>
+                    <li><%: Html.ActionLink("Auditoria", "Auditoria", "Admin")%></li> 
+                    <li><%: Html.ActionLink("Reservas", "ConsultarReservas", "Admin")%></li>
                     <li><%: Html.ActionLink("Gestionar Usuarios", "GestionarUsuarios", "Admin")%></li>
                     <li><%: Html.ActionLink("Gestionar Mesas", "GestionarMesas", "Admin")%></li>
+                    <li><%: Html.ActionLink("Historiales", "ConsultarHistorial", "Admin")%></li>
+                    <li><%: Html.ActionLink("Items", "ConsultarHistorial", "Admin")%></li> <!-- cambiar direccionamiento de este boton-->
+                    <li><%: Html.ActionLink("Menu", "AgregarMenu", "Cocinero")%></li> <!-- recordar cambiar de carpeta esta vista-->
                     <li><%: Html.ActionLink("Editar Perfil", "EditarPerfilAdmin", "Admin")%></li>
                 </ul>
             </div>
