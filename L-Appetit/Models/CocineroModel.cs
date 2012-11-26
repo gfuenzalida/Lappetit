@@ -17,7 +17,7 @@ namespace L_Appetit.Models
         public Int32 item;
         public Int16 cantidad;
         
-        [Display(Name = "Horarios")]
+        [Display(Name = "horario")]
         public bool horario { get; set; }
 
         public IEnumerable<SelectListItem> Horarios
@@ -44,12 +44,9 @@ namespace L_Appetit.Models
         public List<SelectListItem> ListaMenu { get; set; }
         public List<int> cantidades { get; set; }
 
-        [Display(Name = "selected_entrada")]
-        public string selected_entrada { get; set; }
-        [Display(Name = "selected_fondo")]
-        public string selected_fondo { get; set; }
-        [Display(Name = "selected_postre")]
-        public string selected_postre { get; set; }
+        [Display(Name = "selected_item")]
+        public string selected_item { get; set; }
+
         [Display(Name = "selected_cant")]
         public string selected_cant { get; set; }
 
@@ -60,6 +57,9 @@ namespace L_Appetit.Models
             ListaPostre = new List<SelectListItem>();
             ListaMenu = new List<SelectListItem>();
             cantidades = new List<int>();
+
+            selected_item = "";
+            selected_cant = "";
         }
 
         public void getListas(){

@@ -16,7 +16,7 @@ namespace L_Appetit.Models
     {
         public DateTime fecha { get; set; }
 
-        [Display(Name="Horarios")] 
+        [Display(Name="horario")] 
         public bool horario {get; set;}
 
         public IEnumerable<SelectListItem> Horarios
@@ -47,6 +47,8 @@ namespace L_Appetit.Models
             ListaEntrada = new List<string>();
             ListaFondo = new List<string>();
             ListaPostre = new List<string>();
+
+            horario = false;
         }
 
         public void GetItems(DateTime fecha, bool horario)
