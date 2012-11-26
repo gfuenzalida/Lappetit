@@ -93,7 +93,7 @@
          </div> 
         
     </div>
-    <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; width: 210px; height: 310px;">
+    <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; width: 265px; height: 310px;">
         <fieldset style="width:100%">
             <legend>Fecha</legend>
             <div id="date-picker"></div>
