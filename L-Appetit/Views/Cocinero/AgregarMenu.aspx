@@ -181,7 +181,7 @@
         <div class="tab">
             <input type="radio" id="tab5" name="tab-group-2" checked>
             <label for="tab-5">Menu Actual</label>
-            <div class="content">
+            <div class="content" style="overflow: scroll">
                 <div style="width:100%; heigth:90%">
                     <% for (int i = 0; i < modelo.ListaMenu.Count; i++ )
                        {%>
