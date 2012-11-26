@@ -40,6 +40,10 @@
                 theForm.submit();
             }
         }
+
+        function agregar_item(form) {
+            //var theForm = 
+        }
     </script>
 </asp:Content>
 
@@ -49,13 +53,12 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<form id="form1" method="post" runat="server">
-    <input type="hidden" name="__DATE" id="__DATE" value="" />
-</form>
 <% L_Appetit.Models.AgregarMenuModel modelo = ViewData.Model; %> 
 
 <h2>AgregarMenu</h2>
-
+<%: ViewBag.TEST1 %>
+<br>
+<%: ViewBag.TEST2 %>
 <!------------------------------------------------------>
 <div style="vertical-align: top; display:inline-block;margin-left:10%">
     <fieldset style="100%">
@@ -67,13 +70,14 @@
             <div class="content">
             <% using (Html.BeginForm("AgregarMenu", "Cocinero", FormMethod.Post, new { @id = "form2" }))
                { %>
+               <input type="hidden" name="__DATE" id="Hidden1" value="<%: ViewBag.Fecha %>" />
                 <div style="width:100%">
                     <div style="vertical-align: middle; display:inline-block">
-                        <%= Html.LabelFor(m => m.selected_entrada, "Entrada")%>
+                        <%= Html.LabelFor(m => m.selected_item, "Entrada")%>
                     </div>
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.DropDownListFor(
-                        x => x.selected_entrada,
+                        x => x.selected_item,
                         new SelectList(Model.ListaEntrada, "Value", "Text")
                     )%>
                     </div>
@@ -101,13 +105,14 @@
             <div class="content">
             <% using (Html.BeginForm())
                { %>
+               <input type="hidden" name="__DATE" id="Hidden2" value="<%: ViewBag.Fecha %>" />
                 <div style="width:100%">
                     <div style="vertical-align: middle; display:inline-block">
-                        <%= Html.LabelFor(m => m.selected_fondo, "Plato de Fondo")%>
+                        <%= Html.LabelFor(m => m.selected_item, "Plato de Fondo")%>
                     </div>
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.DropDownListFor(
-                        x => x.selected_fondo,
+                        x => x.selected_item,
                         new SelectList(Model.ListaFondo, "Value", "Text")
                     )%>
                     </div>
@@ -135,13 +140,14 @@
             <div class="content">
             <% using (Html.BeginForm())
                { %>
+               <input type="hidden" name="__DATE" id="Hidden3" value="<%: ViewBag.Fecha %>" />
                 <div style="width:100%">
                     <div style="vertical-align: middle; display:inline-block">
-                        <%= Html.LabelFor(m => m.selected_postre, "Postre")%>
+                        <%= Html.LabelFor(m => m.selected_item, "Postre")%>
                     </div>
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.DropDownListFor(
-                        x => x.selected_postre,
+                        x => x.selected_item,
                         new SelectList(Model.ListaPostre, "Value", "Text")
                     )%>
                     </div>
@@ -183,18 +189,22 @@
      </div>
      </fieldset>
 </div>
-<div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; margin-left: 7%">
-    <fieldset style="width:100%">
-        <legend>Fecha</legend>
-        <div id="date-picker"></div>
-        <legend>Horario</legend>
-        <%: Html.DropDownListFor(
-            x => x.horario,
-            new SelectList(modelo.Horarios, "Value", "Text"),
-            new { @onchange = "horario_change()"}
-            )
-        %>
-    </fielset>
-</div>
+<form id="form1" method="post" runat="server" style="display: inline-block">
+<% L_Appetit.Models.AgregarMenuModel modelo = ViewData.Model; %> 
+    <input type="hidden" name="__DATE" id="__DATE" value="" />
+    <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; margin-left: 7%">
+        <fieldset style="width:100%">
+            <legend>Fecha</legend>
+            <div id="date-picker"></div>
+            <legend>Horario</legend>
+            <%: Html.DropDownListFor(
+                x => x.horario,
+                new SelectList(modelo.Horarios, "Value", "Text"),
+                new { @onchange = "horario_change()"}
+                )
+            %>
+        </fielset>
+    </div>
+</form>
 
 </asp:Content>
