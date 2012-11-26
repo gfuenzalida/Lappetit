@@ -14,6 +14,8 @@ namespace L_Appetit.Models
     public class AgregarMenuModel
     {
         public DateTime fecha;
+        public Int32 item;
+        public Int16 cantidad;
         
         [Display(Name = "Horarios")]
         public bool horario { get; set; }
@@ -135,5 +137,26 @@ namespace L_Appetit.Models
 
             }
         }
+
+        public void setMenu(Int32 item, Int16 cantidad, DateTime fecha, Boolean horario) 
+        {
+            this.item = item;
+            this.cantidad = cantidad;
+            this.fecha = fecha;
+            this.horario = horario;
+
+            LinqDBDataContext db = new LinqDBDataContext();
+            MENU_FECHA iMENU_FECHA = new MENU_FECHA
+            {
+                FECHA = fecha,
+                HORARIO = horario,
+                CODIGO_ITEM = item,
+                MENU_ITEM_CANTIDAD = cantidad
+            };
+            db.MENU_FECHA.InsertOnSubmit(iMENU_FECHA);
+            db.SubmitChanges();
+        }
     }
+
+
 }
