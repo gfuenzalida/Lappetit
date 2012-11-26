@@ -75,7 +75,8 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ClienteModel.cs" />
-    <Compile Include="Models\CocineroModel.cs" />
+    <Compile Include="Models\CocineroModels.cs" />
+    <Compile Include="Models\GarzonModels.cs" />
     <Compile Include="Models\LinqDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -87,6 +88,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Admin\ConsultarHistorial.css" />
+    <Content Include="Content\Admin\ConsultarReservas.css" />
     <Content Include="Content\Admin\GestionarUsuarios.css" />
     <Content Include="Content\Cocinero\AgregarMenu.css" />
     <Content Include="Content\Cliente\ConsultarMenu.css" />

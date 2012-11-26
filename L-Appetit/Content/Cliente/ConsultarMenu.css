@@ -159,6 +159,7 @@ ul#menu
 ul#menu li {
     display: inline;
     list-style: none;
+    
 }
 
 ul#menu li#greeting {
