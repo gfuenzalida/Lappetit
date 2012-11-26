@@ -75,7 +75,7 @@
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ClienteModel.cs" />
-    <Compile Include="Models\CocineroModels.cs" />
+    <Compile Include="Models\CocineroModel.cs" />
     <Compile Include="Models\GarzonModels.cs" />
     <Compile Include="Models\LinqDB.designer.cs">
       <AutoGen>True</AutoGen>
