@@ -21,7 +21,7 @@
                     monthNames: ["Enero","Febrero", "Marzo", "Abril", "Mayo", "Junio",
                     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
                     dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-                    dateFormat: "dd/mm/yy",
+                    dateFormat: "dd-mm-yy",
                     onSelect: function (dateText, inst) {
                         var theForm = document.forms['form1'];
                         if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
@@ -29,7 +29,7 @@
                             theForm.submit();
                         }
                     }
-                }).datepicker("setDate", <%: ViewBag.Fecha %>);
+                }).datepicker("setDate", '<%: ViewBag.Fecha %>');
             });
         });
 
@@ -48,6 +48,10 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
+
+<form id="form1" method="post" runat="server">
+    <input type="hidden" name="__DATE" id="__DATE" value="" />
+</form>
 <% L_Appetit.Models.AgregarMenuModel modelo = ViewData.Model; %> 
 
 <h2>AgregarMenu</h2>
@@ -61,26 +65,27 @@
             <input type="radio" id="tab-1" name="tab-group-1" checked>
             <label for="tab-1">Entrada</label>
             <div class="content">
-            <% using (Html.BeginForm()) { %>
+            <% using (Html.BeginForm("AgregarMenu", "Cocinero", FormMethod.Post, new { @id = "form2" }))
+               { %>
                 <div style="width:100%">
                     <div style="vertical-align: middle; display:inline-block">
-                        <%= Html.LabelFor(m => m.selected_entrada, "Entrada") %>
+                        <%= Html.LabelFor(m => m.selected_entrada, "Entrada")%>
                     </div>
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.DropDownListFor(
                         x => x.selected_entrada,
-                        new SelectList(Model.ListaEntrada,"Value", "Text")
-                    ) %>
+                        new SelectList(Model.ListaEntrada, "Value", "Text")
+                    )%>
                     </div>
                 </div>
                 <div style="width:100%; margin-top:5%">
                     <div style="vertical-align: middle; display:inline-block">
-                        <%= Html.LabelFor(m => m.selected_cant, "Cant. Disponible") %>
+                        <%= Html.LabelFor(m => m.selected_cant, "Cant. Disponible")%>
                     </div>
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.TextBoxFor(
                         x => x.selected_cant,
-                        new { @class = "input_cant"}
+                        new { @class = "input_cant" }
                     )%>
                     </div>
                     <div class="boton_agregar">
