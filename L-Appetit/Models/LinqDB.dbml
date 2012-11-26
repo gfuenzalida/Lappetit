@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="lappetit" Class="LinqDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=GARY-PC;Initial Catalog=lappetit;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="lappetitConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=localhost;Initial Catalog=lappetit;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="lappetitConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AUDITORIA_TABLAS" Member="AUDITORIA_TABLAS">
     <Type Name="AUDITORIA_TABLAS">
       <Column Name="CODIGO_TABLA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -182,4 +182,14 @@
       <Association Name="TIPO_ITEM_ITEM" Member="ITEM" ThisKey="CODIGO_TIPO_ITEM" OtherKey="CODIGO_TIPO_ITEM" Type="ITEM" />
     </Type>
   </Table>
+  <Function Name="dbo.CrearFecha" Method="CrearFecha">
+    <Parameter Name="fecha_" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="horario_" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="CrearFechaResult">
+      <Column Name="resource_type" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="request_mode" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="resource_description" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="" Member="Column1" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>

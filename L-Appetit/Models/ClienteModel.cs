@@ -47,6 +47,8 @@ namespace L_Appetit.Models
             ListaEntrada = new List<string>();
             ListaFondo = new List<string>();
             ListaPostre = new List<string>();
+
+            horario = false;
         }
 
         public void GetItems(DateTime fecha, bool horario)

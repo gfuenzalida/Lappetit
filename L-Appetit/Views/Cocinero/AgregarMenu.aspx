@@ -56,9 +56,12 @@
 <% L_Appetit.Models.AgregarMenuModel modelo = ViewData.Model; %> 
 
 <h2>AgregarMenu</h2>
-<%: ViewBag.TEST1 %>
-<br>
-<%: ViewBag.TEST2 %>
+<% if (ViewBag.TEST != null)
+   {
+       Response.Write(ViewBag.TEST);
+   }
+       
+%>
 <!------------------------------------------------------>
 <div style="vertical-align: top; display:inline-block;margin-left:10%">
     <fieldset style="100%">
@@ -71,6 +74,7 @@
             <% using (Html.BeginForm("AgregarMenu", "Cocinero", FormMethod.Post, new { @id = "form2" }))
                { %>
                <input type="hidden" name="__DATE" id="Hidden1" value="<%: ViewBag.Fecha %>" />
+               <input type="hidden" name="__HORARIO" id="Hidden4" value="<%: ViewBag.Horario %>" />
                 <div style="width:100%">
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.LabelFor(m => m.selected_item, "Entrada")%>
@@ -93,7 +97,7 @@
                     )%>
                     </div>
                     <div class="boton_agregar">
-                        <input id="Submit1" type="submit" value="Agregar" />
+                        <input id="Submit1" type="submit" name="btn_submit" value="Agregar" />
                     </div>
                 </div>
             <% } %>
@@ -106,6 +110,7 @@
             <% using (Html.BeginForm())
                { %>
                <input type="hidden" name="__DATE" id="Hidden2" value="<%: ViewBag.Fecha %>" />
+               <input type="hidden" name="__HORARIO" id="Hidden5" value="<%: ViewBag.Horario %>" />
                 <div style="width:100%">
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.LabelFor(m => m.selected_item, "Plato de Fondo")%>
@@ -128,7 +133,7 @@
                     )%>
                     </div>
                     <div class="boton_agregar">
-                        <input id="Submit2" type="submit" value="Agregar" />
+                        <input id="Submit2" type="submit" name="btn_submit" value="Agregar" />
                     </div>
                 </div>
             <% } %>
@@ -141,6 +146,7 @@
             <% using (Html.BeginForm())
                { %>
                <input type="hidden" name="__DATE" id="Hidden3" value="<%: ViewBag.Fecha %>" />
+               <input type="hidden" name="__HORARIO" id="Hidden6" value="<%: ViewBag.Horario %>" />
                 <div style="width:100%">
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.LabelFor(m => m.selected_item, "Postre")%>
@@ -163,7 +169,7 @@
                     )%>
                     </div>
                     <div class="boton_agregar">
-                        <input id="Submit3" type="submit" value="Agregar" />
+                        <input id="Submit3" type="submit" name="btn_submit" value="Agregar" />
                     </div>
                 </div>
             <% } %>

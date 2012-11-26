@@ -259,6 +259,13 @@ namespace L_Appetit.Models
 				return this.GetTable<TIPO_ITEM>();
 			}
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CrearFecha")]
+		public ISingleResult<CrearFechaResult> CrearFecha([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha_, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> horario_)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), fecha_, horario_);
+			return ((ISingleResult<CrearFechaResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AUDITORIA_TABLAS")]
@@ -3999,6 +4006,86 @@ namespace L_Appetit.Models
 		{
 			this.SendPropertyChanging();
 			entity.TIPO_ITEM = null;
+		}
+	}
+	
+	public partial class CrearFechaResult
+	{
+		
+		private string _resource_type;
+		
+		private string _request_mode;
+		
+		private string _resource_description;
+		
+		private string _Column1;
+		
+		public CrearFechaResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_resource_type", DbType="NVarChar(60) NOT NULL", CanBeNull=false)]
+		public string resource_type
+		{
+			get
+			{
+				return this._resource_type;
+			}
+			set
+			{
+				if ((this._resource_type != value))
+				{
+					this._resource_type = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_request_mode", DbType="NVarChar(60) NOT NULL", CanBeNull=false)]
+		public string request_mode
+		{
+			get
+			{
+				return this._request_mode;
+			}
+			set
+			{
+				if ((this._request_mode != value))
+				{
+					this._request_mode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_resource_description", DbType="NVarChar(256) NOT NULL", CanBeNull=false)]
+		public string resource_description
+		{
+			get
+			{
+				return this._resource_description;
+			}
+			set
+			{
+				if ((this._resource_description != value))
+				{
+					this._resource_description = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="", Storage="_Column1", DbType="VarChar(40) NOT NULL", CanBeNull=false)]
+		public string Column1
+		{
+			get
+			{
+				return this._Column1;
+			}
+			set
+			{
+				if ((this._Column1 != value))
+				{
+					this._Column1 = value;
+				}
+			}
 		}
 	}
 }
