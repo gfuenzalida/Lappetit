@@ -25,7 +25,7 @@
                     monthNames: ["Enero","Febrero", "Marzo", "Abril", "Mayo", "Junio",
                     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
                     dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-                    dateFormat: "dd/mm/yy",
+                    dateFormat: "dd-mm-yy",
                     onSelect: function (dateText, inst) {
                         var theForm = document.forms['form1'];
                         if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
@@ -33,7 +33,7 @@
                             theForm.submit();
                         }
                     }
-                }).datepicker("setDate", <%: ViewBag.Fecha %>);
+                }).datepicker("setDate", '<%: ViewBag.Fecha %>');
             });
         });
 

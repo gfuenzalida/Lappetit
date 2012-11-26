@@ -49,7 +49,17 @@ namespace L_Appetit.Controllers
         [HttpPost]
         public ActionResult AgregarMenu(AgregarMenuModel modelo)
         {
-            return View(modelo);
+            string date = Request.Form["__DATE"];
+            AgregarMenuModel new_model = new AgregarMenuModel();
+            ViewBag.Fecha = DateTime.Now.ToString("dd/MM/yy");
+            if (date != null)
+            {
+                new_model.getListas();//DateTime.Parse(date)
+                new_model.getMenu(DateTime.Parse(date), modelo.horario);
+                ViewBag.Fecha = new_model.fecha.ToString("dd/MM/yy");
+            }
+
+            return View(new_model);
         }
 
         public ActionResult EditarPerfilCocinero()
