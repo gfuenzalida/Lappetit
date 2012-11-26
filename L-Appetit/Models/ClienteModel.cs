@@ -6,6 +6,7 @@ using System.Collections;
 
 namespace L_Appetit.Models.Cliente
 {
+    // Modelo correspondiente a la Vista ConsultarMenu
     public class MenuModel
     {
         public DateTime fecha;
@@ -88,7 +89,7 @@ namespace L_Appetit.Models.Cliente
             //ListaBebestible.Sort();
         }
     }
-
+    // Modelo correspondiente a la Vista ConsultarReserva
     public class ReservaModel
     {
         public String rut;
@@ -133,5 +134,36 @@ namespace L_Appetit.Models.Cliente
         public bool horario { get; set; }
         public System.Nullable<short> comensales { get; set; }
         public String observaciones { get; set; } 
+    }
+    // Modelo correspondiente a la vista HacerReserva
+    public class HacerReservaModel
+    {
+        public int mesa;
+        public String rut;
+        public DateTime fecha;
+        public Boolean horario;
+        public Int16 comensales;
+        
+        public void SetReserva(int mesa, String rut, DateTime fecha, Boolean horario, Int16 comensales)
+        {
+            this.mesa = mesa;
+            this.rut = rut;
+            this.fecha = fecha;
+            this.horario = horario;
+            this.comensales = comensales;
+            
+            LinqDBDataContext db = new LinqDBDataContext();
+
+            RESERVA iRESERVA = new RESERVA
+            {
+                CODIGO_MESA = mesa,
+                RUT_CLI = rut,
+                FECHA = fecha,
+                HORARIO = horario,
+                NUMERO_COMENSALES = comensales
+            };
+            db.RESERVA.InsertOnSubmit(iRESERVA);
+            db.SubmitChanges();
+        }
     }
 }
