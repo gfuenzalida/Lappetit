@@ -19,10 +19,6 @@
        <% using (Html.BeginForm())
             { %>
             <%= Html.ValidationSummary(true, "El item no ha sido posible crearla, debido a los siguientes errores.") %>
-            <%
-                if (ViewBag.Error != null)
-                    Response.Write(ViewBag.Error);
-             %>
             <div style="width:100%" >
                 <div style="vertical-align: top; display:inline-block; width: 50%;">
                     <div>
