@@ -34,7 +34,11 @@ namespace L_Appetit.Controllers
         {
             if (ModelState.IsValid)
             {
-                
+                modelo.setItem(Int16.Parse(modelo.tipo_item), modelo.nombre_item, modelo.descripcion_item);
+            }
+            else
+            {
+                ViewBag.Error = true;
             }
             return View(modelo);
         }

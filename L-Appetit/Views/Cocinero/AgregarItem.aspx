@@ -8,7 +8,20 @@
 
 <% L_Appetit.Models.AgregarItemModel modelo = ViewData.Model; %> 
 
+<script type="text/javascript">
+<% if (ViewBag.Error != null && ViewBag.Error == true){ %>
+    jQuery(function ($) {
+            //all jQuery code which uses $ needs to be inside here
+            $(document).ready(function () {
+                var alert_text = 'No ha sido posible crear el ítem. Revise los errores';
+                aler(alert_text);
+                });
+            });
+<%} %>
+</script>
 <h2>AgregarItem</h2>
+<%: Html.ValidationSummary(true, "No ha sido posible crear el ítem. Revise los errores")%>
+    <li><%: Html.ValidationMessageFor(m => m.nombre_item) %></li>
 <!------------------------------------------------------>
 
 <div class="tabs">
@@ -18,7 +31,6 @@
        <div class="content"> 
        <% using (Html.BeginForm())
             { %>
-            <%= Html.ValidationSummary(true, "El item no ha sido posible crearla, debido a los siguientes errores.") %>
             <div style="width:100%" >
                 <div style="vertical-align: top; display:inline-block; width: 50%;">
                     <div style="margin-bottom: 1px;">
