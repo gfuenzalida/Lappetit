@@ -627,6 +627,7 @@
     <Content Include="Views\Admin\EditarPerfilAdmin.aspx" />
     <Content Include="Views\Admin\GestionarMesas.aspx" />
     <Content Include="Views\Admin\GestionarUsuarios.aspx" />
+    <Content Include="Views\Admin\ResultAuditoria.aspx" />
     <Content Include="Views\Cliente\ConsultarMenu.aspx" />
     <Content Include="Views\Cliente\EditarPerfil.aspx" />
     <Content Include="Views\Cliente\HacerReserva.aspx" />

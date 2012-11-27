@@ -372,9 +372,15 @@ text-shadow: 1px 1px #000;
 }
 
 .content label{/* para los labels dentro del contenido de las pestañas*/
-background-color: #678; 
+background-color: #678;
+text-shadow: 0px 0px #000;
+color: #000;
 }
 
+.content form
+{
+    width:100%;
+}
 /* el control input sólo lo necesitamos para que las pestañas permanezcan abiertas así que lo ocultamos */
 .tab [type=radio] { display: none; }
 

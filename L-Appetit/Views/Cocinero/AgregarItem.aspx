@@ -21,7 +21,7 @@
             <%= Html.ValidationSummary(true, "El item no ha sido posible crearla, debido a los siguientes errores.") %>
             <div style="width:100%" >
                 <div style="vertical-align: top; display:inline-block; width: 50%;">
-                    <div>
+                    <div style="margin-bottom: 1px;">
                         <%= Html.LabelFor(m => m.tipo_item, "Tipo de ítem")%>
                     </div>
                     <div>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
                 <div style="vertical-align: top; display:inline-block; width: 40%">
-                    <div>
+                    <div style="margin-bottom: 3px;">
                         <%= Html.LabelFor(m => m.nombre_item, "Nombre")%>
                     </div>
                     <div>
@@ -42,10 +42,10 @@
                     </div>
                 </div>
             </div>
-            <br>
+            
             <div style="width:100%">
-                <div style="vertical-align: top; display:inline-block; width: 50%">
-                    <div>
+                <div style="vertical-align: top; display:inline-block; width: 50% ">
+                    <div style="margin-bottom:3px">
                         <%= Html.LabelFor(m => m.descripcion_item, "Descripcion")%>
                     </div>
                     <div>
