@@ -26,7 +26,6 @@ namespace L_Appetit.Controllers
         public ActionResult AgregarItem()
         {
             AgregarItemModel modelo = new AgregarItemModel();
-            modelo.nombre_item = "Pedro";
             return View(modelo);
         }
 
@@ -35,7 +34,7 @@ namespace L_Appetit.Controllers
         {
             if (ModelState.IsValid)
             {
-                ViewBag.Error = modelo.nombre_item+"_"+modelo.tipo_item+"_"+modelo.descripcion_item;
+                
             }
             return View(modelo);
         }

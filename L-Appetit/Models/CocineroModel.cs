@@ -158,7 +158,7 @@ namespace L_Appetit.Models
     {
         [Required]
         [Display(Name = "tipo_item")]
-        public string tipo_item;
+        public string tipo_item {get; set;}
 
         public IEnumerable<SelectListItem> Tipos
         {
@@ -187,10 +187,10 @@ namespace L_Appetit.Models
 
         [Required (ErrorMessage= "No ha ingresado ningún nombre")]
         [Display(Name = "nombre_item")]
-        public string nombre_item;
+        public string nombre_item { get; set; }
 
         [Display(Name = "descripcion_item")]
-        public string descripcion_item;
+        public string descripcion_item { get; set; }
 
         public AgregarItemModel()
         {
@@ -198,6 +198,7 @@ namespace L_Appetit.Models
             descripcion_item = "";
             tipo_item = "";
         }
+
         public void setItem(Int32 tipo_item, String nombre_item, String descripcion)
         {
 
@@ -213,5 +214,4 @@ namespace L_Appetit.Models
             db.SubmitChanges();
         }
     }
-
 }
