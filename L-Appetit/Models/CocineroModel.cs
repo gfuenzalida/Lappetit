@@ -213,5 +213,23 @@ namespace L_Appetit.Models
             db.ITEM.InsertOnSubmit(iITEM);
             db.SubmitChanges();
         }
+
+        public void getItem(Int32 tipo_item, String nombre_item, String descripcion)
+        {/*
+            LinqDBDataContext db = new LinqDBDataContext();
+            var sitem =
+                from item in db.ITEM*/
+            /*
+            LinqDBDataContext db = new LinqDBDataContext();
+            ITEM iITEM = new ITEM
+            {
+                CODIGO_TIPO_ITEM = tipo_item,
+                NOMBRE_ITEM = nombre_item,
+                DESCRIPCION_ITEM = descripcion
+
+            };
+            db.ITEM.InsertOnSubmit(iITEM);
+            db.SubmitChanges();*/
+        }
     }
 }

@@ -202,11 +202,11 @@ namespace L_Appetit.Models
             where
               reserva.CODIGO_RESERVA == codigo_reserva
             select reserva;
-                    foreach (var del in eliminaRESERVA)
-                    {
-                        db.RESERVA.DeleteOnSubmit(del);
-                    }
-                    db.SubmitChanges();
+            foreach (var del in eliminaRESERVA)
+            {
+                db.RESERVA.DeleteOnSubmit(del);
+            }
+            db.SubmitChanges();
 
         }
 
