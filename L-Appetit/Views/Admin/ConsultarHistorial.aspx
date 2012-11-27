@@ -26,16 +26,16 @@
                 <div style="width:100%">
                     <table style="width: 100%;">
                         <tr  style="background-color:#d0d6db">
-                            <td>
+                            <td >
                                 Cliente&nbsp;
                             </td>
                             <td style="width:20%">
                                 Comensales&nbsp;
                             </td>
-                            <td>
+                            <td >
                                 Garzon&nbsp;
                             </td>
-                            <td>
+                            <td >
                                 Cocinero&nbsp;
                             </td>
                         </tr>

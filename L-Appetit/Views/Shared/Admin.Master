@@ -23,7 +23,7 @@
             </div> 
             <div id="menucontainer" align="right" style="margin-top: 8%">
                 <ul id="menu" style="display: inline-block">
-                    <li><%: Html.ActionLink("Auditoria", "Auditoria", "Admin")%></li> 
+                    <li><%: Html.ActionLink("Auditoria", "ResultAuditoria", "Admin")%></li> 
                     <li><%: Html.ActionLink("Reservas", "ConsultarReservas", "Admin")%></li>
                     <li><%: Html.ActionLink("Gestionar Usuarios", "GestionarUsuarios", "Admin")%></li>
                     <li><%: Html.ActionLink("Gestionar Mesas", "GestionarMesas", "Admin")%></li>
