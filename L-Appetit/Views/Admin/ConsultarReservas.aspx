@@ -17,58 +17,55 @@
         Consultar Reservas
         </div>
     </h2>
-<!--<h2>Consultar Reservas</h2>-->
 
 <!------------------------------------------------------>
-    <div style="width:70%; vertical-align: top; display:inline-block">
-        <fieldset style="100%">
-        <legend>Reservas</legend>
-        <div class="tabs">
-            <div class="tab">
-                <input type="radio" id="tab-1" name="tab-group-1" checked>
-                <label for="tab-1">Consulta Reserva por Mesa</label>
-                <div class="content">
-                    <div>
-                        <fieldset>
-                            <legend>Mesas</legend>
-                        </fieldset>
-                    </div>
-                </div>
+    <div  ID= "mesas" style="display: inline-block; vertical-align: top">
+        <fieldset>
+            <legend>Mesas</legend>
+            <div>
+                <!--div reservado para poner las mesas-->
             </div>
-            <div class="tab">
-                <input type="radio" id="tab-2" name="tab-group-1">
-                <label for="tab-2">Consulta Reserva por Cliente</label>
-                <div class="content">
-                    <div class="informacion">
-                    <!-----div para poner fecha y horario, ver prototipo----->
-                    </div>
-                    <div style="width:100%">
-                        <table style="width: 100%;">
-                            <tr  style="background-color:#d0d6db">
-                                <td style="width:33%">
-                                    Fecha&nbsp;
-                                </td>
-                                <td style="width:33%">
-                                    Horario&nbsp;
-                                </td>
-                                <td style="width:33%">
-                                    Comensales&nbsp;
-                                </td>
-                            </tr>
-                        </table>
-                    
-                    </div>
-                </div>
-            </div>
-        </div>
         </fieldset>
     </div>
-    <div style="vertical-align: top; display:inline-block; margin-left:2%; width:27%">
-    <fieldset>
-        <legend> Busqueda</legend>
-        
-    </fielset>
-</div>
+    <div style="display: inline-block; vertical-align: top; width: 190px">
+        <div>
+            <fieldset>
+                <legend>Busqueda</legend>
+                <div  ID= "busqueda" class="tabs">
+                    <div class="tab">
+                        <input type="radio" id="tab-1" name="tab-group-1" checked>
+                        <label for="tab-1">Nombre</label>
+                        <div class="content">
+                            <div>
+                                <asp:Label ID="Label1" runat="server" Text="Nombre"></asp:Label>
+                            </div>
+                            <div>
+                                <input class="IngBusqueda" id="Text1" type="text" />
+                            </div>
+                            <div>
+                                <input id="Button1" type="button" value="Buscar" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab">
+                        <input type="radio" id="tab-2" name="tab-group-1">
+                        <label for="tab-2">RUN</label>
+                        <div class="content">
+                            <div>
+                                <asp:Label ID="Label2" runat="server" Text="RUN"></asp:Label>
+                            </div>
+                            <div>
+                                <input class="IngBusqueda" id="Text2" type="text" />
+                            </div>
+                            <div>
+                                <input id="Button2" type="button" value="Buscar" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+    </div>
 <!----------------------------------------------------------------------->
 
 </asp:Content>
