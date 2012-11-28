@@ -1,12 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Auditoria
+    Configuracion Auditoria
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>Auditoria</h2>
+    <h2>
+        <div style="vertical-align: middle; display:inline-block;">
+        <img alt="" src="../../img/logo.png" style="height: 70px; width: 70px" />
+        </div>
+        <div style="vertical-align: middle; display:inline-block;">
+        Configuracion Auditoria
+        </div>
+    </h2>
+    <!--<h2>Auditoria</h2>-->
     <div>
         <table style="width: 100%;">
             <tr style="background-color:#d0d6db">

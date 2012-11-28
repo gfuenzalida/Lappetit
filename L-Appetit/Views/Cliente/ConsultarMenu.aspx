@@ -54,7 +54,15 @@
     <input type="hidden" name="__DATE" id="__DATE" value="" />
 
 <% L_Appetit.Models.MenuModel modelo = ViewData.Model; %> 
-<h1>Consultar Menu</h1>
+    <h2>
+        <div style="vertical-align: middle; display:inline-block;">
+        <img alt="" src="../../img/logo.png" style="height: 70px; width: 70px" />
+        </div>
+        <div style="vertical-align: middle; display:inline-block;">
+        Consultar Menu
+        </div>
+    </h2>
+<!--<h1>Consultar Menu</h1>-->
     <div class= "supercontenedor">
         <div class= "contenedormenu">
             <div class= "subcontenedormenu">

@@ -27,8 +27,15 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>Gestionar Mesas</h2>
+    <h2>
+        <div style="vertical-align: middle; display:inline-block;">
+        <img alt="" src="../../img/logo.png" style="height: 70px; width: 70px" />
+        </div>
+        <div style="vertical-align: middle; display:inline-block;">
+        Gestionar Mesas
+        </div>
+    </h2>
+    <!--<h2>Gestionar Mesas</h2>-->
     <div  ID= "mesas" style="display: inline-block; vertical-align: top">
         <fieldset>
             <legend>Mesas</legend>

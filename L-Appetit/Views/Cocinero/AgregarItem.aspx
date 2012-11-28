@@ -1,7 +1,7 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Cocinero.Master" Inherits="System.Web.Mvc.ViewPage<L_Appetit.Models.AgregarItemModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    AgregarItem
+    Agregar Item
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -19,7 +19,15 @@
             });
 <%} %>
 </script>
-<h2>AgregarItem</h2>
+    <h2>
+        <div style="vertical-align: middle; display:inline-block;">
+        <img alt="" src="../../img/logo.png" style="height: 70px; width: 70px" />
+        </div>
+        <div style="vertical-align: middle; display:inline-block;">
+        Agregar Item
+        </div>
+    </h2>
+<!--<h2>AgregarItem</h2>-->
 <%: Html.ValidationSummary(true, "No ha sido posible crear el ítem. Revise los errores")%>
     <li><%: Html.ValidationMessageFor(m => m.nombre_item) %></li>
 <!------------------------------------------------------>

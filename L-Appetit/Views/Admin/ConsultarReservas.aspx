@@ -9,10 +9,15 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-
-
-<h2>Consultar Reservas</h2>
+    <h2>
+        <div style="vertical-align: middle; display:inline-block;">
+        <img alt="" src="../../img/logo.png" style="height: 70px; width: 70px" />
+        </div>
+        <div style="vertical-align: middle; display:inline-block;">
+        Consultar Reservas
+        </div>
+    </h2>
+<!--<h2>Consultar Reservas</h2>-->
 
 <!------------------------------------------------------>
     <div style="width:70%; vertical-align: top; display:inline-block">

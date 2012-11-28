@@ -42,14 +42,22 @@
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    AgregarMenu
+    Agregar Menu
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <% L_Appetit.Models.AgregarMenuModel modelo = ViewData.Model; %> 
+    <h2>
+        <div style="vertical-align: middle; display:inline-block;">
+        <img alt="" src="../../img/logo.png" style="height: 70px; width: 70px" />
+        </div>
+        <div style="vertical-align: middle; display:inline-block;">
+        Agregar Menu
+        </div>
+    </h2>
 
-<h2>AgregarMenu</h2>
+<!--<h2>AgregarMenu</h2>-->
 
 <!------------------------------------------------------>
 <div style="vertical-align: top; display:inline-block;margin-left:10%">

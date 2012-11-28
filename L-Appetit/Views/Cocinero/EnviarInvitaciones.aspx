@@ -1,12 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Cocinero.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    EnviarInvitaciones
+    Enviar Invitaciones
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>EnviarInvitaciones</h2>
+    <h2>
+        <div style="vertical-align: middle; display:inline-block;">
+        <img alt="" src="../../img/logo.png" style="height: 70px; width: 70px" />
+        </div>
+        <div style="vertical-align: middle; display:inline-block;">
+        Hacer Reserva
+        </div>
+    </h2>
+    <!--<h2>EnviarInvitaciones</h2>-->
     <div style="vertical-align: top; display:inline-block; width: 462px; text-align:justify" >
         L'Appétit permite que un Cocinero pueda invitar a otras personas a comer al restaurant. Para ello puede emitir uno o más tickets asignándolos a un RUN de un cliente registrado. Cada uno de estos ticket le servirá al cliente para hacer una reserve y comer en el restaurant. 
         ¡Recuerde use sus tickets prudentemente ya que son limitados!

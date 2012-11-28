@@ -5,8 +5,15 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-<h2>Ver Menu</h2>
+    <h2>
+        <div style="vertical-align: middle; display:inline-block;">
+        <img alt="" src="../../img/logo.png" style="height: 70px; width: 70px" />
+        </div>
+        <div style="vertical-align: middle; display:inline-block;">
+        Ver Menu
+        </div>
+    </h2>
+<!--<h2>Ver Menu</h2>-->
 <div class="tabs">
    <div class="tab">
        <input type="radio" id="tab-1" name="tab-group-1" checked>

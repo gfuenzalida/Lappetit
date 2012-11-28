@@ -1,12 +1,19 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Cocinero.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    VerPedidos
+    Ver Pedidos
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>VerPedidos</h2>
+    <h2>
+        <div style="vertical-align: middle; display:inline-block;">
+        <img alt="" src="../../img/logo.png" style="height: 70px; width: 70px" />
+        </div>
+        <div style="vertical-align: middle; display:inline-block;">
+        Ver Pedidos
+        </div>
+    </h2>
+    <!--<h2>Ver Pedidos</h2>-->
     <div style="vertical-align: top; display:inline-block; width: 40%">
         <div style="text-align:justify; ">
             <fieldset>

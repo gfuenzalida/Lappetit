@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Cliente.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-    Hacer Reserva
+    Reservar
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -11,7 +11,7 @@
         <img alt="" src="../../img/logo.png" style="height: 70px; width: 70px" />
         </div>
         <div style="vertical-align: middle; display:inline-block;">
-        Hacer Reserva
+        Reservar
         </div>
     </h2>
     <div ID="mesas" style="vertical-align: top; display:inline-block;">

@@ -9,8 +9,15 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-<h2>Gestionar Usuarios</h2>
+    <h2>
+        <div style="vertical-align: middle; display:inline-block;">
+        <img alt="" src="../../img/logo.png" style="height: 70px; width: 70px" />
+        </div>
+        <div style="vertical-align: middle; display:inline-block;">
+        Gestionar Usuarios
+        </div>
+    </h2>
+<!--<h2>Gestionar Usuarios</h2>-->
 
 <!------------------------------------------------------>
 <div style="height:450px" >

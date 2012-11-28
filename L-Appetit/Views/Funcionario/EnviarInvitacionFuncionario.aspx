@@ -5,8 +5,15 @@
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-
-    <h2>Enviar Invitacion</h2>
+    <h2>
+        <div style="vertical-align: middle; display:inline-block;">
+        <img alt="" src="../../img/logo.png" style="height: 70px; width: 70px" />
+        </div>
+        <div style="vertical-align: middle; display:inline-block;">
+        Enviar Invitacion
+        </div>
+    </h2>
+    <!--<h2>Enviar Invitacion</h2>-->
     <div style="vertical-align: top; display:inline-block; width: 462px; text-align:justify" >
         L'Appétit permite que un funcionario pueda invitar a otras personas a comer al restaurant. Para ello puede emitir uno o más tickets asignándolos a un RUN de un cliente registrado. Cada uno de estos ticket le servirá al cliente para hacer una reserve y comer en el restaurant. 
         ¡Recuerde use sus tickets prudentemente ya que son limitados!
