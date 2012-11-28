@@ -31,8 +31,7 @@
             <fieldset style="width: 190px">
                 <legend>Seleccionar Fecha</legend>
                 <div>
-                   
-                    
+                    <!-- div reservado para el calendario-->
                 </div>
                 <div>
                     <select id="Select1">
@@ -40,9 +39,7 @@
                         <option>Cena</option>
                     </select>
                 </div>
-                <div>
-                    <!-- div reservado para el calendario-->
-                </div>
+                
             </fieldset>
         </div>
     </div>

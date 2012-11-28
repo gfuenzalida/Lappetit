@@ -13,7 +13,7 @@
 <h2>Gestionar Usuarios</h2>
 
 <!------------------------------------------------------>
-<div >
+<div style="height:450px" >
     <div class="tabs" style="width: 100%; height:80%">
         <div class="tab">
             <input type="radio" id="tab-1" name="tab-group-1" checked>
