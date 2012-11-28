@@ -2,12 +2,6 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
     <link href="../../Content/Cocinero/AgregarMenu.css" rel="stylesheet" type="text/css" />
-    <link href="../../jquery-ui-1.9.1.custom/css/smoothness/jquery-ui-1.9.1.custom.css"
-        rel="stylesheet" type="text/css" />
-    <script src="../../jquery-ui-1.9.1.custom/js/jquery-1.8.2.js" type="text/javascript"></script>
-    <script src="../../jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
-    <script src="../../jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.min.js" type="text/javascript"></script>
-    
     <% L_Appetit.Models.AgregarMenuModel modelo = ViewData.Model; %> 
     
     <script type="text/javascript">

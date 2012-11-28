@@ -6,13 +6,9 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
-    <link href="../../jquery-ui-1.9.1.custom/css/smoothness/jquery-ui-1.9.1.custom.css"
-        rel="stylesheet" type="text/css" />
     <link href="../../Content/Cliente/ConsultarMenu.css" rel="stylesheet" type="text/css" />
-    <script src="../../jquery-ui-1.9.1.custom/js/jquery-1.8.2.js" type="text/javascript"></script>
-    <script src="../../jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.js" type="text/javascript"></script>
-    <script src="../../jquery-ui-1.9.1.custom/js/jquery-ui-1.9.1.custom.min.js" type="text/javascript"></script>
-  
+    <link href="../../jquery-ui-1.9.1.custom/css/smoothness/jquery-ui-1.9.1.custom.css"
+        rel="stylesheet" type="text/css" />  
   <% L_Appetit.Models.MenuModel modelo = ViewData.Model; %> 
     <script type="text/javascript">
         jQuery(function ($) {
@@ -25,6 +21,7 @@
                     monthNames: ["Enero","Febrero", "Marzo", "Abril", "Mayo", "Junio",
                     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
                     dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+                    monthNamesShort: ["Ene","Feb","Mar","Abr","May","Jun","Jul","Ago","Sep","Oct","Nov","Dic"],
                     dateFormat: "dd-mm-yy",
                     onSelect: function (dateText, inst) {
                         var theForm = document.forms['form1'];
@@ -33,7 +30,9 @@
                             theForm.submit();
                         }
                     }
-                }).datepicker("setDate", '<%: ViewBag.Fecha %>');
+                })
+                $("#date-picker").datepicker("setDate", '<%: ViewBag.Fecha %>');
+                $("#date-picker").datepicker("option", "changeMonth", true);
             });
         });
 
