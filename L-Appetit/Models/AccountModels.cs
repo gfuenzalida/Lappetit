@@ -107,6 +107,14 @@ namespace L_Appetit.Models
         [RegularExpression("^[1-9]+[0-9]{6,9}", ErrorMessage = "Telefono mal ingresado.")]
         public string Telefono { get; set; }
 
-
+        public void RegistroCliente()
+        {
+            string nombre = this.Nombre + " " + this.ApellidoPaterno + " " + this.ApellidoMaterno;
+            LinqDBDataContext db = new LinqDBDataContext();
+            CLIENTE c1 = new CLIENTE { RUT_CLI = this.UserName, NOMBRE_CLI = nombre, SEXO_CLIENTE = this.Sexo, CORREO_CLI = this.Email, TELEFONO_CLI = Convert.ToInt32(this.Telefono), TICKETS_RECIBIDOS = 0 };
+            
+            db.CLIENTE.InsertOnSubmit(c1);
+            db.SubmitChanges();
+        }
     }
 }

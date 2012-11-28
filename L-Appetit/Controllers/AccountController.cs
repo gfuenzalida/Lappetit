@@ -98,15 +98,14 @@ namespace L_Appetit.Controllers
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
                 Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
-                string nombre = model.Nombre +  " " + model.ApellidoPaterno + " " + model.ApellidoMaterno;
+                /*string nombre = model.Nombre +  " " + model.ApellidoPaterno + " " + model.ApellidoMaterno;
+                
                 LinqDBDataContext db = new LinqDBDataContext();
                 CLIENTE c1 = new CLIENTE { RUT_CLI = model.UserName, NOMBRE_CLI = nombre, SEXO_CLIENTE = model.Sexo, CORREO_CLI = model.Email, TELEFONO_CLI = Convert.ToInt32(model.Telefono), TICKETS_RECIBIDOS = 0 };
-                //CUENTA_USUARIO u1 = new CUENTA_USUARIO {RUT_CLI = model.RUT, USERNAME = nombre, PASSWORD = model.Password };
-
-                db.CLIENTE.InsertOnSubmit(c1);
-                //db.CUENTA_USUARIO.InsertOnSubmit(u1);
-                db.SubmitChanges();
                 
+                db.CLIENTE.InsertOnSubmit(c1);
+                db.SubmitChanges();*/
+                model.RegistroCliente();
                 if (createStatus == MembershipCreateStatus.Success)
                 {
 
