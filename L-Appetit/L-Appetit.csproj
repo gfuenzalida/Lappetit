@@ -121,6 +121,7 @@
     <Content Include="Content\themes\base\jquery.ui.slider.css" />
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="img\about.jpg" />
     <Content Include="img\white_paperboard.jpg" />
     <Content Include="jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -644,6 +645,7 @@
     <Content Include="Views\Garzon\EditarPerfil.aspx" />
     <Content Include="Views\Garzon\EnviarInvitacionesGarzon.aspx" />
     <Content Include="Views\Garzon\HomeGarzon.aspx" />
+    <Content Include="Views\Home\UnauthorizedAccess.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -673,7 +675,9 @@
     <Content Include="Views\Shared\Error.aspx" />
     <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -5,8 +5,8 @@
 </asp:Content>
 
 <asp:Content ID="aboutContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>About</h2>
-    <p>
-        Put content here.
-    </p>
+    <h2>Acerca de</h2>
+    <div>
+        <img src="../../img/about.jpg" />
+    </div>
 </asp:Content>
