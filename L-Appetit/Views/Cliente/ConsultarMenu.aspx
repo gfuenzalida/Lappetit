@@ -8,7 +8,12 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
     <link href="../../Content/Cliente/ConsultarMenu.css" rel="stylesheet" type="text/css" />
     <link href="../../jquery-ui-1.9.1.custom/css/smoothness/jquery-ui-1.9.1.custom.css"
-        rel="stylesheet" type="text/css" />  
+        rel="stylesheet" type="text/css" />
+     <style type="text/css">
+     div.ui-datepicker{
+        font-size:11px;
+    }
+     </style>
   <% L_Appetit.Models.MenuModel modelo = ViewData.Model; %> 
     <script type="text/javascript">
         jQuery(function ($) {
@@ -108,8 +113,8 @@
          </div> 
         
     </div>
-    <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; width: 265px; height: 310px;">
-        <fieldset style="width:100%">
+    <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top;">
+        <fieldset>
             <legend>Fecha</legend>
             <div id="date-picker"></div>
             <legend>Horario</legend>
