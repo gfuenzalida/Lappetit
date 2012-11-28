@@ -93,4 +93,56 @@ namespace L_Appetit.Models
         }
 
     }
+
+    public class MesasModel
+    {
+        public List<Mesa> lista_mesas {get; set;}
+
+        public MesasModel()
+        {
+            lista_mesas = new List<Mesa>();
+        }
+
+        public void getMesas()
+        {
+            LinqDBDataContext db = new LinqDBDataContext();
+            var mesas = (from mesa in db.MESA
+                        select new
+                        {
+                            mesa.CODIGO_MESA,
+                            mesa.POS_X,
+                            mesa.POS_Y,
+                            mesa.CANT_MAXIMA
+                        }
+                        );
+
+            foreach (var una_mesa in mesas)
+            {
+                lista_mesas = new List<Mesa>();
+                Mesa _mesa = new Mesa();
+                _mesa.id_mesa = una_mesa.CODIGO_MESA;
+                _mesa.pos_x = una_mesa.POS_X.Value;
+                _mesa.pos_y = una_mesa.POS_Y.Value;
+                lista_mesas.Add(_mesa);
+            }
+        }
+    }
+    
+    public class Mesa
+    {
+        public decimal id_mesa { get; set; }
+        public int cant_maxima { get; set; }
+        public int pos_x { get; set; }
+        public int pos_y { get; set; }
+
+        void RegistrarMesa()
+        {
+            LinqDBDataContext db = new LinqDBDataContext();
+            MESA m1 = new MESA { POS_X = pos_x, POS_Y = pos_y, CANT_MAXIMA = (short)cant_maxima};
+            db.MESA.InsertOnSubmit(m1);
+            db.SubmitChanges();
+        }
+    }
+
+
 }

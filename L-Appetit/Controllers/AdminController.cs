@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using L_Appetit.Models;
 
 namespace L_Appetit.Controllers
 {
@@ -28,7 +29,17 @@ namespace L_Appetit.Controllers
 
         public ActionResult GestionarMesas()
         {
-            return View();
+            MesasModel mesas = new MesasModel();
+            try
+            {
+                mesas.getMesas();
+            }
+            catch (Exception e)
+            {
+
+            }
+            
+            return View(mesas);
         }
 
         public ActionResult EditarPerfilAdmin()

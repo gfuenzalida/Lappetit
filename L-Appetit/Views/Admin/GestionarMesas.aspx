@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<L_Appetit.Models.MesasModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Gestionar Mesas
@@ -9,12 +9,27 @@
 <style type="text/css">
 #div1 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
 </style>
+
+<% L_Appetit.Models.MesasModel modelo = ViewData.Model; %> 
+<script type="text/javascript">
+var lista_mesa = new Array();
+<% for (int i = 0; i < modelo.lista_mesas.Count; i++)
+   { %>
+   var _mesa = Mesa(<%:modelo.lista_mesas.ElementAt(i).id_mesa%>,
+                    <%:modelo.lista_mesas.ElementAt(i).pos_x%>,
+                    <%:modelo.lista_mesas.ElementAt(i).pos_y%>,
+                    <%:modelo.lista_mesas.ElementAt(i).cant_maxima%>);
+   lista_mesa[<%:i%>] = _mesa;
+<%}%>
+</script>
 <script type="text/javascript">
     function handleDropEvent(event, ui) {
         var draggable = ui.helper;
-        alert('The square with ID "' + draggable.attr('id') + '" was dropped onto me! at ('
+        if (confirm('¿Está seguro que desea agregar una mesa?')) {
+            alert('The square with ID "' + draggable.attr('id') + '" was dropped onto me! at ('
         + draggable.position().left + ',' + draggable.position().left + ')');
-        $('#mesas_container').append('<label class="item">Mesa</label>');
+            $('#mesas_container').append('<label class="item">Mesa</label>');
+        }
     }
 </script>
 
@@ -28,22 +43,6 @@
             snap: '#mesas_container',
 
             helper: 'clone',
-
-            // Find original position of dragged image.
-            start: function (event, ui) {
-
-                // Show start dragged position of image.
-                var Startpos = $(this).position();
-                $("div#start").text("START: \nLeft: " + Startpos.left + "\nTop: " + Startpos.top);
-            },
-
-            // Find position where image is dropped.
-            stop: function (event, ui) {
-
-                // Show dropped position.
-                var Stoppos = $(this).position();
-                $("div#stop").text("STOP: \nLeft: " + Stoppos.left + "\nTop: " + Stoppos.top);
-            }
         });
 
         $(".mesas_cont").droppable({
@@ -96,10 +95,13 @@
         </fieldset>
     </div>
 <div id="container">
-    <!--<label id="Label1" class="item">Mesa</label>-->
+    <% using (Html.BeginForm("GestionarMesas", "Admin", FormMethod.Post, new { @id = "form2" }))
+       { %>
+       <input type="hidden" name="id_mesa" />
+       <input type="hidden" name="x_mesa" />
+       <input type="hidden" name="y_mesa" />
+       <input type="hidden" name="max_mesa" />
+    <%} %>
 </div>
-
-<div id="start">Waiting for dragging the image get started...</div>
-<div id="stop">Waiting image getting dropped...</div>
 
 </asp:Content>
