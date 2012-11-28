@@ -6,11 +6,11 @@ using System.Web.Mvc;
 
 namespace L_Appetit.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class AdminController : Controller
     {
         //
         // GET: /Admin/
-
         public ActionResult ConsultarReservas()
         {
             return View();

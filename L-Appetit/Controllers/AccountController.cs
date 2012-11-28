@@ -46,12 +46,15 @@ namespace L_Appetit.Controllers
                     {
                         return RedirectToAction("VerPedidos", "Cocinero");
                     }
+                    else if (Roles.IsUserInRole(model.UserName, "Funcionario"))
+                    {
+                        return RedirectToAction("EnviarInvitacionFuncionario", "Funcionario");
+                    }
                     else if (Roles.IsUserInRole(model.UserName, "Garzón"))
                     {
                         return RedirectToAction("ConsultarReserva", "Garzon");
-                    }
-                    
-                    else
+                    }                   
+                    else // Si no tiene ningún Rol --> Fail
                     {
                         return RedirectToAction("Index", "Home");
                     }
@@ -73,7 +76,7 @@ namespace L_Appetit.Controllers
         {
             FormsAuthentication.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("LogOn", "Account");
         }
 
         //
@@ -98,20 +101,13 @@ namespace L_Appetit.Controllers
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
                 Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
-                /*string nombre = model.Nombre +  " " + model.ApellidoPaterno + " " + model.ApellidoMaterno;
-                
-                LinqDBDataContext db = new LinqDBDataContext();
-                CLIENTE c1 = new CLIENTE { RUT_CLI = model.UserName, NOMBRE_CLI = nombre, SEXO_CLIENTE = model.Sexo, CORREO_CLI = model.Email, TELEFONO_CLI = Convert.ToInt32(model.Telefono), TICKETS_RECIBIDOS = 0 };
-                
-                db.CLIENTE.InsertOnSubmit(c1);
-                db.SubmitChanges();*/
                 model.RegistroCliente();
                 if (createStatus == MembershipCreateStatus.Success)
                 {
 
                     FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
                     Roles.AddUserToRole(model.UserName, "Cliente");
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("ConsultarReserva", "Cliente");
                 }
                 else
                 {

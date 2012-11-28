@@ -25,8 +25,8 @@
             </div> 
             <div id="menucontainer">
                 <ul id="menu" style="top: auto; right: auto">
-                    <li><%: Html.ActionLink("Home", "Index", "Home")%></li>
-                    <li><%: Html.ActionLink("About", "About", "Home")%></li>
+                    <li><%: Html.ActionLink("Home", "LogOn", "Account")%></li>
+                    <li><%: Html.ActionLink("Acerca de", "About", "Home")%></li>
                 </ul>
             </div>
         </div>

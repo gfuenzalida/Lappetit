@@ -6,6 +6,7 @@ using System.Web.Mvc;
 
 namespace L_Appetit.Controllers
 {
+    [Authorize(Roles = "Garzón")]
     public class GarzonController : Controller
     {
         //

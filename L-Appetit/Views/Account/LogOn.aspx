@@ -4,7 +4,14 @@
 
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        if (!Page.IsPostBack)
+        {
+            if (/*!Request.IsAuthenticated &&*/ !string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
+            {
+                // This is an unauthorized, authenticated request...
+                Response.Redirect("~/Home/UnauthorizedAccess");
+            }
+        }
     }
 </script>
 <asp:Content ID="loginTitle" ContentPlaceHolderID="TitleContent" runat="server">
@@ -54,24 +61,8 @@
                 <div class="editor-label">
                     <%: Html.CheckBoxFor(m => m.RememberMe) %>
                     <%: Html.LabelFor(m => m.RememberMe) %>
-                    
-                    
-                    
                 </div>
-                <div style="width: 179px">
-                <br>
-                <asp:Label ID="Label1" runat="server" Text="Tipo de Usuario"></asp:Label>
-                <select id="Select2">
-                    
-                    <option>Cliente</option>
-                    <option>Alumno Hoteleria</option>
-                    <option>Alumno Gastronomia</option>
-                    <option>Administrador</option>
-                    <option>Funcionario</option>
-                </select>
-                </div>
-                
-                
+                <br />
                     <input type="submit" value="Iniciar Sesion" />
                 
             </fieldset>
