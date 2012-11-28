@@ -6,6 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-<h2>Hacer Reserva</h2>
+    <h2>Hacer Reserva</h2>
+    
 
 </asp:Content>
