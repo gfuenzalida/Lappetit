@@ -23,6 +23,12 @@ namespace L_Appetit.Models
         public string ApellidoMaterno { get; set; }
 
         [Required]
+        [StringLength(100, ErrorMessage = "La contraseña debe tener mínimo 6 caracteres.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Contraseña")]
+        public string Password { get; set; }
+
+        [Required]
         [Display(Name = "Sexo")]
         public bool Sexo { get; set; }
 
@@ -82,14 +88,44 @@ namespace L_Appetit.Models
         [RegularExpression("^[1-9]+[0-9]{6,9}", ErrorMessage = "Telefono mal ingresado.")]
         public string Telefono { get; set; }
 
-        public void RegistroCliente()
+
+        /* 0 = Hoteleria;
+         * 1 = Gastronomía;
+         * 2 = Funcionario;
+         * 3 = Administrador;
+         */
+        public void Registro(int tipo)
         {
             string nombre = this.Nombre + " " + this.ApellidoPaterno + " " + this.ApellidoMaterno;
             LinqDBDataContext db = new LinqDBDataContext();
-            CLIENTE c1 = new CLIENTE { RUT_CLI = this.UserName, NOMBRE_CLI = nombre, SEXO_CLIENTE = this.Sexo, CORREO_CLI = this.Email, TELEFONO_CLI = Convert.ToInt32(this.Telefono), TICKETS_RECIBIDOS = 0 };
-
-            db.CLIENTE.InsertOnSubmit(c1);
-            db.SubmitChanges();
+            if (tipo == 0)
+            {
+                CONTACTO C = new CONTACTO { RUT_CONTACTO = this.UserName, NOMBRE_CONTACTO = nombre, SEXO_CONTACTO = this.Sexo, CODIGO_CARRERA = 1, CORREO_CONTACTO = this.Email, FONO_CONTACTO = Convert.ToInt32(this.Telefono), CANT_TICKETS = 30};
+                db.CONTACTO.InsertOnSubmit(C);
+                db.SubmitChanges();
+            }
+            else if (tipo == 1)
+            {
+                CONTACTO C = new CONTACTO { RUT_CONTACTO = this.UserName, NOMBRE_CONTACTO = nombre, SEXO_CONTACTO = this.Sexo, CODIGO_CARRERA = 2, CORREO_CONTACTO = this.Email, FONO_CONTACTO = Convert.ToInt32(this.Telefono), CANT_TICKETS = 30 };
+                db.CONTACTO.InsertOnSubmit(C);
+                db.SubmitChanges();
+            }
+            else if (tipo == 2)
+            {
+                CONTACTO C = new CONTACTO { RUT_CONTACTO = this.UserName, NOMBRE_CONTACTO = nombre, SEXO_CONTACTO = this.Sexo, CORREO_CONTACTO = this.Email, FONO_CONTACTO = Convert.ToInt32(this.Telefono), CANT_TICKETS = 30 };
+                db.CONTACTO.InsertOnSubmit(C);
+                db.SubmitChanges();
+            }
+            else if (tipo == 3)
+            {
+                // Debería ingresar un administrador al sistema, pero esto solamente serviría para almacenar información de contacto
+            }
+            else
+            {
+                // Si no es ni 0, 1, 2, 3 Fail!
+            }
+            
+            
         }
 
     }

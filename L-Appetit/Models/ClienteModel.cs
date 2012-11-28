@@ -59,7 +59,6 @@ namespace L_Appetit.Models
             ListaPostre = new List<string>();
             ListaBebestible = new List<string>();
 
-            //bool horario = false;
             LinqDBDataContext db = new LinqDBDataContext();
 
             var menu = (from item in db.ITEM
@@ -109,11 +108,6 @@ namespace L_Appetit.Models
                     ListaBebestible.Add(item.NOMBRE_ITEM);
                 }
             }
-
-            //ListaEntrada.Sort();
-            //ListaFondo.Sort();
-            //ListaPostre.Sort();
-            //ListaBebestible.Sort();
         }
     }
     // Modelo correspondiente a la Vista ConsultarReserva
@@ -212,13 +206,4 @@ namespace L_Appetit.Models
 
     }
 
-    public class EnviarInvitacionModel
-    {
-        String rut;
-
-        public void invitar(String rut)
-        {
-            
-        }
-    }
 }

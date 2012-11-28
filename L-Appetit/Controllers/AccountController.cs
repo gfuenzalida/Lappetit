@@ -16,6 +16,41 @@ namespace L_Appetit.Controllers
         // GET: /Account/LogOn
         public ActionResult LogOn()
         {
+            if (/*!Request.IsAuthenticated &&*/ !string.IsNullOrEmpty(Request.QueryString["ReturnUrl"]))
+            {
+                // This is an unauthorized, authenticated request...
+                Response.Redirect("~/Home/UnauthorizedAccess");
+            }
+
+            if (Request.IsAuthenticated)
+            {
+                if (Roles.IsUserInRole(User.Identity.Name, "Administrador"))
+                {
+                    return RedirectToAction("ConsultarReservas", "Admin");
+                }
+                else if (Roles.IsUserInRole(User.Identity.Name, "Cliente"))
+                {
+                    return RedirectToAction("ConsultarReserva", "Cliente");
+                }
+                else if (Roles.IsUserInRole(User.Identity.Name, "Cocinero"))
+                {
+                    return RedirectToAction("VerPedidos", "Cocinero");
+                }
+                else if (Roles.IsUserInRole(User.Identity.Name, "Funcionario"))
+                {
+                    return RedirectToAction("EnviarInvitacionFuncionario", "Funcionario");
+                }
+                else if (Roles.IsUserInRole(User.Identity.Name, "Garzón"))
+                {
+                    return RedirectToAction("ConsultarReserva", "Garzon");
+                }
+                else 
+                { 
+                // Fail
+                }
+            }
+            
+
             return View();
         }
         //
@@ -174,7 +209,7 @@ namespace L_Appetit.Controllers
         }
 
         #region Status Codes
-        private static string ErrorCodeToString(MembershipCreateStatus createStatus)
+        public static string ErrorCodeToString(MembershipCreateStatus createStatus)
         {
             // See http://go.microsoft.com/fwlink/?LinkID=177550 for
             // a full list of status codes.
