@@ -1,0 +1,10 @@
+﻿.menu_derecha
+{
+    display: inline-block;
+    vertical-align: top;
+    width: 190px;
+    margin-left: 2%;
+}
+
+.add_mesa{}
+.drop_mesa{}

@@ -373,8 +373,22 @@ text-shadow: 1px 1px #000;
 
 #mesas fieldset
 {
-    width: 600px !important;
-    height:500px !important;
+    width: 95%;
+    height:90%;
+}
+
+.mesas
+{
+    display: inline-block;
+    vertical-align: top;
+    width:  580px;
+    height: 400px;
+}
+
+.mesas_cont
+{
+    width: 100%;
+    height: 100%;    
 }
 
 .content label{/* para los labels dentro del contenido de las pestañas*/
