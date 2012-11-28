@@ -2,6 +2,11 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
     <link href="../../Content/Cocinero/AgregarMenu.css" rel="stylesheet" type="text/css" />
+    <style type="text/css">
+     div.ui-datepicker{
+        font-size:11px;
+    }
+     </style>
     <% L_Appetit.Models.AgregarMenuModel modelo = ViewData.Model; %> 
     
     <script type="text/javascript">
@@ -16,6 +21,8 @@
                     "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
                     dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                     dateFormat: "dd-mm-yy",
+                    monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+                    dateFormat: "dd-mm-yy",
                     onSelect: function (dateText, inst) {
                         var theForm = document.forms['form1'];
                         if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
@@ -23,7 +30,10 @@
                             theForm.submit();
                         }
                     }
-                }).datepicker("setDate", '<%: ViewBag.Fecha %>');
+                })
+                $("#date-picker").datepicker("setDate", '<%: ViewBag.Fecha %>');
+                $("#date-picker").datepicker("option", "changeMonth", true);
+                $("#date-picker").datepicker("option", "changeYear", true);
             });
         });
 
@@ -192,10 +202,10 @@
      </div>
      </fieldset>
 </div>
-<form id="form1" method="post" runat="server" style="display: inline-block">
-<% L_Appetit.Models.AgregarMenuModel modelo = ViewData.Model; %> 
-    <input type="hidden" name="__DATE" id="__DATE" value="" />
     <div style="display: inline-block; clip: rect(auto, auto, auto, auto); vertical-align: top; margin-left: 7%">
+    <form id="form1" method="post" runat="server">
+        <input type="hidden" name="__DATE" id="__DATE" value="" />
+    <% L_Appetit.Models.AgregarMenuModel modelo = ViewData.Model; %> 
         <fieldset style="width:100%">
             <legend>Fecha</legend>
             <div id="date-picker"></div>
@@ -207,7 +217,8 @@
                 )
             %>
         </fielset>
+        </form>
     </div>
-</form>
+
 
 </asp:Content>

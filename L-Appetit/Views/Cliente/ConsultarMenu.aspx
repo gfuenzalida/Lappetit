@@ -38,6 +38,7 @@
                 })
                 $("#date-picker").datepicker("setDate", '<%: ViewBag.Fecha %>');
                 $("#date-picker").datepicker("option", "changeMonth", true);
+                $("#date-picker").datepicker("option", "changeYear", true);
             });
         });
 
