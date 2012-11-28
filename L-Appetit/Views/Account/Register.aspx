@@ -45,7 +45,7 @@
                 </div>
 
                 <div class="editor-label">
-                    <%: Html.LabelFor(m => m.Generos) %>
+                    <%: Html.LabelFor(m => m.Generos,"Sexo") %>
                 </div>
                 <div class="editor-field">
                     <%= Html.DropDownListFor(
