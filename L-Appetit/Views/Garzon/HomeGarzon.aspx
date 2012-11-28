@@ -188,7 +188,7 @@
             <label for="tab-5">Pedido Actual</label>
             <div  class= "content">
                 <div style=" text-aling: center; width:100%">
-                    <textarea id="TextArea1" cols="8" rows="8" width="100%" disabled="disabled"></textarea>
+                    <!-- area para mostrar el pedido actual-->
                 </div>
             </div>
         </div>

@@ -33,7 +33,7 @@
             { %>
             <div style="width:100%" >
                 <div style="vertical-align: top; display:inline-block; width: 50%;">
-                    <div style="margin-bottom: 1px;">
+                    <div style="margin-bottom: 3px;">
                         <%= Html.LabelFor(m => m.tipo_item, "Tipo de ítem")%>
                     </div>
                     <div>
@@ -57,7 +57,7 @@
             
             <div style="width:100%">
                 <div style="vertical-align: top; display:inline-block; width: 50% ">
-                    <div style="margin-bottom:3px">
+                    <div style="margin-bottom:3px; margin-top: 3px">
                         <%= Html.LabelFor(m => m.descripcion_item, "Descripcion")%>
                     </div>
                     <div>

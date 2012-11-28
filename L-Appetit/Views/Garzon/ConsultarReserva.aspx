@@ -7,14 +7,14 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Consultar Reserva</h2>
-    <div style="vertical-align: top; display:inline-block; width:64%">
+    <div  ID="mesas" style="vertical-align: top; display:inline-block;">
         <fieldset>
             <legend>Mesas</legend>
         </fieldset>
     </div>
-    <div style="vertical-align: top; display:inline-block;width: 33%; margin-left: 2%">
-        <div>
-            <fieldset>
+    <div style="vertical-align: top; display:inline-block; width: 190px">
+        <div style="width: 190px">
+            <fieldset >
                 <legend>Buscar Mesa</legend>
                 <div style="height: 33%; margin-top: 7%">
                     <input id="Text1" type="text" />
@@ -27,11 +27,12 @@
                 </div>
             </fieldset>
         </div>
-        <div>
-            <fieldset>
+        <div >
+            <fieldset style="width: 190px">
                 <legend>Seleccionar Fecha</legend>
                 <div>
-                    <asp:Label ID="Label2" runat="server" Text="Seleccione Horario"></asp:Label>
+                   
+                    
                 </div>
                 <div>
                     <select id="Select1">

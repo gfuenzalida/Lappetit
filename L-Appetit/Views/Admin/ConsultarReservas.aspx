@@ -22,7 +22,13 @@
             <div class="tab">
                 <input type="radio" id="tab-1" name="tab-group-1" checked>
                 <label for="tab-1">Consulta Reserva por Mesa</label>
-                <div class="content"> el contenido de la pestaña 1 </div>
+                <div class="content">
+                    <div>
+                        <fieldset>
+                            <legend>Mesas</legend>
+                        </fieldset>
+                    </div>
+                </div>
             </div>
             <div class="tab">
                 <input type="radio" id="tab-2" name="tab-group-1">
