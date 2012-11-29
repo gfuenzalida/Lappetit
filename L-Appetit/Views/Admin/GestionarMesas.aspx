@@ -6,16 +6,17 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
     <link href="../../Content/Admin/GestionarMesas.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/GestionarMesas.js" type="text/javascript"></script>
 <style type="text/css">
 #div1 {width:350px;height:70px;padding:10px;border:1px solid #aaaaaa;}
 </style>
-
+    
 <% L_Appetit.Models.MesasModel modelo = ViewData.Model; %> 
 <script type="text/javascript">
 var lista_mesa = new Array();
 <% for (int i = 0; i < modelo.lista_mesas.Count; i++)
    { %>
-   var _mesa = Mesa(<%:modelo.lista_mesas.ElementAt(i).id_mesa%>,
+   var _mesa = new Mesa(<%:modelo.lista_mesas.ElementAt(i).id_mesa%>,
                     <%:modelo.lista_mesas.ElementAt(i).pos_x%>,
                     <%:modelo.lista_mesas.ElementAt(i).pos_y%>,
                     <%:modelo.lista_mesas.ElementAt(i).cant_maxima%>);

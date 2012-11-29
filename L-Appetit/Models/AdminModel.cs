@@ -159,6 +159,7 @@ namespace L_Appetit.Models
                 _mesa.id_mesa = una_mesa.CODIGO_MESA;
                 _mesa.pos_x = una_mesa.POS_X.Value;
                 _mesa.pos_y = una_mesa.POS_Y.Value;
+                _mesa.cant_maxima = una_mesa.CANT_MAXIMA.Value;
                 lista_mesas.Add(_mesa);
             }
         }
