@@ -16,8 +16,8 @@ namespace L_Appetit.Models
     {
         public DateTime fecha { get; set; }
 
-        [Display(Name="horario")] 
-        public bool horario {get; set;}
+        [Display(Name = "horario")]
+        public bool horario { get; set; }
 
         public IEnumerable<SelectListItem> Horarios
         {
@@ -59,12 +59,15 @@ namespace L_Appetit.Models
             ListaPostre = new List<string>();
             ListaBebestible = new List<string>();
 
+        }
+    }
+
     // Modelo correspondiente a la Vista ConsultarReserva
     public class ReservaModel
     {
         public String rut;
         public List<Reservalista> ListaReservas { get; set; }
-        
+
         public ReservaModel()
         {
             ListaReservas = new List<Reservalista>();
@@ -73,21 +76,21 @@ namespace L_Appetit.Models
         public void GetReservas(String rut)
         {
             this.rut = rut;
-            
-            
+
+
             LinqDBDataContext db = new LinqDBDataContext();
             Reservalista rl = new Reservalista();
             var reservas = from reserva in db.RESERVA
-                    where
-                      reserva.RUT_CLI == rut
-                    select new
-                    {
-                        reserva.FECHA,
-                        reserva.HORARIO,
-                        reserva.NUMERO_COMENSALES,
-                        reserva.OBSERVACIONES
-                    };
-            foreach (var r in reservas) 
+                            where
+                                reserva.RUT_CLI == rut
+                            select new
+                            {
+                                reserva.FECHA,
+                                reserva.HORARIO,
+                                reserva.NUMERO_COMENSALES,
+                                reserva.OBSERVACIONES
+                            };
+            foreach (var r in reservas)
             {
                 rl.fecha = r.FECHA;
                 rl.horario = r.HORARIO;
@@ -100,10 +103,10 @@ namespace L_Appetit.Models
 
     public class Reservalista
     {
-        public DateTime fecha {get;set;}
+        public DateTime fecha { get; set; }
         public Boolean horario { get; set; }
         public System.Nullable<short> comensales { get; set; }
-        public String observaciones { get; set; } 
+        public String observaciones { get; set; }
     }
     // Modelo correspondiente a la vista HacerReserva
     public class HacerReservaModel
@@ -113,7 +116,7 @@ namespace L_Appetit.Models
         public DateTime fecha;
         public Boolean horario;
         public Int16 comensales;
-        
+
         public void SetReserva(Int32 mesa, String rut, DateTime fecha, Boolean horario, Int16 comensales)
         {
             this.mesa = mesa;
@@ -121,7 +124,7 @@ namespace L_Appetit.Models
             this.fecha = fecha;
             this.horario = horario;
             this.comensales = comensales;
-            
+
             LinqDBDataContext db = new LinqDBDataContext();
 
             RESERVA iRESERVA = new RESERVA
@@ -139,11 +142,11 @@ namespace L_Appetit.Models
         {
 
             LinqDBDataContext db = new LinqDBDataContext();
-            
+
             var eliminaRESERVA =
             from reserva in db.RESERVA
             where
-              reserva.CODIGO_RESERVA == codigo_reserva
+                reserva.CODIGO_RESERVA == codigo_reserva
             select reserva;
             foreach (var del in eliminaRESERVA)
             {
@@ -154,5 +157,4 @@ namespace L_Appetit.Models
         }
 
     }
-
 }
