@@ -26,7 +26,6 @@
             </div> 
             <div id="menucontainer" align="right">
                 <ul id="menu" style="display: inline-block">
-                    <li><%: Html.ActionLink("Tomar Pedido", "HomeGarzon", "Garzon")%></li>
                     <li><%: Html.ActionLink("Consultar Reserva", "ConsultarReserva", "Garzon")%></li>
                     <li><%: Html.ActionLink("Enviar Invitaciones", "EnviarInvitacionesGarzon", "Garzon")%></li>
                     <li><%: Html.ActionLink("Editar Perfil", "EditarPerfil", "Garzon")%></li>

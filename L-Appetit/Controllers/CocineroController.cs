@@ -9,7 +9,7 @@ using System.Collections.Specialized;
 
 namespace L_Appetit.Controllers
 {
-    [Authorize(Roles = "Cliente")]
+    //[Authorize(Roles = "Cliente")]
     public class CocineroController : Controller
     {
         //
@@ -17,8 +17,32 @@ namespace L_Appetit.Controllers
 
         public ActionResult VerMenu()
         {
-            return View();
+            MenuModel modelo = new MenuModel();
+            DateTime fecha = DateTime.Now.Date;
+            modelo.GetItems(fecha, false);
+
+            //ViewData.Model = modelo;
+
+            ViewBag.Fecha = fecha.ToString("dd-MM-yyy");
+
+            return View(modelo);
         }
+
+        [HttpPost]
+        public ActionResult VerMenu(MenuModel modelo)
+        {
+            string date = Request.Form["__DATE"];
+            MenuModel new_model = new MenuModel();
+            ViewBag.Fecha = DateTime.Now.ToString("dd-MM-yyy");
+            if (date != null)
+            {
+                new_model.GetItems(DateTime.Parse(date), modelo.horario);//DateTime.Parse(date)
+                ViewBag.Fecha = new_model.fecha.ToString("dd-MM-yyy");
+            }
+
+            return View(new_model);
+        }
+
         public ActionResult VerPedidos()
         {
             return View();

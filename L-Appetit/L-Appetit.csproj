@@ -89,6 +89,7 @@
   <ItemGroup>
     <Content Include="Content\Admin\ConsultarHistorial.css" />
     <Content Include="Content\Admin\ConsultarReservas.css" />
+    <Content Include="Content\Admin\ConsultarUsuarios.css" />
     <Content Include="Content\Admin\GestionarUsuarios.css" />
     <Content Include="Content\Cocinero\AgregarMenu.css" />
     <Content Include="Content\Cliente\ConsultarMenu.css" />
@@ -625,6 +626,7 @@
     <Content Include="Views\Admin\Auditoria.aspx" />
     <Content Include="Views\Admin\ConsultarHistorial.aspx" />
     <Content Include="Views\Admin\ConsultarReservas.aspx" />
+    <Content Include="Views\Admin\ConsultarUsuario.aspx" />
     <Content Include="Views\Admin\EditarPerfilAdmin.aspx" />
     <Content Include="Views\Admin\GestionarMesas.aspx" />
     <Content Include="Views\Admin\GestionarUsuarios.aspx" />
@@ -644,7 +646,7 @@
     <Content Include="Views\Garzon\ConsultarReserva.aspx" />
     <Content Include="Views\Garzon\EditarPerfil.aspx" />
     <Content Include="Views\Garzon\EnviarInvitacionesGarzon.aspx" />
-    <Content Include="Views\Garzon\HomeGarzon.aspx" />
+    <Content Include="Views\Garzon\TomarPedido.aspx" />
     <Content Include="Views\Home\UnauthorizedAccess.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

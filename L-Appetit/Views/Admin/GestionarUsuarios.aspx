@@ -324,6 +324,30 @@
                 </div>    
             </div>
         </div>
+        <div class="tab">
+            <input type="radio" id="tab-4" name="tab-group-1">
+            <label for="tab-4">Importar Alumnos</label>
+            <div class="content">
+                <div style="vertical-align: top; display:inline-block" >
+                    <fieldset>
+                        <legend>Importar desde Planilla</legend>
+                        <div style="text-align:justify">
+                            Usted como administrador puede importar los alumnos nuevos que ingresan cada semestre, desde un archivo del tipo Microsoft Excel.<br>
+                            Para esto tan solo debe seleccionar el archivo donde se encuentra la planilla que contiene los alumnos nuevos.
+                        </div>
+                    </fieldset>
+                </div>
+                <div style="vertical-align: top; display:inline-block">
+                    <fieldset>
+                        <legend>Seleccion de Archivo</legend>
+                        <div>
+                        <input id="File1" type="file" />
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            
+        </div>
    
     </div>
 </div>

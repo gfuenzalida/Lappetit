@@ -17,18 +17,24 @@
         Consultar Historial
         </div>
     </h2>
-<!--<h2>Consultar Historial</h2>-->
+
 <!------------------------------------------------------>
 <div style="width:70%; vertical-align: top; display:inline-block">
     <fieldset style="100%">
     <legend>Historiales</legend>
-    <div class="tabs">
+    <div class="tabs" ID="historiales">
         <div class="tab">
             <input type="radio" id="tab-1" name="tab-group-1" checked>
             <label for="tab-1">Consulta Historial Reservas</label>
             <div class="content">
                 <div class="informacion">
                     <!-----div para poner fecha y horario, ver prototipo----->
+                    <div>
+                        <asp:Label ID="Label1" runat="server" Text="Fecha:"></asp:Label>
+                    </div>
+                    <div>
+                        <asp:Label ID="Label2" runat="server" Text="Horario:"></asp:Label>
+                    </div>
                 </div>
                 <div style="width:100%">
                     <table style="width: 100%;">
@@ -56,7 +62,13 @@
             <label for="tab-2">Consulta Historial Pedidos</label>
             <div class="content">
                 <div class="informacion">
-                    <!-----div para poner fecha y horario, ver prototipo----->
+                    <!-----div para poner Nombre y RUN, ver prototipo----->
+                    <div>
+                        <asp:Label ID="Label3" runat="server" Text="Nombre:"></asp:Label>
+                    </div>
+                    <div>
+                        <asp:Label ID="Label4" runat="server" Text="RUN:"></asp:Label>
+                    </div>
                 </div>
                 <div style="width:100%">
                     <table style="width: 100%;">

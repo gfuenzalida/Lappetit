@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace L_Appetit.Controllers
 {
-    [Authorize(Roles = "Administrador")]
+    //[Authorize(Roles = "Administrador")]
     public class AdminController : Controller
     {
         //
@@ -42,6 +42,11 @@ namespace L_Appetit.Controllers
         }
 
         public ActionResult ResultAuditoria()
+        {
+            return View();
+        }
+
+        public ActionResult ConsultarUsuario()
         {
             return View();
         }

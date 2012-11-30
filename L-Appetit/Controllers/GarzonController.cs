@@ -6,13 +6,13 @@ using System.Web.Mvc;
 
 namespace L_Appetit.Controllers
 {
-    [Authorize(Roles = "Garzón")]
+    //[Authorize(Roles = "Garzón")]
     public class GarzonController : Controller
     {
         //
         // GET: /Garzon/
 
-        public ActionResult HomeGarzon()
+        public ActionResult TomarPedido()
         {
             return View();
         }
