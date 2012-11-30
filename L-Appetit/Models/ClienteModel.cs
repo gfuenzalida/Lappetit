@@ -11,6 +11,54 @@ using L_Appetit.Validations;
 
 namespace L_Appetit.Models
 {
+    // Modelo correspondiente a la Vista ConsultarMenu
+    public class MenuModel
+    {
+        public DateTime fecha { get; set; }
+
+        [Display(Name="horario")] 
+        public bool horario {get; set;}
+
+        public IEnumerable<SelectListItem> Horarios
+        {
+            get
+            {
+                IList<SelectListItem> horario_select = new List<SelectListItem>();// = new IEnumerable<SelectListItem>();
+                SelectListItem sli = new SelectListItem();
+                sli.Text = "Almuerzo";
+                sli.Value = "False";
+                horario_select.Add(sli);
+                sli = new SelectListItem();
+                sli.Text = "Cena";
+                sli.Value = "True";
+                horario_select.Add(sli);
+                return horario_select;
+            }
+        }
+
+        public List<string> ListaEntrada { get; set; }
+        public List<string> ListaFondo { get; set; }
+        public List<string> ListaBebestible { get; set; }
+        public List<string> ListaPostre { get; set; }
+
+        public MenuModel()
+        {
+            ListaBebestible = new List<string>();
+            ListaEntrada = new List<string>();
+            ListaFondo = new List<string>();
+            ListaPostre = new List<string>();
+
+            horario = false;
+        }
+
+        public void GetItems(DateTime fecha, bool horario)
+        {
+            this.fecha = fecha;
+            ListaEntrada = new List<string>();
+            ListaFondo = new List<string>();
+            ListaPostre = new List<string>();
+            ListaBebestible = new List<string>();
+
     // Modelo correspondiente a la Vista ConsultarReserva
     public class ReservaModel
     {
@@ -107,13 +155,4 @@ namespace L_Appetit.Models
 
     }
 
-    public class EnviarInvitacionModel
-    {
-        String rut;
-
-        public void invitar(String rut)
-        {
-            
-        }
-    }
 }
