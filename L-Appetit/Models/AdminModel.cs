@@ -141,6 +141,7 @@ namespace L_Appetit.Models
 
         public void getMesas()
         {
+            lista_mesas = new List<Mesa>();
             LinqDBDataContext db = new LinqDBDataContext();
             var mesas = (from mesa in db.MESA
                         select new
@@ -154,7 +155,6 @@ namespace L_Appetit.Models
 
             foreach (var una_mesa in mesas)
             {
-                lista_mesas = new List<Mesa>();
                 Mesa _mesa = new Mesa();
                 _mesa.id_mesa = una_mesa.CODIGO_MESA;
                 _mesa.pos_x = una_mesa.POS_X.Value;

@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<L_Appetit.Models.MesasModel>" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Gestionar Mesas
 </asp:Content>
@@ -12,28 +13,11 @@
 </style>
     
 <% L_Appetit.Models.MesasModel modelo = ViewData.Model; %> 
-<script type="text/javascript">
-var lista_mesa = new Array();
-<% for (int i = 0; i < modelo.lista_mesas.Count; i++)
-   { %>
-   var _mesa = new Mesa(<%:modelo.lista_mesas.ElementAt(i).id_mesa%>,
-                    <%:modelo.lista_mesas.ElementAt(i).pos_x%>,
-                    <%:modelo.lista_mesas.ElementAt(i).pos_y%>,
-                    <%:modelo.lista_mesas.ElementAt(i).cant_maxima%>);
-   lista_mesa[<%:i%>] = _mesa;
-<%}%>
-</script>
-<script type="text/javascript">
-    function handleDropEvent(event, ui) {
-        var draggable = ui.helper;
-        if (confirm('¿Está seguro que desea agregar una mesa?')) {
-            alert('The square with ID "' + draggable.attr('id') + '" was dropped onto me! at ('
-        + draggable.position().left + ',' + draggable.position().left + ')');
-            $('#mesas_container').append('<label class="item">Mesa</label>');
-        }
-    }
-</script>
 
+<script type="text/javascript">
+<% var serializer = new System.Web.Script.Serialization.JavaScriptSerializer(); %>
+var mesasArray = <%= serializer.Serialize(modelo.lista_mesas) %>;
+</script>
 
 <script type="text/javascript">
     jQuery(function ($) {
@@ -50,6 +34,38 @@ var lista_mesa = new Array();
             drop: handleDropEvent
         });
     });
+</script>
+
+<script type="text/javascript">
+    jQuery(function ($) {
+        var i = 0;
+        for (i = 0; i < mesasArray.length; i++) {
+            $('#mesas_container').append('<img id="mesa_' + mesasArray[i].id_mesa +
+            '" name="' + mesasArray[i].id_mesa + 'class="item" src="../../img/mesa-4.png" />');
+            $("#mesa_" + mesasArray[i].id_mesa).draggable({
+
+                containment: '#mesas_container',
+
+                snap: '#mesas_container'
+            });
+
+            $("#mesa_" + mesasArray[i].id_mesa).css({ "position": 'absolute', "left": mesasArray[i].pos_x, "top": mesasArray[i].pos_y });
+        }
+    });
+</script>
+
+<script type="text/javascript">
+    function handleDropEvent(event, ui) {
+        var draggable = ui.helper;
+        var id_dropped = ui.draggable.attr('id');
+        if (id_dropped == 'mesa-4')
+        {
+            if (confirm('¿Está seguro que desea agregar una mesa?')) {
+                alert('The square with ID "' + draggable.attr('id') + '" was dropped onto me! at ('
+            + draggable.offset().left + ',' + draggable.offset().top + ')');
+            }
+        }
+    }
 </script>
 
 <script type="text/javascript">
@@ -91,7 +107,7 @@ var lista_mesa = new Array();
     <div id="menu_der" class="menu_derecha">
         <fieldset>
             <legend>Opciones</legend>
-            <div id="add_mesa"><label id="Label2" class="item">Mesa</label></div>
+            <div id="add_mesa"><img id="mesa-4" alt="Mesa-4" class="item" src="../../img/mesa-4.png" /></div>
             <div id="drop_mesa"></div>
         </fieldset>
     </div>

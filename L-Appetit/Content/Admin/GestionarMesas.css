@@ -6,5 +6,10 @@
     margin-left: 2%;
 }
 
+.item
+{
+    background-image: '../img/mesa-4.png
+}
+
 .add_mesa{}
 .drop_mesa{}

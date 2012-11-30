@@ -124,6 +124,8 @@
     <Content Include="Content\themes\base\jquery.ui.tabs.css" />
     <Content Include="Content\themes\base\jquery.ui.theme.css" />
     <Content Include="img\about.jpg" />
+    <Content Include="img\mesa-4-ocupada.png" />
+    <Content Include="img\mesa-4.png" />
     <Content Include="img\white_paperboard.jpg" />
     <Content Include="jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />
