@@ -25,7 +25,7 @@
             <div id="logindisplay">
                 <% Html.RenderPartial("LogOnUserControl"); %>
             </div> 
-            <div id="menucontainer" align="right" style="margin-top: 8%">
+            <div id="menucontainer" align="right">
                 <ul id="menu" style="display: inline-block">
                     <li><%: Html.ActionLink("Auditoria", "ResultAuditoria", "Admin")%></li> 
                     <li><%: Html.ActionLink("Reservas", "ConsultarReservas", "Admin")%></li>
