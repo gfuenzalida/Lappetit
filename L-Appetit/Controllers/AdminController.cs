@@ -82,6 +82,71 @@ namespace L_Appetit.Controllers
             return View(mesas);
         }
 
+        [HttpPost]
+        public ActionResult GestionarMesas(MesasModel mesas)
+        {
+            string operacion = Request.Form["op"];
+            
+            if (operacion == "add")
+            {
+                string pos_x = Request.Form["x_mesa"];
+                string pos_y = Request.Form["y_mesa"];
+                string cant_max = Request.Form["max_mesa"];
+
+                Mesa new_mesa = new Mesa();
+
+                new_mesa.pos_x = Int16.Parse(pos_x);
+                new_mesa.pos_y = Int16.Parse(pos_y);
+                new_mesa.cant_maxima = Int16.Parse(cant_max);
+
+                try
+                {
+                    new_mesa.RegistrarMesa();
+                }
+                catch
+                {
+                    ViewBag.ERROR = "La operación no ha podido realizarse";
+                }
+
+            }
+            else if (operacion == "rm")
+            {
+                string id_mesa = Request.Form["id_mesa"];
+                string pos_x = Request.Form["x_mesa"];
+                string pos_y = Request.Form["y_mesa"];
+
+                Mesa _mesa = new Mesa();
+
+                _mesa.id_mesa = Int16.Parse(id_mesa);
+
+                try
+                {
+                    _mesa.UpdateMesa(Int16.Parse(pos_x),Int16.Parse(pos_x));
+                }
+                catch
+                {
+                    ViewBag.ERROR = "La operación no ha podido realizarse";
+                }
+
+            }
+            else if (operacion == "mv")
+            {
+
+            }
+
+
+            MesasModel _mesas = new MesasModel();
+            try
+            {
+                _mesas.getMesas();
+            }
+            catch (Exception e)
+            {
+
+            }
+            return View(_mesas);
+        }
+
         public ActionResult EditarPerfilAdmin()
         {
             return View();

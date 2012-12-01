@@ -172,11 +172,25 @@ namespace L_Appetit.Models
         public int pos_x { get; set; }
         public int pos_y { get; set; }
 
-        void RegistrarMesa()
+        public void RegistrarMesa()
         {
             LinqDBDataContext db = new LinqDBDataContext();
             MESA m1 = new MESA { POS_X = pos_x, POS_Y = pos_y, CANT_MAXIMA = (short)cant_maxima};
             db.MESA.InsertOnSubmit(m1);
+            db.SubmitChanges();
+        }
+
+        public void UpdateMesa(int pos_x, int pos_y)
+        {
+            this.pos_x = pos_x;
+            this.pos_y = pos_y;
+
+            LinqDBDataContext db = new LinqDBDataContext();
+            var mesa = (from m in db.MESA
+                        where m.CODIGO_MESA == this.id_mesa
+                        select m).Single();
+            mesa.POS_X = pos_x;
+            mesa.POS_Y = pos_y;
             db.SubmitChanges();
         }
     }
