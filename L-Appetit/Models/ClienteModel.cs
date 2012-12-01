@@ -112,23 +112,21 @@ namespace L_Appetit.Models
     }
 
     // Modelo correspondiente a la Vista ConsultarReserva
-    public class ReservaModel
+    public class ConsultarReservaModel
     {
         public String rut;
-        public List<Reservalista> ListaReservas { get; set; }
+        public List<Reserva> ListaReservas { get; set; }
 
-        public ReservaModel()
+        public ConsultarReservaModel()
         {
-            ListaReservas = new List<Reservalista>();
+            ListaReservas = new List<Reserva>();
         }
 
         public void GetReservas(String rut)
         {
             this.rut = rut;
-
-
+            ListaReservas = new List<Reserva>();
             LinqDBDataContext db = new LinqDBDataContext();
-            Reservalista rl = new Reservalista();
             var reservas = from reserva in db.RESERVA
                             where
                                 reserva.RUT_CLI == rut
@@ -141,6 +139,7 @@ namespace L_Appetit.Models
                             };
             foreach (var r in reservas)
             {
+                Reserva rl = new Reserva();
                 rl.fecha = r.FECHA;
                 rl.horario = r.HORARIO;
                 rl.comensales = r.NUMERO_COMENSALES;
@@ -150,21 +149,15 @@ namespace L_Appetit.Models
         }
     }
 
-    public class Reservalista
-    {
-        public DateTime fecha { get; set; }
-        public Boolean horario { get; set; }
-        public System.Nullable<short> comensales { get; set; }
-        public String observaciones { get; set; }
-    }
     // Modelo correspondiente a la vista HacerReserva
-    public class HacerReservaModel
+    public class Reserva
     {
         public Int32 mesa;
         public String rut;
         public DateTime fecha;
         public Boolean horario;
-        public Int16 comensales;
+        public System.Nullable<short> comensales;
+        public String observaciones { get; set; }
 
         public void SetReserva(Int32 mesa, String rut, DateTime fecha, Boolean horario, Int16 comensales)
         {
@@ -187,16 +180,17 @@ namespace L_Appetit.Models
             db.RESERVA.InsertOnSubmit(iRESERVA);
             db.SubmitChanges();
         }
+        
         public void DeleteReserva(Int32 codigo_reserva)
         {
 
             LinqDBDataContext db = new LinqDBDataContext();
 
-            var eliminaRESERVA =
-            from reserva in db.RESERVA
-            where
-                reserva.CODIGO_RESERVA == codigo_reserva
-            select reserva;
+            var eliminaRESERVA = (
+                                from reserva in db.RESERVA
+                                where
+                                    reserva.CODIGO_RESERVA == codigo_reserva
+                                select reserva);
             foreach (var del in eliminaRESERVA)
             {
                 db.RESERVA.DeleteOnSubmit(del);

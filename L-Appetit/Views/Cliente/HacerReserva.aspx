@@ -5,8 +5,6 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
-<link href="../../jquery-ui-1.9.1.custom/css/smoothness/jquery-ui-1.9.1.custom.css"
-        rel="stylesheet" type="text/css" />
     <link href="../../Content/Cliente/HacerReserva.css" rel="stylesheet" type="text/css" />
      <style type="text/css">
      div.ui-datepicker{
@@ -16,11 +14,13 @@
 
      <% L_Appetit.Models.MesasModel modelo = ViewData.Model; %>
 
+     <!-- Obtener Array de Mesas -->
      <script type="text/javascript">
     <% var serializer = new System.Web.Script.Serialization.JavaScriptSerializer(); %>
     var mesasArray = <%= serializer.Serialize(modelo.lista_mesas) %>;
     </script>
 
+    <!-- Disponer Mesas en contenedor -->
     <script type="text/javascript">
         jQuery(function ($) {
             var i = 0;
@@ -46,11 +46,16 @@
                     '" name="' + mesasArray[i].id_mesa + '-' + mesasArray[i].cant_maxima + '" class="item" src="../../img/mesa-6-ocupada.png" />');
                     }
                 }
-                $("#mesa_" + mesasArray[i].id_mesa).css({ "position": 'absolute', "left": mesasArray[i].pos_x, "top": mesasArray[i].pos_y });
+                $("#mesa_" + mesasArray[i].id_mesa).css({ "cursor": 'pointer', "position": 'absolute', "left": mesasArray[i].pos_x, "top": mesasArray[i].pos_y });
+                $("#mesa_" + mesasArray[i].id_mesa).bind("click", function () {
+                    $("#form_mesa_id").val(($(this).attr('id')).split('_')[1]);                            
+                
+                });
             }
         });
     </script>
 
+    <!-- Desplegar calendario en fecha correspondiente -->
     <script type="text/javascript">
         jQuery(function ($) {
             //all jQuery code which uses $ needs to be inside here
@@ -78,6 +83,7 @@
             });
         });
 
+        // Al cambiar de horario
         function horario_change() {
             var theForm = document.forms['form1'];
             if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
@@ -85,6 +91,32 @@
                 theForm.submit();
             }
         }
+
+        // Al clickear mesa
+        function open_dialog(id) {
+            $("#form_mesa_id").val(id);
+        }
+    </script>
+
+    <script type="text/javascript">
+        var triggers = $(".item").overlay({
+
+            // some mask tweaks suitable for modal dialogs
+            mask: {
+                color: '#ebecff',
+                loadSpeed: 200,
+                opacity: 0.9
+            },
+
+            closeOnClick: false
+        });
+
+        $("#prompt form").submit(function (e) {
+            // close the overlay
+            triggers.eq(1).overlay().close();
+
+            $('#')
+        });
     </script>
 
 </asp:Content>
@@ -128,12 +160,27 @@
             </fieldset>
         </div>
     </div>
+    <div id="prompt" class="modal">
+        <h2>Mesa: <label id="clicked_mesa"></label></h2>
+        <div>Numero de comensales: <select id="num_comen_select" name="num_comen">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select></div>
+        <div>Observación: <textarea id="text_obs" cols="5" rows="3" name="obs"></textarea></div>
+        <button type="submit"> OK </button>
+        <button type="button" class="close"> Cancel </button>
+    </div>
     <div id="container">
         <input type="hidden" id="form_op" name="op" />
         <input type="hidden" id="form_mesa_id" name="id_mesa" />
-        <input type="hidden" id="form_num_comen" name="num_comen" />
-        <input type="hidden" id="form_mesa_max" name="max_mesa" />
+        <!--<input type="hidden" id="form_num_comen" name="num_comen" />-->
+        <!--<input type="hidden" id="form_obs" name="obs" />-->
         <input type="hidden" id="__DATE" name="__DATE" value="" />
     </div>
+    
     <%} %>
 </asp:Content>
