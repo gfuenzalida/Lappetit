@@ -65,7 +65,10 @@ namespace L_Appetit.Controllers
             {
                 ViewBag.Error = true;
             }
-            return View(modelo);
+            
+            AgregarItemModel _modelo = new AgregarItemModel();
+            
+            return View(_modelo);
         }
 
         public ActionResult EnviarInvitaciones()

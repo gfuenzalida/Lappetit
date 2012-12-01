@@ -92,6 +92,7 @@
     <Content Include="Content\Admin\ConsultarReservas.css" />
     <Content Include="Content\Admin\GestionarMesas.css" />
     <Content Include="Content\Admin\GestionarUsuarios.css" />
+    <Content Include="Content\Cliente\HacerReserva.css" />
     <Content Include="Content\Cocinero\AgregarMenu.css" />
     <Content Include="Content\Cliente\ConsultarMenu.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
@@ -126,6 +127,8 @@
     <Content Include="img\about.jpg" />
     <Content Include="img\mesa-4-ocupada.png" />
     <Content Include="img\mesa-4.png" />
+    <Content Include="img\mesa-6-ocupada.png" />
+    <Content Include="img\mesa-6.png" />
     <Content Include="img\white_paperboard.jpg" />
     <Content Include="jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="jquery-ui-1.9.1.custom\css\smoothness\images\ui-bg_flat_75_ffffff_40x100.png" />

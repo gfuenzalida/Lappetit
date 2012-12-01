@@ -7,8 +7,6 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
     <link href="../../Content/Cliente/ConsultarMenu.css" rel="stylesheet" type="text/css" />
-    <link href="../../jquery-ui-1.9.1.custom/css/smoothness/jquery-ui-1.9.1.custom.css"
-        rel="stylesheet" type="text/css" />
      <style type="text/css">
      div.ui-datepicker{
         font-size:11px;

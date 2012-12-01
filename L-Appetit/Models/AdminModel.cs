@@ -136,6 +136,26 @@ namespace L_Appetit.Models
     {
         public DateTime fecha { get; set; }
 
+        [Display(Name = "horario")]
+        public bool horario { get; set; }
+
+        public IEnumerable<SelectListItem> Horarios
+        {
+            get
+            {
+                IList<SelectListItem> horario_select = new List<SelectListItem>();// = new IEnumerable<SelectListItem>();
+                SelectListItem sli = new SelectListItem();
+                sli.Text = "Almuerzo";
+                sli.Value = "False";
+                horario_select.Add(sli);
+                sli = new SelectListItem();
+                sli.Text = "Cena";
+                sli.Value = "True";
+                horario_select.Add(sli);
+                return horario_select;
+            }
+        }
+
         public List<Mesa> lista_mesas {get; set;}
 
         public MesasModel()
@@ -168,16 +188,20 @@ namespace L_Appetit.Models
             }
         }
 
-        public void getMesasReserva()
+        public void getMesasReserva(DateTime fecha, bool horario)
         {
+            this.fecha = fecha;
             lista_mesas = new List<Mesa>();
             LinqDBDataContext db = new LinqDBDataContext();
             var lines = (
                         from m in db.MESA
-                        from r in db.RESERVA.Where(r=>r.CODIGO_MESA == m.CODIGO_MESA).DefaultIfEmpty()
+                        from r in db.RESERVA.Where(r=>r.CODIGO_MESA == m.CODIGO_MESA && 
+                            r.FECHA == fecha && 
+                            r.HORARIO == horario)
+                            .DefaultIfEmpty()
                         select new
                         {
-                            r.CODIGO_RESERVA,
+                            id_reserva = r.CODIGO_RESERVA == null ? 0 : r.CODIGO_RESERVA,
                             m.CODIGO_MESA,
                             m.POS_X,
                             m.POS_Y,
@@ -187,7 +211,7 @@ namespace L_Appetit.Models
             foreach (var una_mesa in lines)
             {
                 Mesa _mesa = new Mesa();
-                _mesa.id_reserva = una_mesa.CODIGO_RESERVA;
+                _mesa.id_reserva = una_mesa.id_reserva;
                 _mesa.id_mesa = una_mesa.CODIGO_MESA;
                 _mesa.pos_x = una_mesa.POS_X.Value;
                 _mesa.pos_y = una_mesa.POS_Y.Value;
