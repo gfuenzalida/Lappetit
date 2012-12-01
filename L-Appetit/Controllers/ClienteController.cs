@@ -65,16 +65,34 @@ namespace L_Appetit.Controllers
             return View();
         }
 
+        [HttpGet]
         public ActionResult HacerReserva()
         {
+            DateTime fecha = DateTime.Now.Date;
+            MesasModel modelo = new MesasModel();
+            modelo.getMesasReserva(fecha, false);
+
+            ViewBag.Fecha = fecha.ToString("dd-MM-yyy");
+                        
             
-            return View();
+            return View(modelo);
         }
         
         [HttpPost]
-        public ActionResult HacerReserva(string nada)
+        public ActionResult HacerReserva(MesasModel modelo)
         {
-            return View();
+            string date = Request.Form["__DATE"];
+
+            MesasModel _modelo = new MesasModel();
+
+            ViewBag.Fecha = DateTime.Now.ToString("dd-MM-yyy");
+            if (date != null)
+            {
+                _modelo.getMesasReserva(DateTime.Parse(date), modelo.horario);//DateTime.Parse(date)
+                ViewBag.Fecha = _modelo.fecha.ToString("dd-MM-yyy");
+            }
+
+            return View(_modelo);
         }
 
 

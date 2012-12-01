@@ -25,9 +25,9 @@ var mesasArray = <%= serializer.Serialize(modelo.lista_mesas) %>;
             
             containment: 'document',
 
-            snap: '#mesas_container',
+            //snap: '#mesas_container',
 
-            helper: 'clone',
+            helper: 'clone'
         });
 
         $(".mesas_cont").droppable({
@@ -41,12 +41,40 @@ var mesasArray = <%= serializer.Serialize(modelo.lista_mesas) %>;
         var i = 0;
         for (i = 0; i < mesasArray.length; i++) {
             $('#mesas_container').append('<img id="mesa_' + mesasArray[i].id_mesa +
-            '" name="' + mesasArray[i].id_mesa + 'class="item" src="../../img/mesa-4.png" />');
+            '" name="' + mesasArray[i].id_mesa + '-' + mesasArray[i].cant_maxima + '" class="item" src="../../img/mesa-4.png" />');
             $("#mesa_" + mesasArray[i].id_mesa).draggable({
 
                 containment: '#mesas_container',
 
-                snap: '#mesas_container'
+                start: function (event, ui) {
+                    $(this).data("startPosition", $(this).offset());
+                },
+
+                stop: function (event, ui) {
+                    var draggable = ui.helper;
+                    var id_dropped = draggable.attr('name').split('-')[0];
+                    var cant_max = draggable.attr('name').split('-')[1];
+                    alert(id_dropped + ',' + cant_max);
+                    Startpos = $(this).data("startPosition");
+                    alert(Startpos.left+','+Startpos.top);
+                    if (entreMesas(id_dropped, Math.floor(draggable.offset().left), Math.floor(draggable.offset().top), cant_max)) {
+                        if (confirm('¿Está seguro que desea mover de posición esta mesa?')) {
+                            $('#form_op').attr('value', 'mv');
+                            $('#form_mesa_x').attr('value', Math.floor(draggable.offset().left));
+                            $('#form_mesa_y').attr('value', Math.floor(draggable.offset().top));
+                            $('#form1').submit();
+                        }
+                        else {
+                            $(this).css({ "left": Math.floor(Startpos.left), "top": Math.floor(Startpos.top) });
+                        }
+                    }
+                    else {
+                        alert('No puede poner dos mesas en la misma posición');
+                        $(this).css({ "left": Math.floor(Startpos.left), "top": Math.floor(Startpos.top) });
+                    }
+                }
+
+                //snap: '#mesas_container'
             });
 
             $("#mesa_" + mesasArray[i].id_mesa).css({ "position": 'absolute', "left": mesasArray[i].pos_x, "top": mesasArray[i].pos_y });
@@ -58,29 +86,20 @@ var mesasArray = <%= serializer.Serialize(modelo.lista_mesas) %>;
     function handleDropEvent(event, ui) {
         var draggable = ui.helper;
         var id_dropped = ui.draggable.attr('id');
-        if (id_dropped == 'mesa-4')
-        {
-            if (confirm('¿Está seguro que desea agregar una mesa?')) {
-                alert('The square with ID "' + draggable.attr('id') + '" was dropped onto me! at ('
-            + draggable.offset().left + ',' + draggable.offset().top + ')');
+        if (id_dropped == 'mesa-4' || id_dropped == 'mesa-6') {
+            if ( entreMesas('',Math.floor(draggable.offset().left), Math.floor(draggable.offset().top), id_dropped.split('-')[1] ) ) {
+                if (confirm('¿Está seguro que desea agregar una mesa?')) {
+                    $('#form_op').attr('value', 'add');
+                    $('#form_mesa_x').attr('value', Math.floor(draggable.offset().left));
+                    $('#form_mesa_y').attr('value', Math.floor(draggable.offset().top));
+                    $('#form_mesa_max').attr('value', '4');
+                    $('#form1').submit();
+                }
+            }
+            else {
+                alert('No puede poner dos mesas en la misma posición');
             }
         }
-    }
-</script>
-
-<script type="text/javascript">
-    function allowDrop(ev) {
-        ev.preventDefault();
-    }
-
-    function drag(ev) {
-        ev.dataTransfer.setData("Text", ev.target.id);
-    }
-
-    function drop(ev) {
-        ev.preventDefault();
-        var data = ev.dataTransfer.getData("Text");
-        ev.target.appendChild(document.getElementById(data));
     }
 </script>
 
@@ -111,13 +130,15 @@ var mesasArray = <%= serializer.Serialize(modelo.lista_mesas) %>;
             <div id="drop_mesa"></div>
         </fieldset>
     </div>
+
 <div id="container">
-    <% using (Html.BeginForm("GestionarMesas", "Admin", FormMethod.Post, new { @id = "form2" }))
+    <% using (Html.BeginForm("GestionarMesas", "Admin", FormMethod.Post, new { @id = "form1" }))
        { %>
-       <input type="hidden" name="id_mesa" />
-       <input type="hidden" name="x_mesa" />
-       <input type="hidden" name="y_mesa" />
-       <input type="hidden" name="max_mesa" />
+       <input type="hidden" id="form_op" name="op" />
+       <input type="hidden" id="form_mesa_id" name="id_mesa" />
+       <input type="hidden" id="form_mesa_x" name="x_mesa" />
+       <input type="hidden" id="form_mesa_y" name="y_mesa" />
+       <input type="hidden" id="form_mesa_max" name="max_mesa" />
     <%} %>
 </div>
 
