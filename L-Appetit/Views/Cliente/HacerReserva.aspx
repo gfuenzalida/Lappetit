@@ -14,9 +14,12 @@
         Reservar
         </div>
     </h2>
-    <div ID="mesas" style="vertical-align: top; display:inline-block;">
+    <div  id= "mesas" class="mesas">
         <fieldset>
             <legend>Mesas</legend>
+            <div id="mesas_container" class="mesas_cont">
+                <!--div reservado para poner las mesas-->
+            </div>
         </fieldset>
     </div>
     <div style="vertical-align: top; display:inline-block; width: 190px">

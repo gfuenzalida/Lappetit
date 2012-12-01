@@ -59,6 +59,55 @@ namespace L_Appetit.Models
             ListaPostre = new List<string>();
             ListaBebestible = new List<string>();
 
+            LinqDBDataContext db = new LinqDBDataContext();
+
+            var menu = (from item in db.ITEM
+                        from menu_fecha in db.MENU_FECHA
+                        from tipo_item in db.TIPO_ITEM
+                        where
+                            menu_fecha.FECHA == fecha &&
+                            menu_fecha.HORARIO == horario &&
+                            item.CODIGO_ITEM == menu_fecha.CODIGO_ITEM &&
+                            tipo_item.CODIGO_TIPO_ITEM == item.CODIGO_TIPO_ITEM
+                        select new
+                        {
+                            tipo_item.NOMBRE_TIPO_ITEM,
+                            item.NOMBRE_ITEM
+                        }
+                        ).Union((
+                        from item in db.ITEM
+                        from tipo_item in db.TIPO_ITEM
+                        where
+                            tipo_item.CODIGO_TIPO_ITEM == 4 &&
+                            item.CODIGO_TIPO_ITEM == 4
+
+                        select new
+                        {
+                            tipo_item.NOMBRE_TIPO_ITEM,
+                            item.NOMBRE_ITEM
+                        }
+                        )
+                        );
+
+            foreach (var item in menu)
+            {
+                if (item.NOMBRE_TIPO_ITEM.Equals("Entrada"))
+                {
+                    ListaEntrada.Add(item.NOMBRE_ITEM);
+                }
+                else if (item.NOMBRE_TIPO_ITEM.Equals("Plato de Fondo"))
+                {
+                    ListaFondo.Add(item.NOMBRE_ITEM);
+                }
+                else if (item.NOMBRE_TIPO_ITEM.Equals("Postre"))
+                {
+                    ListaPostre.Add(item.NOMBRE_ITEM);
+                }
+                else if (item.NOMBRE_TIPO_ITEM.Equals("Bebestible"))
+                {
+                    ListaBebestible.Add(item.NOMBRE_ITEM);
+                }
+            }
         }
     }
 
@@ -158,8 +207,4 @@ namespace L_Appetit.Models
 
     }
 
-    public class MesasReserva
-    {
-        List<Mesa> lista_mesas;
-    }
 }

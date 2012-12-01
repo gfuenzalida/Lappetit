@@ -134,6 +134,8 @@ namespace L_Appetit.Models
 
     public class MesasModel
     {
+        public DateTime fecha { get; set; }
+
         public List<Mesa> lista_mesas {get; set;}
 
         public MesasModel()
