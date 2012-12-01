@@ -5,6 +5,8 @@ using System.Web;
 using System.ComponentModel.DataAnnotations;
 using L_Appetit.Validations;
 using System.Web.Mvc;
+using System.Data;
+using System.Data.SqlClient;
 
 namespace L_Appetit.Models
 {
@@ -163,10 +165,39 @@ namespace L_Appetit.Models
                 lista_mesas.Add(_mesa);
             }
         }
+
+        public void getMesasReserva()
+        {
+            lista_mesas = new List<Mesa>();
+            LinqDBDataContext db = new LinqDBDataContext();
+            var lines = (
+                        from m in db.MESA
+                        from r in db.RESERVA.Where(r=>r.CODIGO_MESA == m.CODIGO_MESA).DefaultIfEmpty()
+                        select new
+                        {
+                            r.CODIGO_RESERVA,
+                            m.CODIGO_MESA,
+                            m.POS_X,
+                            m.POS_Y,
+                            m.CANT_MAXIMA                            
+                        });
+
+            foreach (var una_mesa in lines)
+            {
+                Mesa _mesa = new Mesa();
+                _mesa.id_reserva = una_mesa.CODIGO_RESERVA;
+                _mesa.id_mesa = una_mesa.CODIGO_MESA;
+                _mesa.pos_x = una_mesa.POS_X.Value;
+                _mesa.pos_y = una_mesa.POS_Y.Value;
+                _mesa.cant_maxima = una_mesa.CANT_MAXIMA.Value;
+                lista_mesas.Add(_mesa);
+            }
+        }
     }
     
     public class Mesa
     {
+        public decimal id_reserva { get; set; }
         public decimal id_mesa { get; set; }
         public int cant_maxima { get; set; }
         public int pos_x { get; set; }

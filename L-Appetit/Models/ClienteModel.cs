@@ -157,4 +157,9 @@ namespace L_Appetit.Models
         }
 
     }
+
+    public class MesasReserva
+    {
+        List<Mesa> lista_mesas;
+    }
 }
