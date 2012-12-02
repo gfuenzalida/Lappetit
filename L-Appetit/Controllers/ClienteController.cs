@@ -19,7 +19,14 @@ namespace L_Appetit.Controllers
         public ActionResult ConsultarMenu()
         {
             MenuModel modelo = new MenuModel();
+            
             DateTime fecha = DateTime.Now.Date;
+
+            if (fecha.DayOfWeek == DayOfWeek.Saturday)
+                fecha = DateTime.Now.AddDays(2).Date;
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday)
+                fecha = DateTime.Now.AddDays(1).Date;
+
             modelo.GetItems(fecha,false);
 
             ViewBag.Fecha = fecha.ToString("dd-MM-yyy");
@@ -32,7 +39,14 @@ namespace L_Appetit.Controllers
         {
             string date = Request.Form["__DATE"];
             MenuModel new_model = new MenuModel();
-            ViewBag.Fecha = DateTime.Now.ToString("dd-MM-yyy");
+
+            DateTime fecha = DateTime.Now.Date;
+            if (fecha.DayOfWeek == DayOfWeek.Saturday)
+                fecha = DateTime.Now.AddDays(2).Date;
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday)
+                fecha = DateTime.Now.AddDays(1).Date;
+
+            ViewBag.Fecha = fecha.ToString("dd-MM-yyy");
             if (date != null)
             {
                 new_model.GetItems(DateTime.Parse(date), modelo.horario);//DateTime.Parse(date)

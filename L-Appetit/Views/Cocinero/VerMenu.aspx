@@ -28,7 +28,6 @@
                     dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                     monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
                     dateFormat: "dd-mm-yy",
-                    minDate: new Date,
                     onSelect: function (dateText, inst) {
                         var theForm = document.forms['form1'];
                         if (!theForm.onsubmit || (theForm.onsubmit() != false)) {

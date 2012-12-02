@@ -219,6 +219,11 @@ namespace L_Appetit.Models
                 lista_mesas.Add(_mesa);
             }
         }
+
+        public void getMesasPedido(DateTime fecha, bool horario)
+        {
+
+        }
     }
     
     public class Mesa
@@ -228,6 +233,10 @@ namespace L_Appetit.Models
         public int cant_maxima { get; set; }
         public int pos_x { get; set; }
         public int pos_y { get; set; }
+        public int num_comensales { get; set; }
+        public string nombre_cliente { get; set; }
+        public short estado { get; set; }
+        public string observacion { get; set; }
 
         public void RegistrarMesa()
         {

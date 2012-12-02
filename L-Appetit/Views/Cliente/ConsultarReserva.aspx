@@ -23,7 +23,9 @@
             <div>
                 <!-- OJO cambiar el boton-->
                 <br>
-                <input id="Button1" type="button" value="Hacer Reservas" />
+                <form id="Form1" method="get" action="HacerReserva">
+                <input id="Button1" type="submit" value="Reservar" />
+                </form>
             </div>
         </div>
         <div style=" width:80%;">
@@ -33,10 +35,12 @@
             ¡Consulte el menú y facilite la planificación de su reserva!
             </div>
             <div>
+            <br />
                 <!--Ojo cambiar el boton-->
-                <br>
-                <input id="Button2" type="button" value="Consultar Menu" />
-                <br>
+                <form id="Form2" method="get" action="ConsultarMenu">
+                <input id="Button2" type="submit" value="Consultar Menú"/>
+                </form>
+            <br />
             </div>
         </div>
     </div>

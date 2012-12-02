@@ -1,0 +1,60 @@
+﻿.menu_derecha
+{
+    display: inline-block;
+    vertical-align: top;
+    width: 190px;
+    margin-left: 2%;
+}
+
+.item
+{
+    background-image: '../img/mesa-4.png
+}
+
+.Popup {
+    display:none;    
+    position:fixed;    
+    _position:absolute; /* hack for internet explorer 6 */   
+    background:#FFFFFF;    
+    border:2px solid #cecece;    
+    z-index:2;    
+    padding:12px;    
+    font-size:13px;
+  }
+ 
+  .Popup h2 {
+    background: 0 50% no-repeat;
+    margin:0px;
+    padding:10px 0 10px 45px;
+    border-bottom:1px solid #333;
+    font-size:20px;
+  }
+  
+  #bgPopup{  
+    display:none;   
+    position:fixed;    
+    _position:absolute; /* hack for internet explorer 6*/
+    height:100%;    
+    width:100%;    
+    top:0;    
+    left:0;    
+    background:#000000;     
+    z-index:1;
+}
+
+#popupClose{    
+    font-size:20px;    
+    line-height:20px;    
+    position:absolute;  
+    right:6px;    
+    top:4px;    
+    font-weight:700;   
+    display:block;    
+}  
+
+#text_obs
+{
+    width: 251px;
+    height: 81px;    
+}
+     
