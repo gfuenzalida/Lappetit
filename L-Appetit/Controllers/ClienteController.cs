@@ -19,7 +19,14 @@ namespace L_Appetit.Controllers
         public ActionResult ConsultarMenu()
         {
             MenuModel modelo = new MenuModel();
+            
             DateTime fecha = DateTime.Now.Date;
+
+            if (fecha.DayOfWeek == DayOfWeek.Saturday)
+                fecha = DateTime.Now.AddDays(2).Date;
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday)
+                fecha = DateTime.Now.AddDays(1).Date;
+
             modelo.GetItems(fecha,false);
 
             ViewBag.Fecha = fecha.ToString("dd-MM-yyy");
@@ -32,7 +39,14 @@ namespace L_Appetit.Controllers
         {
             string date = Request.Form["__DATE"];
             MenuModel new_model = new MenuModel();
-            ViewBag.Fecha = DateTime.Now.ToString("dd-MM-yyy");
+
+            DateTime fecha = DateTime.Now.Date;
+            if (fecha.DayOfWeek == DayOfWeek.Saturday)
+                fecha = DateTime.Now.AddDays(2).Date;
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday)
+                fecha = DateTime.Now.AddDays(1).Date;
+
+            ViewBag.Fecha = fecha.ToString("dd-MM-yyy");
             if (date != null)
             {
                 new_model.GetItems(DateTime.Parse(date), modelo.horario);//DateTime.Parse(date)
@@ -100,25 +114,41 @@ namespace L_Appetit.Controllers
             {
                 if (operacion == "mk")
                 {
-                    Int16 mesa_id = Int16.Parse(Request.Form["form_mesa_id"]);
-                    short num_comen = Int16.Parse(Request.Form["form_num_comen"]);
-                    string rut = User.Identity.Name;
-                    bool horario = modelo.horario;
-                    string obs = Request.Form["form_obs"];
-                    
-                    // Intentando agregar a DB
-                    LinqDBDataContext db = new LinqDBDataContext();
+                    // IDENTIFICAR SI LA FECHA ACTUAL ES POR LO MENOS 2 DÍAS ANTES DE LA RESERVA
+                    if (DateTime.Now.Date < DateTime.Parse(date).AddDays(-1).Date)
+                    {
+                        Int16 mesa_id = Int16.Parse(Request.Form["id_mesa"]);
+                        short num_comen = Int16.Parse(Request.Form["num_comen"]);
+                        string rut = User.Identity.Name;
+                        bool horario = modelo.horario;
+                        string obs = Request.Form["obs"];
 
-                    bool respuesta = (bool)db.MK_RESERVA(rut,
-                                                        mesa_id,
-                                                        DateTime.Parse(date),
-                                                        horario,
-                                                        num_comen,
-                                                        obs).ReturnValue;
-                    if (respuesta)
-                        ViewBag.RESP = "La reserva se ha realizado con éxito";
+                        // Intentando agregar a DB
+                        LinqDBDataContext db = new LinqDBDataContext();
+
+                        int respuesta = (Int32)db.MK_RESERVA(rut,
+                                                            mesa_id,
+                                                            DateTime.Parse(date),
+                                                            horario,
+                                                            num_comen,
+                                                            obs).ReturnValue;
+                        if (respuesta == 1)
+                            ViewBag.RESP = "La reserva se ha realizado con éxito";
+                        else if (respuesta == 0)
+                            ViewBag.RESP = "Ya existe una reserva hecha en dicha mesa";
+                        else if (respuesta == -1)
+                        {
+                            ViewBag.RESP = "No tienes invitaciones para realizar una reserva";
+                        }
+                        else
+                        {
+                            ViewBag.RESP = "Ha ocurrido un error desconocido :(";
+                        }
+                    }
                     else
-                        ViewBag.RESP = "Ya existe una reserva hecha en dicha mesa";
+                    {
+                        ViewBag.RESP = "Debe reservar por lo menos dos días antes de la fecha que desea reservar";
+                    }
                 }
                 
                 _modelo.getMesasReserva(DateTime.Parse(date), modelo.horario);//DateTime.Parse(date)

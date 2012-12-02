@@ -25,7 +25,7 @@
         jQuery(function ($) {
             var i = 0;
             for (i = 0; i < mesasArray.length; i++) {
-                
+
                 if (mesasArray[i].id_reserva == 0) {
                     if (mesasArray[i].cant_maxima == 4) {
                         $('#mesas_container').append('<img id="mesa_' + mesasArray[i].id_mesa +
@@ -46,11 +46,22 @@
                     '" name="' + mesasArray[i].id_mesa + '-' + mesasArray[i].cant_maxima + '" class="item" src="../../img/mesa-6-ocupada.png" />');
                     }
                 }
-                $("#mesa_" + mesasArray[i].id_mesa).css({ "cursor": 'pointer', "position": 'absolute', "left": mesasArray[i].pos_x, "top": mesasArray[i].pos_y });
-                $("#mesa_" + mesasArray[i].id_mesa).bind("click", function () {
-                    $("#form_mesa_id").val(($(this).attr('id')).split('_')[1]);                            
                 
-                });
+                $("#mesa_" + mesasArray[i].id_mesa).css({ "cursor": 'pointer', "position": 'absolute', "left": mesasArray[i].pos_x, "top": mesasArray[i].pos_y });
+                
+                if (mesasArray[i].id_reserva == 0) {
+                    $("#mesa_" + mesasArray[i].id_mesa).bind("click", function () {
+                        $("#form_mesa_id").val(($(this).attr('id')).split('_')[1]);
+                        $("#clicked_mesa").text(($(this).attr('id')).split('_')[1]);
+                        centerPopup();
+                        loadPopup();
+                    });
+                }
+                else {
+                    $("#mesa_" + mesasArray[i].id_mesa).bind("click", function () {
+                        alert('Esta mesa se encuentra reservada para esta ocasión');
+                    });
+                }
             }
         });
     </script>
@@ -69,6 +80,7 @@
                     dayNamesMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
                     monthNamesShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
                     dateFormat: "dd-mm-yy",
+                    minDate: new Date,
                     onSelect: function (dateText, inst) {
                         var theForm = document.forms['form1'];
                         if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
@@ -80,7 +92,34 @@
                 $("#date-picker").datepicker("setDate", '<%: ViewBag.Fecha %>');
                 $("#date-picker").datepicker("option", "changeMonth", true);
                 $("#date-picker").datepicker("option", "changeYear", true);
+
+                $("#bgPopup").data("state", 0);
+
+                $("#popupClose").click(function () {
+                    disablePopup();
+                });
+                $('#bgPopup').click(function (e) {
+                    disablePopup();
+                });
+                $('#cancel_button').click(function (e) {
+                    disablePopup();
+                });
+
+                $('#ok_button').click(function (e) {
+                    var theForm = document.forms['form1'];
+                    $('#form_op').val('mk');
+                    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                        document.getElementById("__DATE").value = "<%: ViewBag.Fecha %>";
+                        theForm.submit();
+                    }
+
+                });
             });
+        });
+
+        //Recenter the popup on resize - Thanks @Dan Harvey [http://www.danharvey.com.au/]  
+        $(window).resize(function () {
+            centerPopup();
         });
 
         // Al cambiar de horario
@@ -91,32 +130,44 @@
                 theForm.submit();
             }
         }
-
-        // Al clickear mesa
-        function open_dialog(id) {
-            $("#form_mesa_id").val(id);
-        }
     </script>
 
     <script type="text/javascript">
-        var triggers = $(".item").overlay({
+        function loadPopup() {
+            //loads popup only if it is disabled  
+            if ($("#bgPopup").data("state") == 0) {
+                $("#bgPopup").css({
+                    "opacity": "0.7"
+                });
+                $("#bgPopup").fadeIn("medium");
+                $(".Popup").fadeIn("medium");
+                $("#bgPopup").data("state", 1);
+            }
+        }
 
-            // some mask tweaks suitable for modal dialogs
-            mask: {
-                color: '#ebecff',
-                loadSpeed: 200,
-                opacity: 0.9
-            },
+        function disablePopup() {
+            if ($("#bgPopup").data("state") == 1) {
+                $("#bgPopup").fadeOut("medium");
+                $(".Popup").fadeOut("medium");
+                $("#bgPopup").data("state", 0);
+            }
+        }
 
-            closeOnClick: false
-        });
-
-        $("#prompt form").submit(function (e) {
-            // close the overlay
-            triggers.eq(1).overlay().close();
-
-            $('#')
-        });
+        function centerPopup() {
+            var winw = $(window).width();
+            var winh = $(window).height();
+            var popw = $('.Popup').width();
+            var poph = $('.Popup').height();
+            $(".Popup").css({
+                "position": "absolute",
+                "top": winh / 2 - poph / 2,
+                "left": winw / 2 - popw / 2
+            });
+            //IE6  
+            $("#bgPopup").css({
+                "height": winh
+            });
+        }
     </script>
 
 </asp:Content>
@@ -159,8 +210,12 @@
             %>
             </fieldset>
         </div>
+        <% if (ViewBag.RESP != null){%>
+               <%: ViewBag.RESP %>
+            <%}%>
     </div>
-    <div id="prompt" class="modal">
+    <div id="prompt" class="Popup">
+        <a id="popupClose">x</a> 
         <h2>Mesa: <label id="clicked_mesa"></label></h2>
         <div>Numero de comensales: <select id="num_comen_select" name="num_comen">
                                 <option value="1">1</option>
@@ -169,10 +224,13 @@
                                 <option value="4">4</option>
                                 <option value="5">5</option>
                                 <option value="6">6</option>
-                            </select></div>
-        <div>Observación: <textarea id="text_obs" cols="5" rows="3" name="obs"></textarea></div>
-        <button type="submit"> OK </button>
-        <button type="button" class="close"> Cancel </button>
+                            </select>
+        </div>
+        <div>Observación:</div> <textarea id="text_obs" cols="5" rows="3" name="obs"></textarea>
+        <div>
+            <button type="submit" id="ok_button"> OK </button>
+            <button type="button" id="cancel_button"> Cancel </button>
+        </div>
     </div>
     <div id="container">
         <input type="hidden" id="form_op" name="op" />
@@ -183,4 +241,6 @@
     </div>
     
     <%} %>
+
+    <div id="bgPopup"></div>
 </asp:Content>
