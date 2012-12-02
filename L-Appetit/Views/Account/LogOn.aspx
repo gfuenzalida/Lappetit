@@ -29,7 +29,7 @@
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
     <% using (Html.BeginForm()) { %>
-        <%: Html.ValidationSummary(true, "Login was unsuccessful. Please correct the errors and try again.") %>
+        
         <div style="margin-left: 3px; width: 268px; vertical-align: top; display:inline-block; height: 336px;">
             <fieldset>
                 <legend>Informacion de la Cuenta</legend>
@@ -54,10 +54,13 @@
                     <%: Html.CheckBoxFor(m => m.RememberMe) %>
                     <%: Html.LabelFor(m => m.RememberMe) %>
                 </div>
+                <div>
+                    <%: Html.ValidationSummary(true, "") %>        
+                </div> 
                 <br />
-                    <input type="submit" value="Iniciar Sesion" />
-                
+                    <input type="submit" value="Iniciar Sesion" />             
             </fieldset>
+
         </div>
     <% } %>
     </form>

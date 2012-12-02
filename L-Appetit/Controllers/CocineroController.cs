@@ -9,7 +9,7 @@ using System.Collections.Specialized;
 
 namespace L_Appetit.Controllers
 {
-    //[Authorize(Roles = "Cliente")]
+    [Authorize(Roles = "Cliente")]
     public class CocineroController : Controller
     {
         //

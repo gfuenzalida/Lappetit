@@ -7,7 +7,7 @@ using L_Appetit.Models;
 
 namespace L_Appetit.Controllers
 {
-    //[Authorize(Roles = "Garzón")]
+    [Authorize(Roles = "Garzón")]
     public class GarzonController : Controller
     {
         //
