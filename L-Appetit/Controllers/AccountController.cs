@@ -136,6 +136,9 @@ namespace L_Appetit.Controllers
                 // Attempt to register the user
                 MembershipCreateStatus createStatus;
                 Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+                MembershipUser tempUser = Membership.GetUser(model.UserName);
+                tempUser.Comment = model.Nombre;
+                Membership.UpdateUser(tempUser);
                 model.RegistroCliente();
                 if (createStatus == MembershipCreateStatus.Success)
                 {
