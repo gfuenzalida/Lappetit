@@ -10,11 +10,11 @@ namespace L_Appetit.Controllers
     [Authorize(Roles = "Garzón")]
     public class GarzonController : Controller
     {
-        //
-        // GET: /Garzon/
 
-        public ActionResult TomarPedido()
+        [HttpPost]
+        public ActionResult TomarPedido(string id_mesa, string label_garzon)
         {
+
             return View();
         }
 
@@ -28,7 +28,7 @@ namespace L_Appetit.Controllers
                 fecha = DateTime.Now.AddDays(1).Date;
 
             MesasModel modelo = new MesasModel();
-            modelo.getMesasReserva(fecha, false);
+            modelo.getMesasGarzon(fecha, false);
 
             ViewBag.Fecha = fecha.ToString("dd-MM-yyy");
 
@@ -53,7 +53,7 @@ namespace L_Appetit.Controllers
             if (date != null)
             {
 
-                _modelo.getMesasReserva(DateTime.Parse(date), modelo.horario);//DateTime.Parse(date)
+                _modelo.getMesasGarzon(DateTime.Parse(date), modelo.horario);//DateTime.Parse(date)
                 ViewBag.Fecha = _modelo.fecha.ToString("dd-MM-yyy");
             }
             return View(_modelo);

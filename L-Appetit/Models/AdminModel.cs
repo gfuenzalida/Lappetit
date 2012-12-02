@@ -220,9 +220,28 @@ namespace L_Appetit.Models
             }
         }
 
-        public void getMesasPedido(DateTime fecha, bool horario)
+        public void getMesasGarzon(DateTime fecha, bool horario)
         {
+            this.fecha = fecha;
+            lista_mesas = new List<Mesa>();
+            LinqDBDataContext db = new LinqDBDataContext();
+            var lines = db.MesasPedidoInfo(fecha,horario);
 
+            foreach (var una_mesa in lines)
+            {
+                Mesa _mesa = new Mesa();
+                _mesa.id_reserva = una_mesa.CODIGO_RESERVA.HasValue ? una_mesa.CODIGO_RESERVA.Value : 0;
+                _mesa.id_mesa = una_mesa.CODIGO_MESA;
+                _mesa.pos_x = una_mesa.POS_X.Value;
+                _mesa.pos_y = una_mesa.POS_Y.Value;
+                _mesa.cant_maxima = una_mesa.CANT_MAXIMA.Value;
+                _mesa.observacion = una_mesa.OBSERVACIONES;
+                _mesa.num_comensales = una_mesa.NUMERO_COMENSALES.HasValue ? una_mesa.NUMERO_COMENSALES.Value : 0;
+                _mesa.estado = una_mesa.ESTADO_PEDIDO.HasValue ? una_mesa.ESTADO_PEDIDO.Value : -1;
+                _mesa.nombre_cliente = String.IsNullOrEmpty(una_mesa.CLIENTE) ? "---" : una_mesa.CLIENTE;
+                _mesa.nombre_garzon = String.IsNullOrEmpty(una_mesa.GARZON) ? "---" : una_mesa.GARZON;
+                lista_mesas.Add(_mesa);
+            }
         }
     }
     
@@ -235,7 +254,8 @@ namespace L_Appetit.Models
         public int pos_y { get; set; }
         public int num_comensales { get; set; }
         public string nombre_cliente { get; set; }
-        public short estado { get; set; }
+        public string nombre_garzon { get; set; }
+        public int estado { get; set; }
         public string observacion { get; set; }
 
         public void RegistrarMesa()
