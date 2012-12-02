@@ -192,4 +192,18 @@
       <Column Name="" Member="Column1" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
+  <Function Name="dbo.MK_RESERVA" Method="MK_RESERVA">
+    <Parameter Name="RUT" Parameter="rUT" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="id_mesa" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="fecha" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="horario" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="num_com" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="obs" Type="System.String" DbType="Text" />
+    <ElementType Name="MK_RESERVAResult">
+      <Column Name="resource_type" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="request_mode" Type="System.String" DbType="NVarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="resource_description" Type="System.String" DbType="NVarChar(256) NOT NULL" CanBeNull="false" />
+      <Column Name="" Member="Column1" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
+    </ElementType>
+  </Function>
 </Database>

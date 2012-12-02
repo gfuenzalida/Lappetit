@@ -18,7 +18,14 @@ namespace L_Appetit.Controllers
         public ActionResult VerMenu()
         {
             MenuModel modelo = new MenuModel();
+            
             DateTime fecha = DateTime.Now.Date;
+
+            if (fecha.DayOfWeek == DayOfWeek.Saturday)
+                fecha = DateTime.Now.AddDays(2).Date;
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday)
+                fecha = DateTime.Now.AddDays(1).Date;
+
             modelo.GetItems(fecha, false);
 
             //ViewData.Model = modelo;
@@ -33,7 +40,15 @@ namespace L_Appetit.Controllers
         {
             string date = Request.Form["__DATE"];
             MenuModel new_model = new MenuModel();
-            ViewBag.Fecha = DateTime.Now.ToString("dd-MM-yyy");
+
+            DateTime fecha = DateTime.Now.Date;
+            if (fecha.DayOfWeek == DayOfWeek.Saturday)
+                fecha = DateTime.Now.AddDays(2).Date;
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday)
+                fecha = DateTime.Now.AddDays(1).Date;
+
+            ViewBag.Fecha = fecha.ToString("dd-MM-yyy");
+
             if (date != null)
             {
                 new_model.GetItems(DateTime.Parse(date), modelo.horario);//DateTime.Parse(date)
@@ -65,10 +80,10 @@ namespace L_Appetit.Controllers
             {
                 ViewBag.Error = true;
             }
+
+            ModelState.Clear();
             
-            AgregarItemModel _modelo = new AgregarItemModel();
-            
-            return View(_modelo);
+            return View(modelo);
         }
 
         public ActionResult EnviarInvitaciones()
@@ -79,7 +94,15 @@ namespace L_Appetit.Controllers
         public ActionResult AgregarMenu()
         {
             AgregarMenuModel modelo = new AgregarMenuModel();
+
             DateTime fecha = DateTime.Now.Date;
+
+            if (fecha.DayOfWeek == DayOfWeek.Saturday)
+                fecha = DateTime.Now.AddDays(2).Date;
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday)
+                fecha = DateTime.Now.AddDays(1).Date;
+
+            ViewBag.Fecha = fecha.ToString("dd-MM-yy");
 
             modelo.getListas();
             modelo.getMenu(fecha, false);
@@ -111,10 +134,17 @@ namespace L_Appetit.Controllers
                 }
             }
 
-
             AgregarMenuModel new_model = new AgregarMenuModel();
 
-            ViewBag.Fecha = DateTime.Now.ToString("dd-MM-yy");
+            DateTime fecha = DateTime.Now.Date;
+            
+            if (fecha.DayOfWeek == DayOfWeek.Saturday)
+                fecha = DateTime.Now.AddDays(2).Date;
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday)
+                fecha = DateTime.Now.AddDays(1).Date;
+
+            ViewBag.Fecha = fecha.ToString("dd-MM-yy");
+
             ViewBag.Horario = false.ToString();
 
             if (date != null)
