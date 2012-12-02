@@ -28,7 +28,7 @@ namespace L_Appetit.Validations
             split = run.Split('-');
 
             num = split[0];
-            ver = split[1];
+            ver = split[1].ToUpper();
 
             int rut = Convert.ToInt32(num);
 
@@ -49,11 +49,11 @@ namespace L_Appetit.Validations
             }
             Digito = 11 - (Acumulador % 11);
             RutDigito = Digito.ToString().Trim();
-            if (Digito == 10 )
+            if (Digito == 10)
             {
                 RutDigito = "K";
              }
-            if (Digito == 11)
+            else if (Digito == 11)
             {
                 RutDigito = "0";
             }            

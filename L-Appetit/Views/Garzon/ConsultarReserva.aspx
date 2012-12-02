@@ -36,11 +36,29 @@
                 }
 
                 $("#mesa_" + mesasArray[i].id_mesa).css({ "cursor": 'pointer', "position": 'absolute', "left": mesasArray[i].pos_x, "top": mesasArray[i].pos_y });
+                $("#mesa_" + mesasArray[i].id_mesa).data("id_mesa",mesasArray[i].id_mesa);
+                $("#mesa_" + mesasArray[i].id_mesa).data("id_reserva",mesasArray[i].id_reserva);
+                $("#mesa_" + mesasArray[i].id_mesa).data("cant_maxima",mesasArray[i].cant_maxima);
+                $("#mesa_" + mesasArray[i].id_mesa).data("num_comensales",mesasArray[i].num_comensales);
+                $("#mesa_" + mesasArray[i].id_mesa).data("cliente",mesasArray[i].nombre_cliente);
+                $("#mesa_" + mesasArray[i].id_mesa).data("garzon",mesasArray[i].nombre_garzon);
+                $("#mesa_" + mesasArray[i].id_mesa).data("estado",mesasArray[i].estado);
+                $("#mesa_" + mesasArray[i].id_mesa).data("observacion",mesasArray[i].observacion);
 
                 if (mesasArray[i].id_reserva != 0) {
                     $("#mesa_" + mesasArray[i].id_mesa).bind("click", function () {
-                        $("#form_mesa_id").val(($(this).attr('id')).split('_')[1]);
-                        $("#clicked_mesa").text(($(this).attr('id')).split('_')[1]);
+                        $("#form_mesa_id").val($(this).data("id_mesa"));
+                        $("#clicked_mesa").text($(this).data("id_mesa"));
+                        $("#label_num_com").text($(this).data("num_comensales"));
+                        $("#label_cliente").text($(this).data("cliente"));
+                        $("#label_garzon").text($(this).data("garzon"));
+                        if ($(this).data("estado") == -1)
+                            $("#label_estado").text('No atendido');
+                        else if ($(this).data("estado") == 0)
+                            $("#label_estado").text('Pendiente');
+                        else if ($(this).data("estado") == 1)
+                            $("#label_estado").text('Preparado');
+                        $("#text_obs").text($(this).data("observacion"));
                         centerPopup();
                         loadPopup();
                     });
@@ -94,12 +112,6 @@
                 });
 
                 $('#ok_button').click(function (e) {
-                    var theForm = document.forms['form1'];
-                    $('#form_op').val('mk');
-                    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
-                        document.getElementById("__DATE").value = "<%: ViewBag.Fecha %>";
-                        theForm.submit();
-                    }
 
                 });
             });
@@ -203,34 +215,30 @@
             <% if (ViewBag.RESP != null){%>
                    <%: ViewBag.RESP %>
                 <%}%>
-        </div>
+            <input type="hidden" id="__DATE" name="__DATE" value="" />
+        <%} %>
+    </div>
         <div id="prompt" class="Popup">
             <a id="popupClose">x</a> 
-            <h2>Mesa: <label id="clicked_mesa"></label></h2>
-            <div>Numero de comensales: <select id="num_comen_select" name="num_comen">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                </select>
-            </div>
-            <div>Observación:</div> <textarea id="text_obs" cols="5" rows="3" name="obs"></textarea>
-            <div>
-                <button type="submit" id="ok_button"> OK </button>
-                <button type="button" id="cancel_button"> Cancel </button>
-            </div>
+            <form id="form_pedido" method="post" action="TomarPedido">
+                <input type="hidden" id="form_mesa_id" name="id_mesa" />
+                <h2>Mesa: <label id="clicked_mesa"></label></h2>
+                <div>Numero de comensales: <label id="label_num_com" /></div>
+                <div>Reserva a: <label id="label_cliente" /></div>
+                <div>Atendido por: <label id="label_garzon" /></div>
+                <div>Estado: <label id="label_estado" /></div>
+                <div>Observación:</div> <textarea id="text_obs" disabled="disabled" cols="5" rows="3" name="obs"></textarea>
+                <div>
+                    <button type="submit" id="ok_button"> OK </button>
+                    <button type="button" id="cancel_button"> Cancel </button>
+                </div>
+            </form>
         </div>
         <div id="container">
-            <input type="hidden" id="form_op" name="op" />
-            <input type="hidden" id="form_mesa_id" name="id_mesa" />
+            <!--<input type="hidden" id="form_op" name="op" />-->
             <!--<input type="hidden" id="form_num_comen" name="num_comen" />-->
             <!--<input type="hidden" id="form_obs" name="obs" />-->
-            <input type="hidden" id="__DATE" name="__DATE" value="" />
         </div>
-    
-        <%} %>
 
         <div id="bgPopup"></div>
 </asp:Content>

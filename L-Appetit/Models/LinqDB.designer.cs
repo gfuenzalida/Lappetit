@@ -273,6 +273,13 @@ namespace L_Appetit.Models
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), rUT, id_mesa, fecha, horario, num_com, obs);
 			return ((ISingleResult<MK_RESERVAResult>)(result.ReturnValue));
 		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MesasPedidoInfo")]
+		public ISingleResult<MesasPedidoInfoResult> MesasPedidoInfo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> horario)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), fecha, horario);
+			return ((ISingleResult<MesasPedidoInfoResult>)(result.ReturnValue));
+		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AUDITORIA_TABLAS")]
@@ -4171,6 +4178,194 @@ namespace L_Appetit.Models
 				if ((this._Column1 != value))
 				{
 					this._Column1 = value;
+				}
+			}
+		}
+	}
+	
+	public partial class MesasPedidoInfoResult
+	{
+		
+		private System.Nullable<decimal> _CODIGO_RESERVA;
+		
+		private decimal _CODIGO_MESA;
+		
+		private System.Nullable<short> _CANT_MAXIMA;
+		
+		private System.Nullable<int> _POS_X;
+		
+		private System.Nullable<int> _POS_Y;
+		
+		private string _OBSERVACIONES;
+		
+		private System.Nullable<short> _NUMERO_COMENSALES;
+		
+		private System.Nullable<short> _ESTADO_PEDIDO;
+		
+		private string _GARZON;
+		
+		private string _CLIENTE;
+		
+		public MesasPedidoInfoResult()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_RESERVA", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> CODIGO_RESERVA
+		{
+			get
+			{
+				return this._CODIGO_RESERVA;
+			}
+			set
+			{
+				if ((this._CODIGO_RESERVA != value))
+				{
+					this._CODIGO_RESERVA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_MESA", DbType="Decimal(18,0) NOT NULL")]
+		public decimal CODIGO_MESA
+		{
+			get
+			{
+				return this._CODIGO_MESA;
+			}
+			set
+			{
+				if ((this._CODIGO_MESA != value))
+				{
+					this._CODIGO_MESA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CANT_MAXIMA", DbType="SmallInt")]
+		public System.Nullable<short> CANT_MAXIMA
+		{
+			get
+			{
+				return this._CANT_MAXIMA;
+			}
+			set
+			{
+				if ((this._CANT_MAXIMA != value))
+				{
+					this._CANT_MAXIMA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POS_X", DbType="Int")]
+		public System.Nullable<int> POS_X
+		{
+			get
+			{
+				return this._POS_X;
+			}
+			set
+			{
+				if ((this._POS_X != value))
+				{
+					this._POS_X = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_POS_Y", DbType="Int")]
+		public System.Nullable<int> POS_Y
+		{
+			get
+			{
+				return this._POS_Y;
+			}
+			set
+			{
+				if ((this._POS_Y != value))
+				{
+					this._POS_Y = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OBSERVACIONES", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string OBSERVACIONES
+		{
+			get
+			{
+				return this._OBSERVACIONES;
+			}
+			set
+			{
+				if ((this._OBSERVACIONES != value))
+				{
+					this._OBSERVACIONES = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NUMERO_COMENSALES", DbType="SmallInt")]
+		public System.Nullable<short> NUMERO_COMENSALES
+		{
+			get
+			{
+				return this._NUMERO_COMENSALES;
+			}
+			set
+			{
+				if ((this._NUMERO_COMENSALES != value))
+				{
+					this._NUMERO_COMENSALES = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ESTADO_PEDIDO", DbType="SmallInt")]
+		public System.Nullable<short> ESTADO_PEDIDO
+		{
+			get
+			{
+				return this._ESTADO_PEDIDO;
+			}
+			set
+			{
+				if ((this._ESTADO_PEDIDO != value))
+				{
+					this._ESTADO_PEDIDO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GARZON", DbType="VarChar(50)")]
+		public string GARZON
+		{
+			get
+			{
+				return this._GARZON;
+			}
+			set
+			{
+				if ((this._GARZON != value))
+				{
+					this._GARZON = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CLIENTE", DbType="VarChar(50)")]
+		public string CLIENTE
+		{
+			get
+			{
+				return this._CLIENTE;
+			}
+			set
+			{
+				if ((this._CLIENTE != value))
+				{
+					this._CLIENTE = value;
 				}
 			}
 		}
