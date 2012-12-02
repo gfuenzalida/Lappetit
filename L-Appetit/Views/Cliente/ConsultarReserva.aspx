@@ -13,9 +13,7 @@
         Consultar Reservas
         </div>
     </h2>
-<!--<h2>Consultar Reserva</h2>-->
-<!--<% L_Appetit.Models.ReservaModel modelo = ViewData.Model; %>
-<%: Html.Label(modelo.ListaReservas.Count.ToString()) %>-->
+
     <div style="vertical-align: top; display:inline-block; width:50%">
         <div style=" width:80%;">
             <div style="width:100%; text-align:justify">
