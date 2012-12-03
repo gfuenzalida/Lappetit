@@ -238,8 +238,9 @@ namespace L_Appetit.Models
                 _mesa.observacion = una_mesa.OBSERVACIONES;
                 _mesa.num_comensales = una_mesa.NUMERO_COMENSALES.HasValue ? una_mesa.NUMERO_COMENSALES.Value : 0;
                 _mesa.estado = una_mesa.ESTADO_PEDIDO.HasValue ? una_mesa.ESTADO_PEDIDO.Value : -1;
-                _mesa.nombre_cliente = String.IsNullOrEmpty(una_mesa.CLIENTE) ? "---" : una_mesa.CLIENTE;
-                _mesa.nombre_garzon = String.IsNullOrEmpty(una_mesa.GARZON) ? "---" : una_mesa.GARZON;
+                _mesa.nombre_cliente = String.IsNullOrEmpty(una_mesa.CLIENTE) ? "" : una_mesa.CLIENTE;
+                _mesa.nombre_garzon = String.IsNullOrEmpty(una_mesa.GARZON) ? "" : una_mesa.GARZON;
+                _mesa.rut_garzon = String.IsNullOrEmpty(una_mesa.RUT_GARZON) ? "" : una_mesa.RUT_GARZON;
                 lista_mesas.Add(_mesa);
             }
         }
@@ -255,6 +256,7 @@ namespace L_Appetit.Models
         public int num_comensales { get; set; }
         public string nombre_cliente { get; set; }
         public string nombre_garzon { get; set; }
+        public string rut_garzon { get; set; }
         public int estado { get; set; }
         public string observacion { get; set; }
 

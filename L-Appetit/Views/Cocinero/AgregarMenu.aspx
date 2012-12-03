@@ -45,10 +45,6 @@
                 theForm.submit();
             }
         }
-
-        function agregar_item(form) {
-            //var theForm = 
-        }
     </script>
 </asp:Content>
 
@@ -103,6 +99,7 @@
                         x => x.selected_cant,
                         new { @class = "input_cant" }
                     )%>
+                    <%: Html.ValidationMessageFor(m => m.selected_cant) %>
                     </div>
                     <div class="boton_agregar">
                         <input id="Submit1" type="submit" name="btn_submit" value="Agregar" />
@@ -139,6 +136,7 @@
                         x => x.selected_cant,
                         new { @class = "input_cant" }
                     )%>
+                    <%: Html.ValidationMessageFor(m => m.selected_cant) %>
                     </div>
                     <div class="boton_agregar">
                         <input id="Submit2" type="submit" name="btn_submit" value="Agregar" />
@@ -175,6 +173,7 @@
                         x => x.selected_cant,
                         new {@class = "input_cant"}
                     )%>
+                    <%: Html.ValidationMessageFor(m => m.selected_cant) %>
                     </div>
                     <div class="boton_agregar">
                         <input id="Submit3" type="submit" name="btn_submit" value="Agregar" />
@@ -190,7 +189,7 @@
             <input type="radio" id="tab5" name="tab-group-2" checked>
             <label for="tab-5">Menu Actual</label>
             <div class="content" style="overflow: scroll">
-                <div style="width:100%; heigth:90%">
+                <div style="width:100%; height:90%">
                     <% for (int i = 0; i < modelo.ListaMenu.Count; i++ )
                        {%>
                     <div id="<%: modelo.ListaMenu[i].Value %>">
@@ -217,8 +216,10 @@
                 new { @onchange = "horario_change()"}
                 )
             %>
+        <div><%: TempData["Resp"] %></div>
         </fielset>
         </form>
+        
     </div>
 
 

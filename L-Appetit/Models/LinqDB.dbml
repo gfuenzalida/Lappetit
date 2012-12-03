@@ -209,7 +209,7 @@
   <Function Name="dbo.MesasPedidoInfo" Method="MesasPedidoInfo">
     <Parameter Name="fecha" Type="System.DateTime" DbType="Date" />
     <Parameter Name="horario" Type="System.Boolean" DbType="Bit" />
-    <ElementType Name="MesasPedidoInfoResult">
+    <ElementType Name="MesasPedidoInfoResult1">
       <Column Name="CODIGO_RESERVA" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
       <Column Name="CODIGO_MESA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
       <Column Name="CANT_MAXIMA" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
@@ -219,7 +219,27 @@
       <Column Name="NUMERO_COMENSALES" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
       <Column Name="ESTADO_PEDIDO" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
       <Column Name="GARZON" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RUT_GARZON" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
       <Column Name="CLIENTE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
     </ElementType>
+  </Function>
+  <Function Name="dbo.CrearPedido" Method="CrearPedido">
+    <Parameter Name="id_reserva" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="rut_garzon" Type="System.String" DbType="VarChar(10)" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddItemMenu" Method="AddItemMenu">
+    <Parameter Name="cod_item" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="cant" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="fecha_" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="horario_" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.AddItemPedido" Method="AddItemPedido">
+    <Parameter Name="cod_item" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="cant" Type="System.Int16" DbType="SmallInt" />
+    <Parameter Name="cod_pedido" Type="System.Decimal" DbType="Decimal(18,0)" />
+    <Parameter Name="obs" Type="System.String" DbType="Text" />
+    <Return Type="System.Int32" />
   </Function>
 </Database>

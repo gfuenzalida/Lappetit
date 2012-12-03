@@ -18,7 +18,7 @@
         <div style="text-align:justify; ">
             <fieldset>
                 <legend>Atencion!!!</legend>
-                    Siga atentamente las especificaciones que le entrego su profesor antes de iniciar la actividad. Recuerde, su desempeño se esta evaluando como profesional ante comensales autenticos.
+                    Siga atentamente las especificaciones que le entregó su profesor antes de iniciar la actividad. Recuerde, su desempeño se está evaluando como profesional ante comensales auténticos.
             </fieldset>
 
         </div>

@@ -95,6 +95,7 @@
     <Content Include="Content\Cliente\HacerReserva.css" />
     <Content Include="Content\Cocinero\AgregarMenu.css" />
     <Content Include="Content\Cliente\ConsultarMenu.css" />
+    <Content Include="Content\Garzon\TomarPedido.css" />
     <Content Include="Content\Garzon\ConsultarReserva.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />

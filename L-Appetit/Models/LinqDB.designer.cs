@@ -275,10 +275,31 @@ namespace L_Appetit.Models
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MesasPedidoInfo")]
-		public ISingleResult<MesasPedidoInfoResult> MesasPedidoInfo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> horario)
+		public ISingleResult<MesasPedidoInfoResult1> MesasPedidoInfo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> horario)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), fecha, horario);
-			return ((ISingleResult<MesasPedidoInfoResult>)(result.ReturnValue));
+			return ((ISingleResult<MesasPedidoInfoResult1>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CrearPedido")]
+		public int CrearPedido([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(18,0)")] System.Nullable<decimal> id_reserva, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string rut_garzon)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), id_reserva, rut_garzon);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AddItemMenu")]
+		public int AddItemMenu([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(18,0)")] System.Nullable<decimal> cod_item, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="SmallInt")] System.Nullable<short> cant, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha_, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> horario_)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cod_item, cant, fecha_, horario_);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.AddItemPedido")]
+		public int AddItemPedido([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(18,0)")] System.Nullable<decimal> cod_item, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="SmallInt")] System.Nullable<short> cant, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(18,0)")] System.Nullable<decimal> cod_pedido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Text")] string obs)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cod_item, cant, cod_pedido, obs);
+			return ((int)(result.ReturnValue));
 		}
 	}
 	
@@ -4183,7 +4204,7 @@ namespace L_Appetit.Models
 		}
 	}
 	
-	public partial class MesasPedidoInfoResult
+	public partial class MesasPedidoInfoResult1
 	{
 		
 		private System.Nullable<decimal> _CODIGO_RESERVA;
@@ -4204,9 +4225,11 @@ namespace L_Appetit.Models
 		
 		private string _GARZON;
 		
+		private string _RUT_GARZON;
+		
 		private string _CLIENTE;
 		
-		public MesasPedidoInfoResult()
+		public MesasPedidoInfoResult1()
 		{
 		}
 		
@@ -4350,6 +4373,22 @@ namespace L_Appetit.Models
 				if ((this._GARZON != value))
 				{
 					this._GARZON = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RUT_GARZON", DbType="VarChar(10)")]
+		public string RUT_GARZON
+		{
+			get
+			{
+				return this._RUT_GARZON;
+			}
+			set
+			{
+				if ((this._RUT_GARZON != value))
+				{
+					this._RUT_GARZON = value;
 				}
 			}
 		}

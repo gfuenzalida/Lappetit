@@ -154,14 +154,36 @@ namespace L_Appetit.Controllers
 
                 if (btn_submit != null)
                 {
-                    LinqDBDataContext db = new LinqDBDataContext();
-                    db.CrearFecha(DateTime.Parse(date), _horario);
-                    new_model.setMenu(Int16.Parse(modelo.selected_item), short.Parse(modelo.selected_cant), DateTime.Parse(date), _horario);
-                }
+                    if (ModelState.IsValid)
+                    {
+                        LinqDBDataContext db = new LinqDBDataContext();
+                        db.CrearFecha(DateTime.Parse(date), _horario);
+                        int resp = new_model.setMenu(Int16.Parse(modelo.selected_item), short.Parse(modelo.selected_cant), DateTime.Parse(date), _horario);
 
-                new_model.getListas();//DateTime.Parse(date)
-                new_model.getMenu(DateTime.Parse(date), _horario);
+                        if (resp == 2)
+                        {
+                            TempData.Add("Resp", "El Menu se ha actualizado");
+                        }
+                        else if (resp == 1)
+                        {
+                            TempData.Add("Resp", "Se ha agregado el ítem");
+                        }
+                        else if (resp == -1)
+                        {
+                            TempData.Add("Resp", "Ha ocurrido un error inesperado");
+                        }
+
+                        ModelState.Clear();
+                    }
+                }
+                else
+                {
+                    ModelState.Clear();
+                    
+                }
             }
+            new_model.getListas();//DateTime.Parse(date)
+            new_model.getMenu(DateTime.Parse(date), _horario);            
 
             return View(new_model);
         }

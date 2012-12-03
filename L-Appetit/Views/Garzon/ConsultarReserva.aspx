@@ -41,17 +41,20 @@
                 $("#mesa_" + mesasArray[i].id_mesa).data("cant_maxima",mesasArray[i].cant_maxima);
                 $("#mesa_" + mesasArray[i].id_mesa).data("num_comensales",mesasArray[i].num_comensales);
                 $("#mesa_" + mesasArray[i].id_mesa).data("cliente",mesasArray[i].nombre_cliente);
-                $("#mesa_" + mesasArray[i].id_mesa).data("garzon",mesasArray[i].nombre_garzon);
+                $("#mesa_" + mesasArray[i].id_mesa).data("garzon", mesasArray[i].nombre_garzon);
+                $("#mesa_" + mesasArray[i].id_mesa).data("rut_garzon", mesasArray[i].rut_garzon);
                 $("#mesa_" + mesasArray[i].id_mesa).data("estado",mesasArray[i].estado);
                 $("#mesa_" + mesasArray[i].id_mesa).data("observacion",mesasArray[i].observacion);
 
                 if (mesasArray[i].id_reserva != 0) {
                     $("#mesa_" + mesasArray[i].id_mesa).bind("click", function () {
-                        $("#form_mesa_id").val($(this).data("id_mesa"));
+                        $("#form_reserva_id").val($(this).data("id_reserva"));
+                        $("#form_rut_garzon").val($(this).data("rut_garzon"));
                         $("#clicked_mesa").text($(this).data("id_mesa"));
                         $("#label_num_com").text($(this).data("num_comensales"));
                         $("#label_cliente").text($(this).data("cliente"));
                         $("#label_garzon").text($(this).data("garzon"));
+
                         if ($(this).data("estado") == -1)
                             $("#label_estado").text('No atendido');
                         else if ($(this).data("estado") == 0)
@@ -212,8 +215,8 @@
                 %>
                 </fieldset>
             </div>
-            <% if (ViewBag.RESP != null){%>
-                   <%: ViewBag.RESP %>
+            <% if (TempData.Keys.Count > 0){%>
+                   <%: TempData["Error"] %>
                 <%}%>
             <input type="hidden" id="__DATE" name="__DATE" value="" />
         <%} %>
@@ -221,7 +224,8 @@
         <div id="prompt" class="Popup">
             <a id="popupClose">x</a> 
             <form id="form_pedido" method="post" action="TomarPedido">
-                <input type="hidden" id="form_mesa_id" name="id_mesa" />
+                <input type="hidden" id="form_reserva_id" name="id_reserva" />
+                <input type="hidden" id="form_rut_garzon" name="rut_garzon" />
                 <h2>Mesa: <label id="clicked_mesa"></label></h2>
                 <div>Numero de comensales: <label id="label_num_com" /></div>
                 <div>Reserva a: <label id="label_cliente" /></div>
@@ -229,15 +233,10 @@
                 <div>Estado: <label id="label_estado" /></div>
                 <div>Observación:</div> <textarea id="text_obs" disabled="disabled" cols="5" rows="3" name="obs"></textarea>
                 <div>
-                    <button type="submit" id="ok_button"> OK </button>
+                    <button type="submit" id="ok_button"> Pedido </button>
                     <button type="button" id="cancel_button"> Cancel </button>
                 </div>
             </form>
-        </div>
-        <div id="container">
-            <!--<input type="hidden" id="form_op" name="op" />-->
-            <!--<input type="hidden" id="form_num_comen" name="num_comen" />-->
-            <!--<input type="hidden" id="form_obs" name="obs" />-->
         </div>
 
         <div id="bgPopup"></div>
