@@ -79,6 +79,9 @@
     <Compile Include="Models\CocineroModel.cs" />
     <Compile Include="Models\FuncionarioModel.cs" />
     <Compile Include="Models\GarzonModel.cs" />
+    <Compile Include="Models\LinqDB.cs">
+      <DependentUpon>LinqDB.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\LinqDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -96,6 +99,7 @@
     <Content Include="Content\Cliente\HacerReserva.css" />
     <Content Include="Content\Cocinero\AgregarMenu.css" />
     <Content Include="Content\Cliente\ConsultarMenu.css" />
+    <Content Include="Content\Cocinero\VerPedidos.css" />
     <Content Include="Content\Garzon\TomarPedido.css" />
     <Content Include="Content\Garzon\ConsultarReserva.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />

@@ -9,7 +9,10 @@ namespace L_Appetit.Models
 {
     public class PedidoModel
     {
+        public DateTime fecha {get;set;}
+        public bool horario { get; set; }
         public Int16 id_pedido;
+
         public List<SelectListItem> ListaEntrada { get; set; }
         public List<SelectListItem> ListaFondo { get; set; }
         public List<SelectListItem> ListaPostre { get; set; }
@@ -44,8 +47,10 @@ namespace L_Appetit.Models
             observacion = "";
         }
 
-        public void getListas(){
-
+        public void getListas(DateTime fecha, bool horario)
+        {
+            this.fecha = fecha;
+            this.horario = horario;
             ListaEntrada = new List<SelectListItem>();
             ListaFondo = new List<SelectListItem>();
             ListaPostre = new List<SelectListItem>();
@@ -53,16 +58,33 @@ namespace L_Appetit.Models
 
             LinqDBDataContext db = new LinqDBDataContext();
 
-            var menu = (from item in db.ITEM
+            var menu = (from menu_ in db.MENU_FECHA
+                        from tipo_item in db.TIPO_ITEM
+                        from item in db.ITEM
+                        where
+                            tipo_item.CODIGO_TIPO_ITEM == item.CODIGO_TIPO_ITEM &&
+                            item.CODIGO_ITEM == menu_.CODIGO_ITEM &&
+                            menu_.FECHA == fecha &&
+                            menu_.HORARIO == horario
+                        select new
+                        {
+                            tipo_item.NOMBRE_TIPO_ITEM,
+                            item.NOMBRE_ITEM,
+                            item.CODIGO_ITEM
+                        }).Union((
+                        from item in db.ITEM
                         from tipo_item in db.TIPO_ITEM
                         where
-                            tipo_item.CODIGO_TIPO_ITEM == item.CODIGO_TIPO_ITEM
+                            tipo_item.CODIGO_TIPO_ITEM == 4 &&
+                            item.CODIGO_TIPO_ITEM == 4
+
                         select new
                         {
                             tipo_item.NOMBRE_TIPO_ITEM,
                             item.NOMBRE_ITEM,
                             item.CODIGO_ITEM
                         }
+                        )
                         );
 
             foreach (var item in menu)

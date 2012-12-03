@@ -260,6 +260,14 @@ namespace L_Appetit.Models
 			}
 		}
 		
+		public System.Data.Linq.Table<VW_PEDIDOS> VW_PEDIDOS
+		{
+			get
+			{
+				return this.GetTable<VW_PEDIDOS>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CrearFecha")]
 		public ISingleResult<CrearFechaResult> CrearFecha([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha_, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> horario_)
 		{
@@ -4048,6 +4056,195 @@ namespace L_Appetit.Models
 		{
 			this.SendPropertyChanging();
 			entity.TIPO_ITEM = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.VW_PEDIDOS")]
+	public partial class VW_PEDIDOS
+	{
+		
+		private decimal _CODIGO_MESA;
+		
+		private string _OBSERVACIONES;
+		
+		private System.Nullable<short> _NUMERO_COMENSALES;
+		
+		private System.Nullable<short> _ESTADO_PEDIDO;
+		
+		private string _GARZON;
+		
+		private System.Nullable<short> _DETALLE_ITEM_CANTIDAD;
+		
+		private string _DETALLE_ITEM_OBSERVACION;
+		
+		private string _NOMBRE_ITEM;
+		
+		private System.Nullable<decimal> _CODIGO_PEDIDO;
+		
+		private System.Nullable<decimal> _CODIGO_RESERVA;
+		
+		public VW_PEDIDOS()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_MESA", DbType="Decimal(18,0) NOT NULL")]
+		public decimal CODIGO_MESA
+		{
+			get
+			{
+				return this._CODIGO_MESA;
+			}
+			set
+			{
+				if ((this._CODIGO_MESA != value))
+				{
+					this._CODIGO_MESA = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OBSERVACIONES", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string OBSERVACIONES
+		{
+			get
+			{
+				return this._OBSERVACIONES;
+			}
+			set
+			{
+				if ((this._OBSERVACIONES != value))
+				{
+					this._OBSERVACIONES = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NUMERO_COMENSALES", DbType="SmallInt")]
+		public System.Nullable<short> NUMERO_COMENSALES
+		{
+			get
+			{
+				return this._NUMERO_COMENSALES;
+			}
+			set
+			{
+				if ((this._NUMERO_COMENSALES != value))
+				{
+					this._NUMERO_COMENSALES = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ESTADO_PEDIDO", DbType="SmallInt")]
+		public System.Nullable<short> ESTADO_PEDIDO
+		{
+			get
+			{
+				return this._ESTADO_PEDIDO;
+			}
+			set
+			{
+				if ((this._ESTADO_PEDIDO != value))
+				{
+					this._ESTADO_PEDIDO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_GARZON", DbType="VarChar(50)")]
+		public string GARZON
+		{
+			get
+			{
+				return this._GARZON;
+			}
+			set
+			{
+				if ((this._GARZON != value))
+				{
+					this._GARZON = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DETALLE_ITEM_CANTIDAD", DbType="SmallInt")]
+		public System.Nullable<short> DETALLE_ITEM_CANTIDAD
+		{
+			get
+			{
+				return this._DETALLE_ITEM_CANTIDAD;
+			}
+			set
+			{
+				if ((this._DETALLE_ITEM_CANTIDAD != value))
+				{
+					this._DETALLE_ITEM_CANTIDAD = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_DETALLE_ITEM_OBSERVACION", DbType="Text", UpdateCheck=UpdateCheck.Never)]
+		public string DETALLE_ITEM_OBSERVACION
+		{
+			get
+			{
+				return this._DETALLE_ITEM_OBSERVACION;
+			}
+			set
+			{
+				if ((this._DETALLE_ITEM_OBSERVACION != value))
+				{
+					this._DETALLE_ITEM_OBSERVACION = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_NOMBRE_ITEM", DbType="VarChar(50)")]
+		public string NOMBRE_ITEM
+		{
+			get
+			{
+				return this._NOMBRE_ITEM;
+			}
+			set
+			{
+				if ((this._NOMBRE_ITEM != value))
+				{
+					this._NOMBRE_ITEM = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_PEDIDO", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> CODIGO_PEDIDO
+		{
+			get
+			{
+				return this._CODIGO_PEDIDO;
+			}
+			set
+			{
+				if ((this._CODIGO_PEDIDO != value))
+				{
+					this._CODIGO_PEDIDO = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CODIGO_RESERVA", DbType="Decimal(18,0)")]
+		public System.Nullable<decimal> CODIGO_RESERVA
+		{
+			get
+			{
+				return this._CODIGO_RESERVA;
+			}
+			set
+			{
+				if ((this._CODIGO_RESERVA != value))
+				{
+					this._CODIGO_RESERVA = value;
+				}
+			}
 		}
 	}
 	

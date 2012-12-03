@@ -182,6 +182,20 @@
       <Association Name="TIPO_ITEM_ITEM" Member="ITEM" ThisKey="CODIGO_TIPO_ITEM" OtherKey="CODIGO_TIPO_ITEM" Type="ITEM" />
     </Type>
   </Table>
+  <Table Name="dbo.VW_PEDIDOS" Member="VW_PEDIDOS">
+    <Type Name="VW_PEDIDOS">
+      <Column Name="CODIGO_MESA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="OBSERVACIONES" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NUMERO_COMENSALES" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ESTADO_PEDIDO" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="GARZON" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DETALLE_ITEM_CANTIDAD" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="DETALLE_ITEM_OBSERVACION" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NOMBRE_ITEM" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CODIGO_PEDIDO" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CODIGO_RESERVA" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.CrearFecha" Method="CrearFecha">
     <Parameter Name="fecha_" Type="System.DateTime" DbType="Date" />
     <Parameter Name="horario_" Type="System.Boolean" DbType="Bit" />

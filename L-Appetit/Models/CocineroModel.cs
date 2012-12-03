@@ -11,6 +11,7 @@ using L_Appetit.Validations;
 
 namespace L_Appetit.Models
 {
+
     public class AgregarMenuModel
     {
         public DateTime fecha;
