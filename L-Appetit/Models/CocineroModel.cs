@@ -48,6 +48,8 @@ namespace L_Appetit.Models
         public string selected_item { get; set; }
 
         [Display(Name = "selected_cant")]
+        [Required(ErrorMessage = "No ingresada")]
+        [RegularExpression(@"[1-9]+[0-9]*",ErrorMessage="Sólo números")]
         public string selected_cant { get; set; }
 
         public AgregarMenuModel()
@@ -138,19 +140,20 @@ namespace L_Appetit.Models
             }
         }
 
-        public void setMenu(Int32 item, Int16 cantidad, DateTime fecha, Boolean horario) 
+        public int setMenu(Int32 item, Int16 cantidad, DateTime fecha, Boolean horario) 
         {
 
             LinqDBDataContext db = new LinqDBDataContext();
-            MENU_FECHA iMENU_FECHA = new MENU_FECHA
+            int resp;
+            try
             {
-                FECHA = fecha,
-                HORARIO = horario,
-                CODIGO_ITEM = item,
-                MENU_ITEM_CANTIDAD = cantidad
-            };
-            db.MENU_FECHA.InsertOnSubmit(iMENU_FECHA);
-            db.SubmitChanges();
+                resp = (Int32)db.AddItemMenu(item, cantidad, fecha, horario);
+            }
+            catch
+            {
+                resp = -1;
+            }
+            return resp;            
         }
     }
 

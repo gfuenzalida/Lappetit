@@ -12,10 +12,64 @@ namespace L_Appetit.Controllers
     {
 
         [HttpPost]
-        public ActionResult TomarPedido(string id_mesa, string label_garzon)
+        public ActionResult TomarPedido(PedidoModel modelo, string id_reserva, string rut_garzon, string btn_submit)
         {
+            PedidoModel _modelo = new PedidoModel(); ;
+            if (btn_submit == null)
+            {
+                string user_rut = User.Identity.Name.ToString();
+                if (!String.IsNullOrEmpty(rut_garzon) && !rut_garzon.Equals(user_rut))
+                {
+                    TempData.Add("Error", "_"+user_rut+"_"+rut_garzon+"_");
+                    return RedirectToAction("ConsultarReserva", "Garzon");
+                }
+                else
+                {
+                    LinqDBDataContext db = new LinqDBDataContext();
+                    int respuesta = (Int32)db.CrearPedido(Int16.Parse(id_reserva), user_rut);
 
-            return View();
+                    if (respuesta <= 0)
+                    {
+                        TempData.Add("Error", "Ha habido un error inesperado");
+                        return RedirectToAction("ConsultarReserva", "Garzon");
+                    }
+                    else if (respuesta > 0)
+                    {
+                        _modelo = new PedidoModel();
+                        _modelo.id_pedido = (Int16)respuesta;
+                    }
+                }
+                ModelState.Clear();
+            }
+            else
+            {
+                _modelo.id_pedido = Int16.Parse(Request.Form["id_pedido"]);
+                if (ModelState.IsValid)
+                {
+                    int resp = _modelo.setPedido(Int16.Parse(modelo.selected_item), Int16.Parse(modelo.selected_cant), modelo.observacion);
+                    
+                    if (resp == 2)
+                    {
+                        TempData.Add("Resp", "El Pedido se ha actualizado");
+                    }
+                    else if (resp == 1)
+                    {
+                        TempData.Add("Resp", "Se ha agregado el ítem");
+                    }
+                    else if (resp == -1)
+                    {
+                        TempData.Add("Resp", "Ha ocurrido un error inesperado");
+                    }
+
+                    ModelState.Clear();
+                }
+
+            }
+
+            _modelo.getListas();
+            _modelo.getPedido();
+
+            return View(_modelo);
         }
 
         public ActionResult ConsultarReserva()
