@@ -15,6 +15,8 @@ namespace L_Appetit.Validations
         { }
         public override bool IsValid(object value)
         {
+            if (value == null)
+                return false;
             int Digito;
             int Contador;
             int Multiplo;

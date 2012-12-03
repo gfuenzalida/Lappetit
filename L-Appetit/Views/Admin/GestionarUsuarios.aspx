@@ -1,7 +1,19 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<L_Appetit.Models.GestionUsuariosModel>" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
     <link href="../../Content/Admin/GestionarUsuarios.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript">
+        function changeCarrera() {
+            var selected = $('#Carrera').val();
+            if (selected == 'False') {
+                $('#form_tipo_alumno').val('0');
+            }
+            else if (selected == 'True') {
+                $('#form_tipo_alumno').val('1');
+            }
+        }
+    </script>
 </asp:Content>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
@@ -21,7 +33,7 @@
 
 <!------------------------------------------------------>
 <div style="height:450px" >
-    <div class="tabs" style="width: 100%; height:80%">
+    <div class="tabs" style="width: 100%; height:100%">
         <div class="tab">
             <input type="radio" id="tab-1" name="tab-group-1" checked>
             <label for="tab-1">Gestionar Alumnos</label>
@@ -54,79 +66,148 @@
                     </div>
                 </div>
                 <div style="vertical-align: top; display:inline-block; width:55%; margin-left:2%">
+                <% using (Html.BeginForm()) { %>
                     <fieldset>
                         <legend>Crear Alumno</legend>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label11" runat="server" Text="Nombres"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.Nombre, 
+                                    "Nombres")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text11" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.Nombre
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.Nombre) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label12" runat="server" Text="Apellido Paterno"></asp:Label>
+                            <%: Html.LabelFor(
+                                    m => m.ApellidoPaterno, 
+                                    "Apellido Paterno")
+                            %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text12" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.ApellidoPaterno
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.ApellidoPaterno) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label13" runat="server" Text="Apellido Materno"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.ApellidoMaterno, 
+                                    "Apellido Materno")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text13" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.ApellidoMaterno
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.ApellidoMaterno) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label14" runat="server" Text="Sexo"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.Sexo, 
+                                    "Sexo")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text14" type="text" />
+                                <%: Html.DropDownListFor(
+                                    m => m.Sexo,
+                                    new SelectList(Model.Generos, "Value", "Text")
+                                )%>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block;; width:27%">
-                                <asp:Label ID="Label15" runat="server" Text="RUN"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.UserName, 
+                                    "RUT")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text15" type="text" />
-                            </div>
-                        </div>
-                        <div>
-                            <div style="vertical-align: top; display:inline-block;; width:27%">
-                                <asp:Label ID="Label18" runat="server" Text="Carrera"></asp:Label>
-                            </div>
-                            <div style="vertical-align: top; display:inline-block">
-                                <select id="Select1">
-                                    <option>Hoteleria</option>
-                                    <option>Gastronomia</option>
-                                </select>
+                                <%: Html.TextBoxFor(m => m.UserName) %>
+                                <%: Html.ValidationMessageFor(m => m.UserName) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label16" runat="server" Text="Correo"></asp:Label>
+                                <%: Html.LabelFor(m => m.Password) %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text16" type="text" />
+                                <%: Html.PasswordFor(m => m.Password) %>
+                                <%: Html.ValidationMessageFor(m => m.Password) %>
+                            </div>
+                
+                            <div style="vertical-align: top; display:inline-block; width:27%">
+                                <%: Html.LabelFor(m => m.ConfirmPassword) %>
+                            </div>
+                            <div style="vertical-align: top; display:inline-block">
+                                <%: Html.PasswordFor(m => m.ConfirmPassword) %>
+                                <%: Html.ValidationMessageFor(m => m.ConfirmPassword) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label17" runat="server" Text="Telefono"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.Carrera, 
+                                    "Carrera")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text17" type="text" />
+                                <%: Html.DropDownListFor(
+                                    m => m.Carrera,
+                                    new SelectList(Model.Carreras, "Value", "Text"),
+                                    new { @onchange = "changeCarrera()" }                                 
+                                ) %>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="vertical-align: top; display:inline-block; width:27%">
+                                <%: Html.LabelFor(
+                                    m => m.Email, 
+                                    "Correo")
+                                %>
+                            </div>
+                            <div style="vertical-align: top; display:inline-block">
+                                <%: Html.TextBoxFor(
+                                    m => m.Email
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.Email) %>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="vertical-align: top; display:inline-block; width:27%">
+                                <%: Html.LabelFor(
+                                    m => m.Telefono, 
+                                    "Telefono")
+                                %>
+                            </div>
+                            <div style="vertical-align: top; display:inline-block">
+                                <%: Html.TextBoxFor(
+                                    m => m.Telefono
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.Telefono) %>
                             </div>
                         </div>
                         <div style="text-align:right; margin-right:25%">
-                            <input id="Button5" type="button" value="Crear" />
+                            <input id="ButtonAlumno" type="submit" value="Crear" />
+                            <input id="form_tipo_alumno" name="tipo" value="0" type="hidden" />
                         </div>
-                   </fieldset>   
+                   </fieldset>
+                   <%}%>
                 </div>    
             </div><!---->
          </div>
@@ -140,7 +221,7 @@
                         <legend>Gestionar Funcionario</legend>
                         <div style="text-align:justify;width:100%">
                             <!-- div de texto-->
-                            L'Appétit permite al administrador gestionar las cuentas de los distintos usuarios que interactúan en el Restaurant. El administrador puede gestionar a los funcionarios, los cuales tienen al tarea de servir de contacto para los clientes y enviarles invitaciones.
+                            L'Appétit permite al administrador gestionar las cuentas de los distintos usuarios que interactúan en el Restaurant. El administrador puede gestionar a los funcionarios, los cuales tienen la tarea de servir de contacto para los clientes y enviarles invitaciones.
                         </div>
                         </fieldset>
                     </div>
@@ -162,68 +243,136 @@
                     </div>
                 </div>
                 <div style="vertical-align: top; display:inline-block; width:55%; margin-left:2%">
+                <% using (Html.BeginForm()) { %>
                     <fieldset>
                         <legend>Crear Funcionario</legend>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label19" runat="server" Text="Nombres"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.Nombre, 
+                                    "Nombres")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text18" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.Nombre
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.Nombre) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label20" runat="server" Text="Apellido Paterno"></asp:Label>
+                            <%: Html.LabelFor(
+                                    m => m.ApellidoPaterno, 
+                                    "Apellido Paterno")
+                            %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text19" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.ApellidoPaterno
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.ApellidoPaterno) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label21" runat="server" Text="Apellido Materno"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.ApellidoMaterno, 
+                                    "Apellido Materno")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text20" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.ApellidoMaterno
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.ApellidoMaterno) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label22" runat="server" Text="Sexo"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.Sexo, 
+                                    "Sexo")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text21" type="text" />
+                                <%: Html.DropDownListFor(
+                                    m => m.Sexo,
+                                    new SelectList(Model.Generos, "Value", "Text")                                    
+                                ) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block;; width:27%">
-                                <asp:Label ID="Label23" runat="server" Text="RUN"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.UserName, 
+                                    "RUT")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text22" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.UserName
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.UserName) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label24" runat="server" Text="Correo"></asp:Label>
+                                <%: Html.LabelFor(m => m.Password) %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text23" type="text" />
+                                <%: Html.PasswordFor(m => m.Password) %>
+                                <%: Html.ValidationMessageFor(m => m.Password) %>
+                            </div>
+                
+                            <div style="vertical-align: top; display:inline-block; width:27%">
+                                <%: Html.LabelFor(m => m.ConfirmPassword) %>
+                            </div>
+                            <div style="vertical-align: top; display:inline-block">
+                                <%: Html.PasswordFor(m => m.ConfirmPassword) %>
+                                <%: Html.ValidationMessageFor(m => m.ConfirmPassword) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label25" runat="server" Text="Telefono"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.Email, 
+                                    "Correo")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text24" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.Email
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.Email) %>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="vertical-align: top; display:inline-block; width:27%">
+                                <%: Html.LabelFor(
+                                    m => m.Telefono, 
+                                    "Telefono")
+                                %>
+                            </div>
+                            <div style="vertical-align: top; display:inline-block">
+                                <%: Html.TextBoxFor(
+                                    m => m.Telefono
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.Telefono) %>
                             </div>
                         </div>
                         <div style="text-align:right; margin-right:25%">
-                            <input id="Button6" type="button" value="Crear" />
+                            <input id="Button6" type="submit" value="Crear" />
+                            <input id="form_tipo_func" name="tipo" value="2" type="hidden" />
                         </div>
-                   </fieldset>   
+                   </fieldset>
+                   <% } %>
                 </div>    
             </div>
         </div>
@@ -259,68 +408,137 @@
                     </div>
                 </div>
                 <div style="vertical-align: top; display:inline-block; width:55%; margin-left:2%">
+                <% using (Html.BeginForm())
+                   { %>
                    <fieldset>
                         <legend>Crear Administrador</legend>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label4" runat="server" Text="Nombres"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.Nombre, 
+                                    "Nombres")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text4" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.Nombre
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.Nombre) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label5" runat="server" Text="Apellido Paterno"></asp:Label>
+                            <%: Html.LabelFor(
+                                    m => m.ApellidoPaterno, 
+                                    "Apellido Paterno")
+                            %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text5" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.ApellidoPaterno
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.ApellidoPaterno) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label6" runat="server" Text="Apellido Materno"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.ApellidoMaterno, 
+                                    "Apellido Materno")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text6" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.ApellidoMaterno
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.ApellidoMaterno) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label7" runat="server" Text="Sexo"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.Sexo, 
+                                    "Sexo")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text7" type="text" />
+                                <%: Html.DropDownListFor(
+                                    m => m.Sexo,
+                                    new SelectList(Model.Generos, "Value", "Text")                                    
+                                ) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block;; width:27%">
-                                <asp:Label ID="Label8" runat="server" Text="RUN"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.UserName, 
+                                    "RUT")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text8" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.UserName
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.UserName) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label9" runat="server" Text="Correo"></asp:Label>
+                                <%: Html.LabelFor(m => m.Password) %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text9" type="text" />
+                                <%: Html.PasswordFor(m => m.Password) %>
+                                <%: Html.ValidationMessageFor(m => m.Password) %>
+                            </div>
+                
+                            <div style="vertical-align: top; display:inline-block; width:27%">
+                                <%: Html.LabelFor(m => m.ConfirmPassword) %>
+                            </div>
+                            <div style="vertical-align: top; display:inline-block">
+                                <%: Html.PasswordFor(m => m.ConfirmPassword) %>
+                                <%: Html.ValidationMessageFor(m => m.ConfirmPassword) %>
                             </div>
                         </div>
                         <div>
                             <div style="vertical-align: top; display:inline-block; width:27%">
-                                <asp:Label ID="Label10" runat="server" Text="Telefono"></asp:Label>
+                                <%: Html.LabelFor(
+                                    m => m.Email, 
+                                    "Correo")
+                                %>
                             </div>
                             <div style="vertical-align: top; display:inline-block">
-                                <input id="Text10" type="text" />
+                                <%: Html.TextBoxFor(
+                                    m => m.Email
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.Email) %>
+                            </div>
+                        </div>
+                        <div>
+                            <div style="vertical-align: top; display:inline-block; width:27%">
+                                <%: Html.LabelFor(
+                                    m => m.Telefono, 
+                                    "Telefono")
+                                %>
+                            </div>
+                            <div style="vertical-align: top; display:inline-block">
+                                <%: Html.TextBoxFor(
+                                    m => m.Telefono
+                                    )
+                                %>
+                                <%: Html.ValidationMessageFor( m => m.Telefono) %>
                             </div>
                         </div>
                         <div style="text-align:right; margin-right:25%">
-                            <input id="Button4" type="button" value="Crear" />
+                            <input id="Button4" type="submit" value="Crear" />
+                            <input id="form_tipo_adm" name="tipo" value="3" type="hidden" />
                         </div>
                    </fieldset>
+                   <%} %>
                 </div>    
             </div>
         </div>
@@ -346,10 +564,9 @@
                     </fieldset>
                 </div>
             </div>
-            
         </div>
-   
     </div>
+    <%: Html.ValidationSummary(true) %>
 </div>
 <!----------------------------------------------------------------------->
 

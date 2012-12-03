@@ -5,7 +5,7 @@
 </asp:Content>
 
 <asp:Content ID="registerContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Registro de nuevo Cliente</h2>
+    <h2>Registro</h2>
         Ingrese la su informacion personal para crear su cuenta.</br> 
 
         La contraseña requiere un minimo de  <%: Membership.MinRequiredPasswordLength %> caracteres de largo.
@@ -15,7 +15,7 @@
     <script src="<%: Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js") %>" type="text/javascript"></script>
 
     <% using (Html.BeginForm()) { %>
-        <%: Html.ValidationSummary(true, "Account creation was unsuccessful. Please correct the errors and try again.") %>
+        <%: Html.ValidationSummary(true, "La creación de la cuenta no se pudo realizar. Por favor resuelva los errores.") %>
         <div>
             <fieldset>
                 <legend>Informacion del Cliente</legend>

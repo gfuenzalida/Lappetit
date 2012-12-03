@@ -25,12 +25,12 @@ namespace L_Appetit.Controllers
 
         public ActionResult GestionarUsuarios()
         {
-            var model = new L_Appetit.Models.GestionUsuariosModel();
+            GestionUsuariosModel model = new GestionUsuariosModel();
             return View(model);
         }
 
         [HttpPost]
-        public ActionResult GestionarUsuarios(GestionUsuariosModel model, int tipo)
+        public ActionResult GestionarUsuarios(GestionUsuariosModel model)
         {
             if (ModelState.IsValid)
             {
@@ -40,6 +40,11 @@ namespace L_Appetit.Controllers
                
                 if (createStatus == MembershipCreateStatus.Success)
                 {
+                    MembershipUser tempUser = Membership.GetUser(model.UserName);
+                    tempUser.Comment = model.Nombre;
+                    Membership.UpdateUser(tempUser);
+
+                    int tipo = Int16.Parse(Request.Form["tipo"]);
                     model.Registro(tipo);
                     if (tipo == 0)
                     {
@@ -58,14 +63,16 @@ namespace L_Appetit.Controllers
                         Roles.AddUserToRole(model.UserName, "Administrador");
                     }
                     else { }
-                    
+
+                    model = new GestionUsuariosModel();
+                    ModelState.Clear();
                 }
                 else
                 {
                     ModelState.AddModelError("", L_Appetit.Controllers.AccountController.ErrorCodeToString(createStatus));
                 }
             }
-            return View();
+            return View(model);
         }
 
         public ActionResult GestionarMesas()

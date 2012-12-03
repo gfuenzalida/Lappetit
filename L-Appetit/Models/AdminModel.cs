@@ -12,23 +12,17 @@ namespace L_Appetit.Models
 {
     public class GestionUsuariosModel
     {
-        [Required]
+        [Required(ErrorMessage = "No ingresado")]
         [Display(Name = "Nombre")]
         public string Nombre { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "No ingresado")]
         [Display(Name = "Apellido Paterno")]
         public string ApellidoPaterno { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "No ingresado")]
         [Display(Name = "Apellido Materno")]
         public string ApellidoMaterno { get; set; }
-
-        [Required]
-        [StringLength(100, ErrorMessage = "La contraseña debe tener mínimo 6 caracteres.", MinimumLength = 6)]
-        [DataType(DataType.Password)]
-        [Display(Name = "Contraseña")]
-        public string Password { get; set; }
 
         [Required]
         [Display(Name = "Sexo")]
@@ -51,11 +45,22 @@ namespace L_Appetit.Models
             }
         }
 
-        [Required]
+        [Required(ErrorMessage="No ingresado")]
         [RegularExpression("^[1-9][0-9]{6,7}[-][1-9kK]", ErrorMessage = "El RUT no posee el formato adecuado")]
         [VerificadorRUT]
         [Display(Name = "RUT")]
         public string UserName { get; set; }
+
+        [Required(ErrorMessage = "No ingresado")]
+        [StringLength(100, ErrorMessage = "La contraseña debe tener mínimo 6 caracteres.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Contraseña")]
+        public string Password { get; set; }
+
+        [Required(ErrorMessage = "No ingresado")]
+        [Display(Name = "Confirmar Contraseña")]
+        [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmacion no coinciden.")]
+        public string ConfirmPassword { get; set; }
 
         [Required]
         [Display(Name = "Carrera")]
@@ -79,13 +84,13 @@ namespace L_Appetit.Models
         }
 
 
-        [Required]
+        [Required(ErrorMessage = "No ingresado")]
         [DataType(DataType.EmailAddress)]
         [RegularExpression(@"^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$", ErrorMessage = "Correo electrónico ingresado con mal formato")]
         [Display(Name = "Correo")]
         public string Email { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "No ingresado")]
         [Display(Name = "Teléfono")]
         [RegularExpression("^[1-9]+[0-9]{6,9}", ErrorMessage = "Telefono mal ingresado.")]
         public string Telefono { get; set; }
