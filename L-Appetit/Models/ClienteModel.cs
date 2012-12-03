@@ -135,7 +135,8 @@ namespace L_Appetit.Models
                                 reserva.FECHA,
                                 reserva.HORARIO,
                                 reserva.NUMERO_COMENSALES,
-                                reserva.OBSERVACIONES
+                                reserva.OBSERVACIONES,
+                                reserva.CODIGO_MESA
                             };
             foreach (var r in reservas)
             {
@@ -144,6 +145,7 @@ namespace L_Appetit.Models
                 rl.horario = r.HORARIO;
                 rl.comensales = r.NUMERO_COMENSALES;
                 rl.observaciones = r.OBSERVACIONES;
+                rl.mesa = Convert.ToInt32(r.CODIGO_MESA);
                 ListaReservas.Add(rl);
             }
         }
