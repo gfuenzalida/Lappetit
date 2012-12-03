@@ -23,12 +23,29 @@
             <div id="logindisplay" >
                 <% Html.RenderPartial("LogOnUserControl"); %>
             </div> 
-            <div id="menucontainer" style="margin-top: 7%;">
+<%
+    if (Request.IsAuthenticated) {
+%>  
+            <div id="menucontainer" style="margin-top: 3%;margin-bottom:2px;">
                 <ul id="menu" style="top: auto; right: auto">
                     <li><%: Html.ActionLink("Home", "LogOn", "Account")%></li>
                     <li><%: Html.ActionLink("Acerca de", "About", "Home")%></li>
                 </ul>
             </div>
+<%
+    }else {
+%> 
+            <div id="menucontainer" style="margin-top: 7%;margin-bottom:2px;">
+                <ul id="menu" style="top: auto; right: auto">
+                    <li><%: Html.ActionLink("Home", "LogOn", "Account")%></li>
+                    <li><%: Html.ActionLink("Acerca de", "About", "Home")%></li>
+                </ul>
+            </div>
+
+<%
+    }
+%> 
+
         </div>
         <div id="main">
             <asp:ContentPlaceHolder ID="MainContent" runat="server" />
