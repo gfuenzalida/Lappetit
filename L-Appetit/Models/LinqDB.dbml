@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="lappetit" Class="LinqDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=localhost;Initial Catalog=lappetit;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="lappetitConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=GARY-PC;Initial Catalog=lappetit;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="lappetitConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AUDITORIA_TABLAS" Member="AUDITORIA_TABLAS">
     <Type Name="AUDITORIA_TABLAS">
       <Column Name="CODIGO_TABLA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -240,6 +240,11 @@
     <Parameter Name="cant" Type="System.Int16" DbType="SmallInt" />
     <Parameter Name="cod_pedido" Type="System.Decimal" DbType="Decimal(18,0)" />
     <Parameter Name="obs" Type="System.String" DbType="Text" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.SendInvitacion" Method="SendInvitacion">
+    <Parameter Name="RUT_Cont" Parameter="rUT_Cont" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="RUT_Cliente" Parameter="rUT_Cliente" Type="System.String" DbType="VarChar(10)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

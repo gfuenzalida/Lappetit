@@ -108,7 +108,7 @@
             <% } %>
             </div><!---->
         </div>
-        <div class="tab">
+        <div class="tab" id="fondo">
             <input type="radio" id="tab-2" name="tab-group-1">
             <label for="tab-2">Plato de Fondo</label>
             <div class="content">

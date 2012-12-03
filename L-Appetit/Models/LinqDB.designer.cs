@@ -87,7 +87,7 @@ namespace L_Appetit.Models
     #endregion
 		
 		public LinqDBDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["lappetitConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["lappetitConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -299,6 +299,13 @@ namespace L_Appetit.Models
 		public int AddItemPedido([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(18,0)")] System.Nullable<decimal> cod_item, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="SmallInt")] System.Nullable<short> cant, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(18,0)")] System.Nullable<decimal> cod_pedido, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Text")] string obs)
 		{
 			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), cod_item, cant, cod_pedido, obs);
+			return ((int)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SendInvitacion")]
+		public int SendInvitacion([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RUT_Cont", DbType="VarChar(10)")] string rUT_Cont, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RUT_Cliente", DbType="VarChar(10)")] string rUT_Cliente)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), rUT_Cont, rUT_Cliente);
 			return ((int)(result.ReturnValue));
 		}
 	}

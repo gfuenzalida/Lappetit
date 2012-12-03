@@ -102,11 +102,8 @@ namespace L_Appetit.Controllers
             else if (fecha.DayOfWeek == DayOfWeek.Sunday)
                 fecha = DateTime.Now.AddDays(1).Date;
 
-            ViewBag.Fecha = fecha.ToString("dd-MM-yy");
-
             modelo.getListas();
             modelo.getMenu(fecha, false);
-
             ViewBag.Fecha = fecha.ToString("dd-MM-yy");
             ViewBag.Horario = modelo.horario.ToString();
 
@@ -149,7 +146,7 @@ namespace L_Appetit.Controllers
 
             if (date != null)
             {
-                ViewBag.Fecha = DateTime.Parse(date);
+                ViewBag.Fecha = DateTime.Parse(date).ToString("dd-MM-yy");
                 ViewBag.Horario = _horario;
 
                 if (btn_submit != null)

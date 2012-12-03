@@ -77,6 +77,7 @@
     <Compile Include="Models\AdminModel.cs" />
     <Compile Include="Models\ClienteModel.cs" />
     <Compile Include="Models\CocineroModel.cs" />
+    <Compile Include="Models\FuncionarioModel.cs" />
     <Compile Include="Models\GarzonModel.cs" />
     <Compile Include="Models\LinqDB.designer.cs">
       <AutoGen>True</AutoGen>

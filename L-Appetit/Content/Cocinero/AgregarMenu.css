@@ -3,6 +3,16 @@
     max-width: 50px;
 }
 
+
+.tab select
+{
+    max-width: 280px;
+}
+
+.tab#fondo
+{
+    max-width: 230px;
+}
 .boton_agregar
 {
     margin-top: 10%;
