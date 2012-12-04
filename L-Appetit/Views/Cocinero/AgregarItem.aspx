@@ -29,7 +29,7 @@
     </h2>
 <!--<h2>AgregarItem</h2>-->
 <%: Html.ValidationSummary(true, "No ha sido posible crear el ítem. Revise los errores")%>
-    <li><%: Html.ValidationMessageFor(m => m.nombre_item) %></li>
+    <p><%: Html.ValidationMessageFor(m => m.nombre_item) %></p>
 <!------------------------------------------------------>
 
 <div class="tabs">
@@ -42,7 +42,7 @@
             <div style="width:100%" >
                 <div style="vertical-align: top; display:inline-block; width: 50%;">
                     <div style="margin-bottom: 3px;">
-                        <%= Html.LabelFor(m => m.tipo_item, "Tipo de ítem")%>
+                        <%= Html.LabelFor(m => m.tipo_item, "Tipo de item")%>
                     </div>
                     <div>
                         <%= Html.DropDownListFor(
