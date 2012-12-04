@@ -29,7 +29,7 @@
                 <ul id="menu" style="display: inline-block">
                     <li><%: Html.ActionLink("Menu", "VerMenu", "Cocinero")%></li>
                     <li><%: Html.ActionLink("Pedidos", "VerPedidos", "Cocinero")%></li>
-                    <li><%: Html.ActionLink("Enviar Invitaciones", "EnviarInvitaciones", "Cocinero")%></li>
+                    <li><%: Html.ActionLink("Enviar Invitaciones", "EnviarInvitacion", "Cocinero")%></li>
                     <li><%: Html.ActionLink("Editar Perfil", "EditarPerfilCocinero", "Cocinero")%></li>
                 </ul>
             </div>

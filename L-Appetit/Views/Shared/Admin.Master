@@ -33,7 +33,7 @@
                     <li><%: Html.ActionLink("Gestionar Mesas", "GestionarMesas", "Admin")%></li>
                     <li><%: Html.ActionLink("Historiales", "ConsultarHistorial", "Admin")%></li>
                     <li><%: Html.ActionLink("Items", "AgregarItem", "Admin")%></li> <!-- cambiar direccionamiento de este boton-->
-                    <li><%: Html.ActionLink("Menu", "AgregarMenu", "Cocinero")%></li> <!-- recordar cambiar de carpeta esta vista-->
+                    <li><%: Html.ActionLink("Menu", "AgregarMenu", "Admin")%></li> <!-- recordar cambiar de carpeta esta vista-->
                     <li><%: Html.ActionLink("Editar Perfil", "EditarPerfilAdmin", "Admin")%></li>
                 </ul>
             </div>

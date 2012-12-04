@@ -1227,14 +1227,14 @@
     <Content Include="Views\Admin\AgregarItem.aspx" />
     <Content Include="Views\Admin\AgregarMenu.aspx" />
     <Content Include="Views\Cocinero\EditarPerfilCocinero.aspx" />
-    <Content Include="Views\Cocinero\EnviarInvitaciones.aspx" />
+    <Content Include="Views\Cocinero\EnviarInvitacion.aspx" />
     <Content Include="Views\Cocinero\VerMenu.aspx" />
     <Content Include="Views\Cocinero\VerPedidos.aspx" />
     <Content Include="Views\Funcionario\EditarPerfilFuncionario.aspx" />
     <Content Include="Views\Funcionario\EnviarInvitacionFuncionario.aspx" />
     <Content Include="Views\Garzon\ConsultarReserva.aspx" />
     <Content Include="Views\Garzon\EditarPerfil.aspx" />
-    <Content Include="Views\Garzon\EnviarInvitacionesGarzon.aspx" />
+    <Content Include="Views\Garzon\EnviarInvitacion.aspx" />
     <Content Include="Views\Garzon\TomarPedido.aspx" />
     <Content Include="Views\Home\UnauthorizedAccess.aspx" />
     <Content Include="Web.config">

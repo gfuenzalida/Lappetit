@@ -1,15 +1,17 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<L_Appetit.Models.LogOnModel>" %>
 
-<script runat="server">
-
-    protected void Page_Load(object sender, EventArgs e)
-    {
-    }
-</script>
 <asp:Content ID="loginTitle" ContentPlaceHolderID="TitleContent" runat="server">
     Iniciar Sesion
 </asp:Content>
 
+<asp:Content ID="Content1" ContentPlaceHolderID="ScriptContent" runat="server">
+<script type="text/javascript">
+    function isRut(input) {
+        var RegExPattern = /^[1-9][0-9]{6,7}[-][1-9kK]$/;
+
+    }
+</script>
+</asp:Content>
 <asp:Content ID="loginContent" ContentPlaceHolderID="MainContent" runat="server">
     <div>
     <form id="form1" runat="server" 

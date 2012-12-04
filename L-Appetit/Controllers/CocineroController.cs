@@ -100,7 +100,37 @@ namespace L_Appetit.Controllers
             return View();
         }
 
-        
+        public ActionResult EnviarInvitacion()
+        {
+            EnviarInvitacionModel model = new EnviarInvitacionModel();
+
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult EnviarInvitacion(EnviarInvitacionModel modelo)
+        {
+            if (ModelState.IsValid)
+            {
+                modelo.rutContacto = User.Identity.Name;
+                int resp = modelo.SetInvitacion();
+                if (resp == 1)
+                {
+                    TempData.Add("Resp", "Invitación enviada correctamente");
+                    ModelState.Clear();
+                    modelo = new EnviarInvitacionModel();
+                }
+                else if (resp == 0)
+                {
+                    TempData.Add("Resp", "No posee tantas invitaciones para enviar");
+                }
+                else if (resp == -1)
+                {
+                    TempData.Add("Resp", "El RUT ingresado no pertenece al sistema");
+                }
+            }
+
+            return View(modelo);
+        }
 
     }
 }

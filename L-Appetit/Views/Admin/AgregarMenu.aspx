@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Cocinero.Master" Inherits="System.Web.Mvc.ViewPage<L_Appetit.Models.AgregarMenuModel>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Admin.Master" Inherits="System.Web.Mvc.ViewPage<L_Appetit.Models.AgregarMenuModel>" %>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
     <link href="../../Content/Cocinero/AgregarMenu.css" rel="stylesheet" type="text/css" />
@@ -75,7 +75,7 @@
             <input type="radio" id="tab-1" name="tab-group-1" checked>
             <label for="tab-1">Entrada</label>
             <div class="content">
-            <% using (Html.BeginForm("AgregarMenu", "Cocinero", FormMethod.Post, new { @id = "form2" }))
+            <% using (Html.BeginForm("AgregarMenu", "Admin", FormMethod.Post, new { @id = "form2" }))
                { %>
                <input type="hidden" name="__DATE" id="Hidden1" value="<%: ViewBag.Fecha %>" />
                <input type="hidden" name="__HORARIO" id="Hidden4" value="<%: ViewBag.Horario %>" />

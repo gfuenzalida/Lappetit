@@ -31,7 +31,9 @@ namespace L_Appetit.Models
 
     public class LogOnModel
     {
-        [Required]
+        [Required(ErrorMessage = "No ingresado")]
+        //[RegularExpression("^[1-9][0-9]{6,7}[-][1-9kK]$", ErrorMessage = "El RUT no posee el formato adecuado")]
+        //[VerificadorRUT]
         [Display(Name = "Nombre")]
         public string UserName { get; set; }
 

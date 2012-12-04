@@ -34,7 +34,7 @@ namespace L_Appetit.Controllers
                 }
                 else if (resp == 0)
                 {
-                    TempData.Add("Resp", "No posee invitaciones para enviar");
+                    TempData.Add("Resp", "No posee tantas invitaciones para enviar");
                 }
                 else if (resp == -1)
                 {

@@ -13,6 +13,38 @@
                 $('#form_tipo_alumno').val('1');
             }
         }
+
+        function validarSelect(opcion) {
+            if (opcion == 1) {
+                var select = $('#ItemSelectEntrada option');
+                if (select.length == 0) {
+                    alert('No hay ítems para agregar');
+                    return false;
+                }
+            }
+            else if (opcion == 2) {
+                var select = $('#ItemSelectFondo option');
+                if (select.length == 0) {
+                    alert('No hay ítems para agregar');
+                    return false;
+                }
+            }
+            else if (opcion == 3) {
+                var select = $('#ItemSelectPostre option');
+                if (select.length == 0) {
+                    alert('No hay ítems para agregar');
+                    return false;
+                }
+            }
+            else if (opcion == 4) {
+                var select = $('#ItemSelectBebestible option');
+                if (select.length == 0) {
+                    alert('No hay ítems para agregar');
+                    return false;
+                }
+            }
+            return true;
+        }
     </script>
 </asp:Content>
 
