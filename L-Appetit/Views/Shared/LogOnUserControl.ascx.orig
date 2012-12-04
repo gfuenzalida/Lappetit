@@ -1,0 +1,34 @@
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl" %>
+<%
+    if (Request.IsAuthenticated) {
+<<<<<<< HEAD
+%>
+        Bonjour <strong><%: Page.User.Identity.Name %></strong>!
+=======
+%>  
+<%
+        if (System.DateTime.Now.Hour < 12)
+        {
+%>
+            Bonjour 
+<%      
+        }
+        else
+        {
+%>
+            Bonsoir
+<%
+        } 
+%>
+        <strong><%: Membership.GetUser(Page.User.Identity.Name).Comment%></strong>!
+>>>>>>> 4ddfe15eaa792880349f2b8a2c8f6a9ecdb647e2
+        [ <%: Html.ActionLink("Cerrar Sesión", "LogOff", "Account") %> ]
+        <p>Sesión iniciada como <%: Roles.GetRolesForUser(Page.User.Identity.Name)[0]%></p>
+<%
+    }
+    else {
+%> 
+        [ <%: Html.ActionLink("Iniciar Sesión", "LogOn", "Account") %> ]
+<%
+    }
+%>
