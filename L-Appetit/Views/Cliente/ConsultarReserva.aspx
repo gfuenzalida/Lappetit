@@ -47,6 +47,7 @@
     <div style="vertical-align: top; display:inline-block; width:49%;">
             <fieldset>
                 <legend>Consultar Reservas</legend>
+                <% L_Appetit.Models.ConsultarReservaModel modelo = ViewData.Model; %> 
                 <div>
                 <table style="width: 100%;">
                     <tr  style="background-color:#d0d6db">
@@ -66,6 +67,27 @@
                             <input id="Checkbox1" type="checkbox" />&nbsp;
                         </td>
                     </tr>
+                    <% foreach (var item in modelo.ListaReservas) { %>
+                    <%string horario = "Almuerzo"; %>
+                    <tr  style="background-color:white">
+                        <td>
+                            <%= Html.Encode(item.fecha.ToShortDateString()) %>
+                        </td>
+                        <td>
+                        <%if (item.horario) { horario = "Cena"; }%>
+                            <%= Html.Encode(horario) %>
+                        </td>
+                        <td>
+                            <%= Html.Encode(item.comensales) %>
+                        </td>
+                        <td>
+                            <%= Html.Encode(item.observaciones) %>
+                        </td>
+                        <td>
+                            <input id="Checkbox2" type="checkbox" />&nbsp;
+                        </td>
+                    </tr>
+                    <% } %> 
                 </table>
                 </div>
                 <div>
