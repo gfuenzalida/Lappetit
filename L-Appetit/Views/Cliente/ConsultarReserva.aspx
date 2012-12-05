@@ -58,6 +58,9 @@
                             Horario&nbsp;
                         </td>
                         <td>
+                            Número de mesa&nbsp;
+                        </td>
+                        <td>
                             Comensales&nbsp;
                         </td>
                         <td>
@@ -76,6 +79,9 @@
                         <td>
                         <%if (item.horario) { horario = "Cena"; }%>
                             <%= Html.Encode(horario) %>
+                        </td>
+                        <td>
+                            <%= Html.Encode(item.mesa) %>
                         </td>
                         <td>
                             <%= Html.Encode(item.comensales) %>
