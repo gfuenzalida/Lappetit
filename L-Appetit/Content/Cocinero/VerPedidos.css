@@ -1,0 +1,69 @@
+﻿
+.Popup {
+    display:none;    
+    position:fixed;    
+    _position:absolute; /* hack for internet explorer 6 */   
+    background:#FFFFFF;    
+    border:2px solid #cecece;    
+    z-index:2;    
+    padding:12px;    
+    font-size:13px;
+  }
+ 
+  .Popup h2 {
+    background: 0 50% no-repeat;
+    margin:0px;
+    padding:10px 0 10px 45px;
+    border-bottom:1px solid #333;
+    font-size:20px;
+  }
+  
+  #bgPopup{  
+    display:none;   
+    position:fixed;    
+    _position:absolute; /* hack for internet explorer 6*/
+    height:100%;    
+    width:100%;    
+    top:0;    
+    left:0;    
+    background:#000000;     
+    z-index:1;
+}
+
+#popupClose{    
+    font-size:20px;    
+    line-height:20px;    
+    position:absolute;  
+    right:6px;    
+    top:4px;    
+    font-weight:700;   
+    display:block;    
+}  
+
+#text_obs
+{
+    width: 251px;
+    height: 81px;    
+}
+
+.mesa_coc
+{
+    cursor: pointer;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    outline-width: thin;
+    outline-style:groove;
+    padding: 4px 0px 4px 5px;
+}
+
+.content_mesas_coc
+{
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:5%;
+}
+.row_item
+{
+    cursor:pointer;
+}
+    

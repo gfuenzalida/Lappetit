@@ -7,6 +7,40 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="ScriptContent" runat="server">
     <link href="../../Content/Garzon/TomarPedido.css" rel="stylesheet" type="text/css" />
 
+    <script type="text/javascript">
+        function validarSelect(opcion) {
+            if (opcion == 1) {
+                var select = $('#ItemSelectEntrada option');
+                if (select.length == 0) {
+                    alert('No hay ítems para agregar');
+                    return false;
+                }
+            }
+            else if (opcion == 2) {
+                var select = $('#ItemSelectFondo option');
+                if (select.length == 0) {
+                    alert('No hay ítems para agregar');
+                    return false;
+                }
+            }
+            else if (opcion == 3) {
+                var select = $('#ItemSelectPostre option');
+                if (select.length == 0) {
+                    alert('No hay ítems para agregar');
+                    return false;
+                }
+            }
+            else if (opcion == 4) {
+                var select = $('#ItemSelectBebestible option');
+                if (select.length == 0) {
+                    alert('No hay ítems para agregar');
+                    return false;
+                }
+            }
+            return true;
+        }
+    </script>
+
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -30,6 +64,8 @@
             <% using (Html.BeginForm("TomarPedido", "Garzon", FormMethod.Post, new { @id = "form2" }))
                { %>
                <%: Html.Hidden("id_pedido", Model.id_pedido)%>
+               <input type="hidden" id="Hidden1" name="__HORARIO" value="<%: Model.horario.ToString()%>" />
+                <input type="hidden" id="Hidden2" name="__DATE" value="<%: ViewBag.FECHA %>" />
                 <div style="width:100%;">
                     <div style="vertical-align: middle; display:inline-block;">
                         <%= Html.LabelFor(m => m.selected_item, "Entrada")%>
@@ -37,7 +73,8 @@
                     <div style="vertical-align: middle; display:inline-block; max-width:62%">
                         <%= Html.DropDownListFor(
                         x => x.selected_item,
-                        new SelectList(Model.ListaEntrada, "Value", "Text")
+                        new SelectList(Model.ListaEntrada, "Value", "Text"),
+                        new {@id = "ItemSelectEntrada" }
                     )%>
                     </div>
                 </div>
@@ -64,7 +101,7 @@
                         )%>
                     </div>
                     <div class="boton_agregar">
-                        <input id="Submit1" type="submit" name="btn_submit" value="Agregar" />
+                        <input onclick="return validarSelect(1)" id="Submit1" type="submit" name="btn_submit" value="Agregar" />
                     </div>
                 </div>                          
             </div><!---->
@@ -77,6 +114,8 @@
             <% using (Html.BeginForm())
                { %>
                <%: Html.Hidden("id_pedido", Model.id_pedido)%>
+               <input type="hidden" id="Hidden3" name="__HORARIO" value="<%: Model.horario.ToString()%>" />
+                <input type="hidden" id="Hidden4" name="__DATE" value="<%: ViewBag.FECHA %>" />
                 <div style="width:100%">
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.LabelFor(m => m.selected_item, "Plato de Fondo")%>
@@ -84,7 +123,8 @@
                     <div style="vertical-align: middle; display:inline-block; max-width:44%">
                         <%= Html.DropDownListFor(
                         x => x.selected_item,
-                        new SelectList(Model.ListaFondo, "Value", "Text")
+                        new SelectList(Model.ListaFondo, "Value", "Text"),
+                        new { @id = "ItemSelectFondo" }
                     )%>
                     </div>
                 </div>
@@ -112,7 +152,7 @@
                     </div>
                 </div>                
                 <div class="boton_agregar">
-                    <input id="Submit2" type="submit" name="btn_submit" value="Agregar" />
+                    <input onclick="return validarSelect(2)" id="Submit2" type="submit" name="btn_submit" value="Agregar" />
                 </div>
             <% } %>
             </div>
@@ -124,6 +164,8 @@
             <% using (Html.BeginForm())
                { %>
                <%: Html.Hidden("id_pedido", Model.id_pedido)%>
+               <input type="hidden" id="Hidden5" name="__HORARIO" value="<%: Model.horario.ToString()%>" />
+                <input type="hidden" id="Hidden6" name="__DATE" value="<%: ViewBag.FECHA %>" />
                 <div style="width:100%">
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.LabelFor(m => m.selected_item, "Postre")%>
@@ -131,7 +173,8 @@
                     <div style="vertical-align: middle; display:inline-block;max-width: 65%">
                         <%= Html.DropDownListFor(
                         x => x.selected_item,
-                        new SelectList(Model.ListaPostre, "Value", "Text")
+                        new SelectList(Model.ListaPostre, "Value", "Text"),
+                        new { @id = "ItemSelectPostre" }
                     )%>
                     </div>
                 </div>
@@ -159,7 +202,7 @@
                     </div>
                 </div>
                 <div class="boton_agregar">
-                        <input id="Submit3" type="submit" name="btn_submit" value="Agregar" />
+                        <input onclick="return validarSelect(3)" id="Submit3" type="submit" name="btn_submit" value="Agregar" />
                 </div>
             <% } %>
             </div>
@@ -171,6 +214,8 @@
             <% using (Html.BeginForm())
                { %>
                <%: Html.Hidden("id_pedido", Model.id_pedido)%>
+               <input type="hidden" id="Hidden7" name="__HORARIO" value="<%: Model.horario.ToString()%>" />
+                <input type="hidden" id="Hidden8" name="__DATE" value="<%: ViewBag.FECHA %>" />
                 <div style="width:100%">
                     <div style="vertical-align: middle; display:inline-block">
                         <%= Html.LabelFor(m => m.selected_item, "Postre")%>
@@ -178,7 +223,8 @@
                     <div style="vertical-align: middle; display:inline-block;max-width: 65%">
                         <%= Html.DropDownListFor(
                         x => x.selected_item,
-                        new SelectList(Model.ListaBebestible, "Value", "Text")
+                        new SelectList(Model.ListaBebestible, "Value", "Text"),
+                        new { @id = "ItemSelectBebestible" }
                     )%>
                     </div>
                 </div>
@@ -206,7 +252,7 @@
                     </div>
                 </div>
                 <div class="boton_agregar">
-                        <input id="Submit4" type="submit" name="btn_submit" value="Agregar" />
+                        <input onclick="return validarSelect(4)" id="Submit4" type="submit" name="btn_submit" value="Agregar" />
                 </div>
             <% } %>
             </div>

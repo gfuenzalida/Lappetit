@@ -58,9 +58,40 @@ namespace L_Appetit.Controllers
             return View(new_model);
         }
 
+
         public ActionResult VerPedidos()
         {
-            return View();
+            DateTime fecha = DateTime.Now.Date;
+            bool horario = true;
+            if(fecha.Hour < 17)
+                horario = false;
+            
+            MesasModel modelo = new MesasModel();
+            modelo.getMesasCocinero(fecha, horario);
+
+            return View(modelo);
+        }
+
+        [HttpPost] // Esencialmente es sólo para efectuar Pedido como Preparado
+        public ActionResult VerPedidos(MesasModel modelo)
+        {
+            short cod_reserva = Int16.Parse(Request.Form["id_reserva"]);
+
+            DateTime fecha = DateTime.Now.Date;
+            bool horario = true;
+            if (fecha.Hour < 17)
+                horario = false;
+
+            int resp = modelo.PrepararPedido(cod_reserva);
+
+            if (resp == 1)
+                TempData.Add("Resp", "El pedido se ha actualizado con éxito");
+            else if (resp == -1)
+                TempData.Add("Resp", "No ha sido posible actualizar el pedido");
+
+            modelo.getMesasCocinero(fecha, horario);
+
+            return View(modelo);
         }
 
         public ActionResult AgregarItem()
@@ -149,7 +180,7 @@ namespace L_Appetit.Controllers
 
             if (date != null)
             {
-                ViewBag.Fecha = DateTime.Parse(date);
+                ViewBag.Fecha = DateTime.Parse(date).ToString("dd-MM-yy"); ;
                 ViewBag.Horario = _horario;
 
                 if (btn_submit != null)

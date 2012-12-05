@@ -224,6 +224,8 @@
         <div id="prompt" class="Popup">
             <a id="popupClose">x</a> 
             <form id="form_pedido" method="post" action="TomarPedido">
+                <input type="hidden" id="Hidden1" name="__HORARIO" value="<%: Model.horario.ToString()%>" />
+                <input type="hidden" id="Hidden2" name="__DATE" value="<%: ViewBag.FECHA %>" />
                 <input type="hidden" id="form_reserva_id" name="id_reserva" />
                 <input type="hidden" id="form_rut_garzon" name="rut_garzon" />
                 <h2>Mesa: <label id="clicked_mesa"></label></h2>

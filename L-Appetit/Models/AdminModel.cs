@@ -168,6 +168,39 @@ namespace L_Appetit.Models
             lista_mesas = new List<Mesa>();
         }
 
+        // Actualiza el estado del pedido a 1 -> "Preparado"
+        public int PrepararPedido(short id_reserva)
+        {
+            LinqDBDataContext db = new LinqDBDataContext();
+
+            // Query the database for the row to be updated.
+            var query = (
+                from p in db.PEDIDO
+                where p.CODIGO_RESERVA == id_reserva
+                select p);
+
+            // Execute the query, and change the column values
+            // you want to change.
+            foreach (PEDIDO ped in query)
+            {
+                ped.ESTADO_PEDIDO = 1;
+                // Insert any additional changes to column values.
+            }
+
+            // Submit the changes to the database.
+            try
+            {
+                db.SubmitChanges();
+                return 1;
+            }
+            catch (Exception e)
+            {
+                return -1;
+                // Provide for exceptions.
+            }           
+
+        }
+
         public void getMesas()
         {
             lista_mesas = new List<Mesa>();
@@ -249,6 +282,64 @@ namespace L_Appetit.Models
                 lista_mesas.Add(_mesa);
             }
         }
+
+        public void getMesasCocinero(DateTime fecha, bool horario)
+        {
+            this.fecha = fecha;
+            lista_mesas = new List<Mesa>();
+
+            LinqDBDataContext db = new LinqDBDataContext();
+            var lines = ( 
+                        from vista in db.VW_PEDIDOS
+                        select new
+                        {
+                            id_reserva = vista.CODIGO_RESERVA == null ? 0 : vista.CODIGO_RESERVA,
+                            vista.CODIGO_MESA,
+                            id_pedido = vista.CODIGO_PEDIDO == null ? 0 : vista.CODIGO_PEDIDO,
+                            estado = vista.ESTADO_PEDIDO == null ? -1 : vista.ESTADO_PEDIDO,
+                            garzon = vista.GARZON == null ? "" : vista.GARZON,
+                            num_com = vista.NUMERO_COMENSALES == null ? 0 : vista.NUMERO_COMENSALES,
+                            nom_item = vista.NOMBRE_ITEM == null ? "" : vista.NOMBRE_ITEM,
+                            obs = vista.DETALLE_ITEM_OBSERVACION == null ? "" : vista.DETALLE_ITEM_OBSERVACION,
+                            cant = vista.DETALLE_ITEM_CANTIDAD == null ? 0 : vista.DETALLE_ITEM_CANTIDAD
+                        });
+            foreach (var row in lines)
+            {
+                Int16 id_mesa = (short) row.CODIGO_MESA;
+                Mesa mesa_ = null;
+                int j = -1;
+                for (int i = 0; i < lista_mesas.Count; i++)
+                {
+                    if (lista_mesas[i].id_mesa == id_mesa)
+                    {
+                        j = i;
+                        break;
+                    }
+                }
+
+                ItemPedido item_ = new ItemPedido();
+                item_.nom_item = row.nom_item;
+                item_.observacion = row.obs;
+                item_.cantidad = (short)row.cant;
+
+                if (j == -1)
+                {
+                    mesa_ = new Mesa();
+                    mesa_.id_mesa = id_mesa;
+                    mesa_.id_reserva = (short)row.id_reserva;
+                    mesa_.estado = (short)row.estado;
+                    mesa_.nombre_garzon = row.garzon;
+                    mesa_.num_comensales = (short)row.num_com;
+                    mesa_.lista_pedido.Add(item_);
+
+                    lista_mesas.Add(mesa_);
+                }
+                else
+                {
+                    lista_mesas[j].lista_pedido.Add(item_);
+                }
+            }
+        }
     }
     
     public class Mesa
@@ -264,6 +355,13 @@ namespace L_Appetit.Models
         public string rut_garzon { get; set; }
         public int estado { get; set; }
         public string observacion { get; set; }
+
+        public List<ItemPedido> lista_pedido { get;set;}
+
+        public Mesa()
+        {
+            lista_pedido = new List<ItemPedido>();
+        }
 
         public void RegistrarMesa()
         {

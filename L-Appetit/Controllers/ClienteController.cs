@@ -132,7 +132,9 @@ namespace L_Appetit.Controllers
                                                             horario,
                                                             num_comen,
                                                             obs).ReturnValue;
-                        if (respuesta == 1)
+                        if (respuesta == 2)
+                            ViewBag.RESP = "No puede reservar dos veces para el mismo momento";
+                        else if (respuesta == 1)
                             ViewBag.RESP = "La reserva se ha realizado con éxito";
                         else if (respuesta == 0)
                             ViewBag.RESP = "Ya existe una reserva hecha en dicha mesa";

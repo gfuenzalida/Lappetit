@@ -14,7 +14,10 @@ namespace L_Appetit.Controllers
         [HttpPost]
         public ActionResult TomarPedido(PedidoModel modelo, string id_reserva, string rut_garzon, string btn_submit)
         {
-            PedidoModel _modelo = new PedidoModel(); ;
+            DateTime fecha = DateTime.Parse(Request.Form["__DATE"]);
+            bool horario = Boolean.Parse(Request.Form["__HORARIO"]);
+
+            PedidoModel _modelo = new PedidoModel();
             if (btn_submit == null)
             {
                 string user_rut = User.Identity.Name.ToString();
@@ -66,7 +69,8 @@ namespace L_Appetit.Controllers
 
             }
 
-            _modelo.getListas();
+            ViewBag.Fecha = fecha.ToString("dd-MM-yyy");
+            _modelo.getListas(fecha,horario);
             _modelo.getPedido();
 
             return View(_modelo);
