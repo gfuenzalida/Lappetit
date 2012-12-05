@@ -29,6 +29,129 @@ namespace L_Appetit.Controllers
             return View(model);
         }
 
+        public ActionResult AgregarItem()
+        {
+            AgregarItemModel modelo = new AgregarItemModel();
+            return View(modelo);
+        }
+
+        [HttpPost]
+        public ActionResult AgregarItem(AgregarItemModel modelo)
+        {
+            if (ModelState.IsValid)
+            {
+                modelo.setItem(Int16.Parse(modelo.tipo_item), modelo.nombre_item, modelo.descripcion_item);
+            }
+            else
+            {
+                ViewBag.Error = true;
+            }
+
+            ModelState.Clear();
+
+            return View(modelo);
+        }
+
+        public ActionResult EnviarInvitaciones()
+        {
+            return View();
+        }
+
+        public ActionResult AgregarMenu()
+        {
+            AgregarMenuModel modelo = new AgregarMenuModel();
+
+            DateTime fecha = DateTime.Now.Date;
+
+            if (fecha.DayOfWeek == DayOfWeek.Saturday)
+                fecha = DateTime.Now.AddDays(2).Date;
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday)
+                fecha = DateTime.Now.AddDays(1).Date;
+
+            modelo.getListas();
+            modelo.getMenu(fecha, false);
+            ViewBag.Fecha = fecha.ToString("dd-MM-yy");
+            ViewBag.Horario = modelo.horario.ToString();
+
+            return View(modelo);
+        }
+
+        [HttpPost]
+        public ActionResult AgregarMenu(AgregarMenuModel modelo, string btn_submit)
+        {
+
+            string date = Request.Form["__DATE"];
+            bool _horario = false;
+            if (modelo != null)
+            {
+                if (Request.Form["__HORARIO"] != null)
+                {
+                    if (Request.Form["__HORARIO"] == "True")
+                        _horario = true;
+                    else if (Request.Form["__HORARIO"] == "False")
+                        _horario = false;
+                }
+                else
+                {
+                    _horario = modelo.horario;
+                }
+            }
+
+            AgregarMenuModel new_model = new AgregarMenuModel();
+
+            DateTime fecha = DateTime.Now.Date;
+
+            if (fecha.DayOfWeek == DayOfWeek.Saturday)
+                fecha = DateTime.Now.AddDays(2).Date;
+            else if (fecha.DayOfWeek == DayOfWeek.Sunday)
+                fecha = DateTime.Now.AddDays(1).Date;
+
+            ViewBag.Fecha = fecha.ToString("dd-MM-yy");
+
+            ViewBag.Horario = false.ToString();
+
+            if (date != null)
+            {
+                ViewBag.Fecha = DateTime.Parse(date).ToString("dd-MM-yy");
+                ViewBag.Horario = _horario;
+
+                if (btn_submit != null)
+                {
+                    if (ModelState.IsValid)
+                    {
+                        LinqDBDataContext db = new LinqDBDataContext();
+                        db.CrearFecha(DateTime.Parse(date), _horario);
+                        int resp = new_model.setMenu(Int16.Parse(modelo.selected_item), short.Parse(modelo.selected_cant), DateTime.Parse(date), _horario);
+
+                        if (resp == 2)
+                        {
+                            TempData.Add("Resp", "El Menu se ha actualizado");
+                        }
+                        else if (resp == 1)
+                        {
+                            TempData.Add("Resp", "Se ha agregado el ítem");
+                        }
+                        else if (resp == -1)
+                        {
+                            TempData.Add("Resp", "Ha ocurrido un error inesperado");
+                        }
+
+                        ModelState.Clear();
+                    }
+                }
+                else
+                {
+                    ModelState.Clear();
+
+                }
+            }
+            new_model.getListas();//DateTime.Parse(date)
+            new_model.getMenu(DateTime.Parse(date), _horario);
+
+            return View(new_model);
+        }
+
+
         [HttpPost]
         public ActionResult GestionarUsuarios(GestionUsuariosModel model)
         {

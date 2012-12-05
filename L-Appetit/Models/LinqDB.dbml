@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="lappetit" Class="LinqDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=GARY-PC;Initial Catalog=lappetit;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="lappetitConnectionString1" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=localhost;Initial Catalog=lappetit;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="ApplicationServices" Provider="System.Data.SqlClient" />
   <Table Name="dbo.AUDITORIA_TABLAS" Member="AUDITORIA_TABLAS">
     <Type Name="AUDITORIA_TABLAS">
       <Column Name="CODIGO_TABLA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -220,23 +220,6 @@
       <Column Name="" Member="Column1" Type="System.String" DbType="VarChar(40) NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.MesasPedidoInfo" Method="MesasPedidoInfo">
-    <Parameter Name="fecha" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="horario" Type="System.Boolean" DbType="Bit" />
-    <ElementType Name="MesasPedidoInfoResult1">
-      <Column Name="CODIGO_RESERVA" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
-      <Column Name="CODIGO_MESA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
-      <Column Name="CANT_MAXIMA" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="POS_X" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="POS_Y" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="OBSERVACIONES" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="NUMERO_COMENSALES" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="ESTADO_PEDIDO" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
-      <Column Name="GARZON" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-      <Column Name="RUT_GARZON" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
-      <Column Name="CLIENTE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.CrearPedido" Method="CrearPedido">
     <Parameter Name="id_reserva" Type="System.Decimal" DbType="Decimal(18,0)" />
     <Parameter Name="rut_garzon" Type="System.String" DbType="VarChar(10)" />
@@ -256,9 +239,27 @@
     <Parameter Name="obs" Type="System.String" DbType="Text" />
     <Return Type="System.Int32" />
   </Function>
+  <Function Name="dbo.MesasPedidoInfo" Method="MesasPedidoInfo">
+    <Parameter Name="fecha" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="horario" Type="System.Boolean" DbType="Bit" />
+    <ElementType Name="MesasPedidoInfoResult">
+      <Column Name="CODIGO_RESERVA" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="CODIGO_MESA" Type="System.Decimal" DbType="Decimal(18,0) NOT NULL" CanBeNull="false" />
+      <Column Name="CANT_MAXIMA" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="POS_X" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="POS_Y" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OBSERVACIONES" Type="System.String" DbType="Text" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="NUMERO_COMENSALES" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="ESTADO_PEDIDO" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="GARZON" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="RUT_GARZON" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CLIENTE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.SendInvitacion" Method="SendInvitacion">
     <Parameter Name="RUT_Cont" Parameter="rUT_Cont" Type="System.String" DbType="VarChar(10)" />
     <Parameter Name="RUT_Cliente" Parameter="rUT_Cliente" Type="System.String" DbType="VarChar(10)" />
+    <Parameter Name="cant_enviada" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

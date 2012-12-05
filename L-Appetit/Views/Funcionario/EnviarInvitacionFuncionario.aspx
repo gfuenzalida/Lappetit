@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Funcionario.Master" Inherits="System.Web.Mvc.ViewPage<dynamic>" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Funcionario.Master" Inherits="System.Web.Mvc.ViewPage<L_Appetit.Models.EnviarInvitacionModel>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
     Enviar Invitacion
@@ -21,30 +21,35 @@
     <div style="vertical-align: top; display:inline-block; height: 179px; width: 276px; margin-left:5%">
         <fieldset>
             <legend>Enviar Invitaciones</legend>
+            
+                <% using (Html.BeginForm())
+                   { %>
             <div>
-                <asp:Label ID="Label1" runat="server" Text="RUN"></asp:Label>
+                <%: Html.LabelFor(m=>m.rutCliente,"RUT")%>
             </div>
             
             <div>
-                <input id="Text1" type="text" />
+                <%: Html.TextBoxFor(m => m.rutCliente) %>
+                <%: Html.ValidationMessageFor(m=>m.rutCliente) %>
             </div>
             <br>
             <div>
                 <div style="vertical-align: top; display:inline-block">
-                    <asp:Label ID="Label2" runat="server" Text="Invitaciones"></asp:Label>
+                    <%: Html.LabelFor(m=>m.cantidad,"Cantidad") %>
                 </div>
                 <div style="vertical-align: top; display:inline-block">
-                    <select id="Select1">
-                        <option></option>
-                    </select>
+                    <%: Html.TextBoxFor(m => m.cantidad) %>
+                    <%: Html.ValidationMessageFor(m=>m.cantidad) %>
                 </div>
             </div>
+
             <br>
             <div>
                 <input id="Submit1" type="submit" value="Enviar" />
             </div>
+            <%} %>
         </fieldset>
-        
+        <%: TempData["Resp"] %>      
 
 
     </div>

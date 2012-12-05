@@ -87,7 +87,7 @@ namespace L_Appetit.Models
     #endregion
 		
 		public LinqDBDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["lappetitConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["ApplicationServices"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -282,13 +282,6 @@ namespace L_Appetit.Models
 			return ((ISingleResult<MK_RESERVAResult>)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MesasPedidoInfo")]
-		public ISingleResult<MesasPedidoInfoResult1> MesasPedidoInfo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> horario)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), fecha, horario);
-			return ((ISingleResult<MesasPedidoInfoResult1>)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.CrearPedido")]
 		public int CrearPedido([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Decimal(18,0)")] System.Nullable<decimal> id_reserva, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="VarChar(10)")] string rut_garzon)
 		{
@@ -310,10 +303,17 @@ namespace L_Appetit.Models
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SendInvitacion")]
-		public int SendInvitacion([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RUT_Cont", DbType="VarChar(10)")] string rUT_Cont, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RUT_Cliente", DbType="VarChar(10)")] string rUT_Cliente)
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.MesasPedidoInfo")]
+		public ISingleResult<MesasPedidoInfoResult> MesasPedidoInfo([global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Date")] System.Nullable<System.DateTime> fecha, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Bit")] System.Nullable<bool> horario)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), rUT_Cont, rUT_Cliente);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), fecha, horario);
+			return ((ISingleResult<MesasPedidoInfoResult>)(result.ReturnValue));
+		}
+		
+		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.SendInvitacion")]
+		public int SendInvitacion([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RUT_Cont", DbType="VarChar(10)")] string rUT_Cont, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RUT_Cliente", DbType="VarChar(10)")] string rUT_Cliente, [global::System.Data.Linq.Mapping.ParameterAttribute(DbType="Int")] System.Nullable<int> cant_enviada)
+		{
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), rUT_Cont, rUT_Cliente, cant_enviada);
 			return ((int)(result.ReturnValue));
 		}
 	}
@@ -4408,7 +4408,7 @@ namespace L_Appetit.Models
 		}
 	}
 	
-	public partial class MesasPedidoInfoResult1
+	public partial class MesasPedidoInfoResult
 	{
 		
 		private System.Nullable<decimal> _CODIGO_RESERVA;
@@ -4433,7 +4433,7 @@ namespace L_Appetit.Models
 		
 		private string _CLIENTE;
 		
-		public MesasPedidoInfoResult1()
+		public MesasPedidoInfoResult()
 		{
 		}
 		

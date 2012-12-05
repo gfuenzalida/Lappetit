@@ -1224,8 +1224,8 @@
     <Content Include="Views\Cliente\EditarPerfil.aspx" />
     <Content Include="Views\Cliente\HacerReserva.aspx" />
     <Content Include="Views\Cliente\ConsultarReserva.aspx" />
-    <Content Include="Views\Cocinero\AgregarItem.aspx" />
-    <Content Include="Views\Cocinero\AgregarMenu.aspx" />
+    <Content Include="Views\Admin\AgregarItem.aspx" />
+    <Content Include="Views\Admin\AgregarMenu.aspx" />
     <Content Include="Views\Cocinero\EditarPerfilCocinero.aspx" />
     <Content Include="Views\Cocinero\EnviarInvitaciones.aspx" />
     <Content Include="Views\Cocinero\VerMenu.aspx" />
